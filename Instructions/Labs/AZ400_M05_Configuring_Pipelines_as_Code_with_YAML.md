@@ -2,12 +2,12 @@
 lab:
   title: '랩 11: YAML을 통해 파이프라인을 코드로 구성'
   module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
-ms.openlocfilehash: 6f6c4d98338022a305fb3fd05f0d1efc7a4b9c00
-ms.sourcegitcommit: f72fcf5ee578f465b3495f3cf789b06c530e88a4
+ms.openlocfilehash: 8de8c2a736004288fe37e971771b02ca7b8afd7e
+ms.sourcegitcommit: 47f04db60403c98a8fd46def1794f46594bfd1f8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/04/2022
-ms.locfileid: "139262578"
+ms.lasthandoff: 04/27/2022
+ms.locfileid: "144341229"
 ---
 # <a name="lab-11-configuring-pipelines-as-code-with-yaml"></a>랩 11: YAML을 통해 파이프라인을 코드로 구성
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -100,13 +100,7 @@ ms.locfileid: "139262578"
     SERVICEPLANNAME='az400l11a-sp1'
     az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
     ```
-    
-    > **참고**: `ModuleNotFoundError: No module named 'vsts_cd_manager'`로 시작하는 오류 메시지와 함께 `az appservice plan create` 명령이 실패하는 경우 다음 명령을 실행한 다음, 실패한 명령을 다시 실행합니다.
-
-    ```bash
-    az extension remove -n appservice-kube
-    az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py2.py3-none-any.whl"
-    ```
+        
 
 1.  고유한 이름을 사용하여 웹앱을 만듭니다.
 

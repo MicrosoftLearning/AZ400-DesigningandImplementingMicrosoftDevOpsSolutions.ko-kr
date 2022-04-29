@@ -2,12 +2,12 @@
 lab:
   title: '랩 12: Azure Key Vault와 Azure DevOps 통합'
   module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
-ms.openlocfilehash: ee482422f21a674e4a91b7cd7af048fbd2bfbfbb
-ms.sourcegitcommit: f72fcf5ee578f465b3495f3cf789b06c530e88a4
+ms.openlocfilehash: ecd8c74d1dc1c9b96c3d61e59fb2abc646bd8741
+ms.sourcegitcommit: ea152638f54c729974e5cc91ef3dc7414d853ab5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/04/2022
-ms.locfileid: "139262606"
+ms.lasthandoff: 04/26/2022
+ms.locfileid: "144012358"
 ---
 # <a name="lab-12-integrating-azure-key-vault-with-azure-devops"></a>랩 12: Azure Key Vault와 Azure DevOps 통합
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -109,7 +109,8 @@ Azure Pipelines에서 Azure 리소스에 앱을 배포하려면 서비스 주체
 1.  **Cloud Shell** 창의 **Bash** 프롬프트에서 다음 명령을 실행하여 서비스 주체를 만듭니다. 여기서 `<service-principal-name>`은 문자와 숫자로 구성된 고유한 문자열로 바꿉니다.
 
     ```
-    az ad sp create-for-rbac --name <service-principal-name> --role Contributor
+    SUB_ID=$(az account show --query id --output tsv)
+    az ad sp create-for-rbac --name <service-principal-name> --role contributor --scope /subscriptions/$SUB_ID
     ```
 
     > **참고**: 이 명령을 실행하면 JSON 출력이 생성됩니다. 텍스트 파일에 출력을 복사해 두세요. 이 랩의 후반부에서 필요합니다.
@@ -136,7 +137,7 @@ Azure Pipelines에서 Azure 리소스에 앱을 배포하려면 서비스 주체
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | 새 리소스 그룹의 이름 **az400m07l01-RG** |
     | 키 자격 증명 모음 이름 | 고유하고 유효한 이름 |
     | 지역 | 랩 환경의 위치와 가까운 Azure 지역 |
