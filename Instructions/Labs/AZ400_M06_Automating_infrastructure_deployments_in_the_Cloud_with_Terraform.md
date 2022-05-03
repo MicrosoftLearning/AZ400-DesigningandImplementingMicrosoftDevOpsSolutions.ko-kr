@@ -2,12 +2,12 @@
 lab:
   title: '랩 15: Terraform 및 Azure Pipelines를 통해 클라우드에서 인프라 배포 자동화'
   module: 'Module 06: Manage infrastructure as code using Azure, DSC, and third-party tools'
-ms.openlocfilehash: e98e6235c4b2e3604390f66109dd395ae7c0d2b9
-ms.sourcegitcommit: f72fcf5ee578f465b3495f3cf789b06c530e88a4
+ms.openlocfilehash: 8c2df320b4a4b40bcc449cf00d6a479b864f624f
+ms.sourcegitcommit: 31ed72aab4ce3ac156655216d24b04ebeea6fd0b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/04/2022
-ms.locfileid: "139262571"
+ms.lasthandoff: 04/29/2022
+ms.locfileid: "144390489"
 ---
 # <a name="lab-15-automating-infrastructure-deployments-in-the-cloud-with-terraform-and-azure-pipelines"></a>랩 15: Terraform 및 Azure Pipelines를 통해 클라우드에서 인프라 배포 자동화
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -94,7 +94,7 @@ Terraform 구성 파일에는 단일 애플리케이션 또는 전체 데이터 
 
 1.  **Terraform** 리포지토리의 폴더 계층 구조에서 **Terraform** 폴더를을 확장하고 **webapp.tf** 를 클릭합니다.
 1.  **webapp.tf** 에서 **webapp.tf** 파일의 내용을 검토하고 **편집** 을 클릭합니다.
-1.  **공급자** 섹션에 대한 새 줄을 추가합니다. 파일은 다음 예제와 같습니다.
+1.  파일은 다음 예제와 같이 표시됩니다.
 
     ```
      terraform {
@@ -171,7 +171,7 @@ Terraform 구성 파일에는 단일 애플리케이션 또는 전체 데이터 
 
     > **참고**: Terraform [백 엔드](https://www.terraform.io/docs/backends/)를 구성하려면 Terraform 상태를 호스트하는 Azure 스토리지 계정의 액세스 키가 필요합니다. 여기서는 Azure PowerShell 태스크를 사용하여 이전 작업에서 프로비전한 Azure 스토리지 계정의 액세스 키를 검색합니다. `Write-Host "##vso[task.setvariable variable=storagekey]$key"`를 사용하여 이후 작업에서 사용할 수 있는 파이프라인 변수를 만듭니다.
 
-1.  **개발** 단계의 태스크 목록에서 **Terraform 파일의 토큰 바꾸기** 태스크를 선택합니다.
+1.  **개발** 단계의 태스크 목록에서 **Terraform 파일의 토큰 바꾸기** 태스크를 선택합니다. 작업의 **토큰 패턴** 속성이 **webapp.tf** 파일의 토큰과 일치하도록 `__...__`으로 업데이트합니다.
 
     > **참고**: **webapp.tf** 파일을 신중하게 검토했다면 `__terraformstorageaccount__`와 같이 **__** 가 접두사와 접미사로 사용된 값을 몇 개 확인했을 것입니다. **토큰 바꾸기** 태스크에서는 이러한 값을 릴리스 파이프라인에 정의된 변수 값으로 바꿉니다.
      

@@ -2,12 +2,12 @@
 lab:
   title: '랩 04: 에이전트 풀 구성 및 파이프라인 스타일 이해'
   module: 'Module 3: Implement CI with Azure Pipelines and GitHub Actions'
-ms.openlocfilehash: 2aff45194cb8c16e1d19be44af175bb937873f60
-ms.sourcegitcommit: f72fcf5ee578f465b3495f3cf789b06c530e88a4
+ms.openlocfilehash: b25f462520c5a6932abf9a2f0647e53e2e171adb
+ms.sourcegitcommit: 03e098f960d137ab5862f4cc9a8d762cc6740c48
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/04/2022
-ms.locfileid: "139262559"
+ms.lasthandoff: 04/27/2022
+ms.locfileid: "144339531"
 ---
 # <a name="lab-04-configuring-agent-pools-and-understanding-pipeline-styles"></a>랩 04: 에이전트 풀 구성 및 파이프라인 스타일 이해
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -148,7 +148,7 @@ Windows 10 데스크톱에서 작업 표시줄을 찾습니다. 작업 표시줄
     | 에이전트 풀 입력(기본값을 사용하려면 Enter 키 누르기) | **az400m05l05a-pool** |
     | 에이전트 이름 입력 | **az400m05-vm0** |
     | 작업 폴더 입력(_work를 사용하려면 Enter 키 누르기) | **Enter** |
-    | 각 단계의 작업에서 압축 풀기 수행 여부 입력 (N을 입력하려면 Enter 키 누르기) | **Enter** |
+    | **(표시되는 경우만 해당)** 각 단계의 작업에서 압축 풀기 수행 여부 입력 (N을 입력하려면 Enter 키 누르기) | **Enter** |
     | 에이전트를 서비스로 실행할지 여부 입력 (Y/N)(N을 입력하려면 Enter 키 누르기) | **예** |
     | 서비스에 사용할 사용자 계정 입력(NT AUTHORITY\NETWORK SERVICE에 대해 Enter 키 누르기) | **Enter** |
     | 구성이 완료된 직후 서비스가 시작되지 않도록 할지 여부를 입력할까요? (Y/N)(N을 입력하려면 Enter 키 누르기) | **Enter** |
@@ -168,7 +168,7 @@ Windows 10 데스크톱에서 작업 표시줄을 찾습니다. 작업 표시줄
     demands:
     - agent.name -equals az400m05-vm0
     ```
-1. `Task: NugetInstaller@0`의 경우 **설정(작업 위에 회색으로 표시되는 링크)** 을 클릭하고, **설치할 NuGet.exe 버전** 을 **4.0.0** 으로 수정하고, **추가** 를 클릭합니다. 
+1. `Task: NugetToolInstaller@0`의 경우 **설정(작업 위에 회색으로 표시되는 링크)** 을 클릭하고, **설치할 NuGet.exe 버전** 을 **4.0.0** 으로 수정하고, **추가** 를 클릭합니다. 
 1.  **PartsUnlimited** 편집 창 오른쪽 위의 **저장** 을 클릭하고 **저장** 창에서 **저장** 을 다시 클릭합니다. 그러면 이 파이프라인을 기반으로 하는 빌드가 자동으로 트리거됩니다. 
 1.  Azure DevOps 포털 왼쪽의 세로 탐색 창에 있는 **Pipelines** 섹션에서 **파이프라인** 을 클릭합니다.
 1.  **파이프라인** 창의 **최근** 탭에서 **PartsUnlimited** 항목을 클릭하고 **PartsUnlimited** 창의 **실행** 탭에서 최신 실행을 선택합니다. 그런 다음 해당 실행의 **요약** 창에서 아래쪽으로 스크롤하여 **작업** 섹션에서 **1단계** 를 클릭하고 작업이 정상적으로 완료될 때까지 모니터링합니다. 

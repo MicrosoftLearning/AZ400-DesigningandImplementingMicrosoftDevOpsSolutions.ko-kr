@@ -2,12 +2,12 @@
 lab:
   title: '랩 07: Azure Pipelines를 사용하여 외부 소스 제어 기능 통합'
   module: 'Module 3: Implement CI with Azure Pipelines and GitHub Actions'
-ms.openlocfilehash: d48cf2a03d5d9408dcd95db5004563bc95066856
-ms.sourcegitcommit: f72fcf5ee578f465b3495f3cf789b06c530e88a4
+ms.openlocfilehash: cfe5a93dc06bf6799f0b877a13185b1abe18c266
+ms.sourcegitcommit: ea152638f54c729974e5cc91ef3dc7414d853ab5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/04/2022
-ms.locfileid: "139262575"
+ms.lasthandoff: 04/26/2022
+ms.locfileid: "144012355"
 ---
 # <a name="lab-07-integrating-external-source-control-with-azure-pipelines"></a>랩 07: Azure Pipelines를 사용하여 외부 소스 제어 기능 통합
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -84,7 +84,7 @@ Microsoft는 Azure DevOps의 출시와 함께 새로운 CI/CD(연속 통합/지�
     > **참고**: 포함할 리포지토리를 지정할 수도 있지만 이 랩에서는 모든 리포지토리를 포함합니다. Azure DevOps가 서비스를 제공하려면 권한 세트 목록이 필요합니다. 
 
 7.  메시지가 표시되면 GitHub 암호를 입력해 인증을 하고 작업을 계속 진행합니다.
-8.  메시지가 표시되면 **Setup your Azure Pipelines project** 페이지의 **Select your Azure DevOps organization** 드롭다운 목록에서 Azure DevOps 계정을 선택하고 **Create a new project** 를 클릭합니다.
+8.  메시지가 표시되면 **Azure Pipelines 프로젝트 설정** 페이지에서 먼저 **디렉터리 전환** 을 클릭하고 ‘기본 디렉터리’가 선택되어 있는지 확인합니다. 그런 후 **Azure DevOps 조직 선택** 드롭다운 목록에서 Azure DevOps 계정을 선택한 후 **새 프로젝트 만들기** 를 클릭합니다.
 9.  메시지가 표시되면 **Setup your Azure Pipelines project** 페이지의 **Project name** 텍스트 상자에 **Integrating External Source Control with Azure Pipelines** 를 입력합니다. **Project visibility** 는 **Private** 으로 설정된 상태로 유지하고 **Continue** 를 클릭합니다.
 10. **Azure Pipelines by Microsoft would like permission to** 페이지에서 **Authorize Azure Pipelines** 를 클릭합니다.
 

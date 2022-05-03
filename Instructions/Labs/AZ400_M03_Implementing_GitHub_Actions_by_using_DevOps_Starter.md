@@ -2,12 +2,12 @@
 lab:
   title: '랩 06: DevOps Starter를 사용하여 GitHub Action 구현'
   module: 'Module 3: Implement CI with Azure Pipelines and GitHub Actions'
-ms.openlocfilehash: 9a57b5948b959773dcda04d48f802bcf5a516a9f
-ms.sourcegitcommit: f72fcf5ee578f465b3495f3cf789b06c530e88a4
+ms.openlocfilehash: ab4f600b83b4808caff309fa49e2dcab19a32c00
+ms.sourcegitcommit: ea152638f54c729974e5cc91ef3dc7414d853ab5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/04/2022
-ms.locfileid: "139262554"
+ms.lasthandoff: 04/26/2022
+ms.locfileid: "144012352"
 ---
 # <a name="lab-06-implementing-github-actions-by-using-devops-starter"></a>랩 06: DevOps Starter를 사용하여 GitHub Action 구현
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -96,9 +96,10 @@ ms.locfileid: "139262554"
     | 리포지토리 | **az400m08l01** |
     | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | 웹앱 이름 | **azurewebsites.net** DNS 네임스페이스에서 유효하고 전역적으로 고유한 호스트 이름 |
-    | 위치 | Azure 웹앱을 프로비전할 수 있는 Azure 지역의 이름 |
+    | 위치 | Azure 웹앱을 프로비저닝할 수 있는 Azure 지역의 이름. **미국 동부** 권장 |
 
-    > **참고**: 프로비전이 완료될 때까지 기다립니다. 이 작업은 1분 정도 걸립니다.
+   > **참고**: 사용할 수 없는 리소스로 인해 일부 **위치** 가 실패할 수 있습니다. **미국 동부** 권장
+   > **참고**: 프로비전이 완료될 때까지 기다립니다. 이 작업은 1분 정도 걸립니다.
 
 1.  **Deploy_DevOps_Project_az400m08l01 \| 개요** 블레이드에서 **리소스로 이동** 을 클릭합니다.
 1.  **az400m08l01** 블레이드의 **GitHub 워크플로** 타일에서 **권한 부여** 를 클릭합니다. 
