@@ -2,18 +2,20 @@
 lab:
   title: '랩 00: 랩 환경 유효성 검사'
   module: 'Module 0: Welcome'
-ms.openlocfilehash: 95077d37927a88b6e74a8aa1bd469ae931060645
-ms.sourcegitcommit: ebeb5eea409c6a20414c1f419fd64b2bbe05bfa2
+ms.openlocfilehash: 6f17dfd8417f4e2b15f1e2ebedd9c88c961532cd
+ms.sourcegitcommit: b1421ee189fd5d980b6455e44b45cd3efea2a62a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/05/2022
-ms.locfileid: "144789464"
+ms.lasthandoff: 05/09/2022
+ms.locfileid: "144822531"
 ---
 # <a name="lab-00-validate-lab-environment"></a>랩 00: 랩 환경 유효성 검사
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
 ## <a name="instructions"></a>Instructions
+
 > **참고**: **개인 Microsoft 계정** 설정 및 해당 계정에 연결된 활성 Microsoft Azure Pass 구독이 이미 있는 경우 4단계부터 시작합니다.
+
 1. 강사 또는 다른 소스로부터 새로운 **Azure Pass 프로모션 코드** 를 받습니다.
 2. 프라이빗 브라우저 세션을 사용하여 [https://account.microsoft.com](https://account.microsoft.com)에서 새로운 **개인 MSA(Microsoft 계정)** 을 받습니다.
 3. 같은 브라우저 세션을 사용하여 [https://www.microsoftazurepass.com](https://www.microsoftazurepass.com)으로 이동하고 MSA(Microsoft 계정)를 사용하여 Azure Pass를 상환합니다. 자세한 내용은 [Microsoft Azure Pass 교환](https://www.microsoftazurepass.com/Home/HowTo?Length=5)을 참조하세요. 교환을 위한 지침을 따릅니다. 
