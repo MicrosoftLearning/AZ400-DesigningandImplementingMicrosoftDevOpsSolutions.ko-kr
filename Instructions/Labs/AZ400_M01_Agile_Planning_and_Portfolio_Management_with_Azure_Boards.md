@@ -2,12 +2,12 @@
 lab:
   title: '랩 01: Azure Boards를 사용하여 Agile 계획 및 포트폴리오 관리'
   module: 'Module 1: Get started on a DevOps transformation journey'
-ms.openlocfilehash: b67811c9d2397ad082be78bb30d87955f4cba455
-ms.sourcegitcommit: f72fcf5ee578f465b3495f3cf789b06c530e88a4
+ms.openlocfilehash: 5755d9761c4682d2e5e8004cea3810f0b041647d
+ms.sourcegitcommit: ad90d44825eb733a12cbf9ce1e987948530e09db
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/04/2022
-ms.locfileid: "139262444"
+ms.lasthandoff: 05/04/2022
+ms.locfileid: "144761310"
 ---
 # <a name="lab-01-agile-planning-and-portfolio-management-with-azure-boards"></a>랩 01: Azure Boards를 사용하여 Agile 계획 및 포트폴리오 관리
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼

@@ -2,12 +2,12 @@
 lab:
   title: '랩 24: SonarCloud 및 Azure DevOps를 사용하여 기술적인 문제 관리'
   module: 'Module 10: Implement security and validate code bases for compliance'
-ms.openlocfilehash: 31326e288d746f6d6577b91fc60f58c2293698d1
-ms.sourcegitcommit: f72fcf5ee578f465b3495f3cf789b06c530e88a4
+ms.openlocfilehash: 6d21a232131d1e5eb7a59c48cea8a6737a9f8dcf
+ms.sourcegitcommit: ad90d44825eb733a12cbf9ce1e987948530e09db
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/04/2022
-ms.locfileid: "139262574"
+ms.lasthandoff: 05/04/2022
+ms.locfileid: "144761313"
 ---
 # <a name="lab-24-managing-technical-debt-with-sonarcloud-and-azure-devops"></a>랩 24: SonarCloud 및 Azure DevOps를 사용하여 기술적인 문제 관리
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -118,26 +118,25 @@ Azure DevOps에서 *기술적인 문제* 란 전략 목표 달성을 위해 사�
 
     > **참고**: SonarCloud에서는 조직을 만든 후 해당 조직 내에 새 프로젝트를 만듭니다. SonarCloud에서 설정하는 조직과 프로젝트에는 Azure DevOps에서 설정한 조직과 프로젝트가 미러링됩니다.
 
-1.  **SonarCloud 시작** 페이지에서 **Azure에서 조직 가져오기** 를 클릭합니다.
+1.  **Azure에서 조직 가져오기** 를 클릭합니다.
 1.  **Create an organization** 페이지의 **Azure DevOps organization name** 텍스트 상자에는 Azure DevOps 조직의 이름을 입력하고, **Personal Access Token** 텍스트 상자에는 이전 연습에서 적어 둔 토큰의 값을 붙여넣은 다음 **Continue** 를 클릭합니다. 
 1.  **조직 설정 가져오기** 섹션의 **키** 텍스트 상자에 조직을 지정하는 문자열을 입력하고 **계속** 을 클릭합니다.
 
     > **참고**: 키는 SonarCloud 내에서 고유해야 합니다. **Key** 텍스트 상자 오른쪽에 녹색 확인 표시가 나타나는지 확인하세요. 이 표시가 나타나면 키가 고유성 관련 필수 조건을 충족하는 것입니다.
 
-1.  **Choose a plan** 섹션에서 이 랩에 사용할 계획을 선택하고 **Create Organization** 을 클릭합니다.
+1.  **플랜 선택** 섹션에서 이 랩에 사용할 플랜을 선택하고(**무료** 권장) **조직 만들기** 를 클릭합니다.
 
     > **참고**: 그러면 Azure DevOps 조직을 미러링하는 SonarCloud 조직이 작성됩니다.
 
     > **참고**: 다음으로는 새로 만든 조직 내에서 Azure DevOps 프로젝트 **SonarExamples** 를 미러링하는 SonarCloud 프로젝트를 만듭니다. 
 
-1.  **All set! Your organization is now ready to go** 페이지에서 **Analyze new project** 를 클릭합니다.
 1.  **Analyze projects - Select repositories** 페이지의 Azure DevOps 프로젝트 목록에서 **SonarExamples / SonarExamples** 항목 옆의 체크박스를 선택하고 **Set up** 을 클릭합니다.
-1.  **Analyze your project** 페이지에서 **With Azure DevOps Pipeline** 타일을 클릭합니다. 
+1.  **분석 방법 선택** 페이지에서 **Azure DevOps Pipeline 사용** 타일을 클릭합니다. 
 1.  **Analyze with Azure Pipelines** 페이지의 **Install our extension** 섹션에서 **Continue** 를 클릭합니다.
 
     > **참고**: 확장을 이미 설치했으면 확장 만들기를 건너뛰어도 됩니다. 
-
-1.  **Azure Pipelines로 분석** 페이지의 **Azure Pipelines 구성** 섹션에서 **.NET** 을 클릭합니다. 그러면 **Prepare Analysis Configuration**, **Run Code Analysis** 및 **Publish Quality Gate Result** 작업에서 수행해야 하는 일련의 단계가 표시됩니다. 
+1.  **새 Sonarcloud 서비스 엔드포인트 추가** 에서 Azure DevOps 프로젝트에 설명된 단계를 수행하고, 서비스 연결에 **SonarSC** 이라는 이름을 지정하고, 모든 파이프라인에 대한 액세스 권한을 부여하는 확인란을 **선택** 하고 **확인 및 저장** 을 클릭합니다. Sonarcloud 웹 사이트로 돌아가서 **계속** 을 클릭합니다.
+1.  **Azure Pipelines로 분석** 페이지의 **Azure Pipelines 구성** 섹션에서 **.NET** 을 클릭합니다. 그러면 **Prepare Analysis Configuration**, **Run Code Analysis** 및 **Publish Quality Gate Result** 작업에서 수행해야 하는 일련의 단계가 표시됩니다. 파이프라인 정의에 대해 이러한 지침이 필요합니다. 
 
     > **참고**: 각 목표를 달성하려면 수행해야 하는 단계 목록을 검토합니다. 후속 작업에서 이러한 단계를 구현합니다.
 
@@ -154,12 +153,9 @@ Azure DevOps에서 *기술적인 문제* 란 전략 목표 달성을 위해 사�
 
 이 작업에서는 프로젝트용 빌드 파이프라인 만들기를 시작합니다.
 
-1.  Azure DevOps 포털에서 **SonarExamples** 창이 표시된 웹 브라우저 창으로 전환하여 Azure DevOps 포털 맨 왼쪽의 세로 메뉴 모음에 있는 **Pipelines** 를 클릭하고 **파이프라인 만들기** 를 클릭합니다.
-1.  **코드 위치** 창에서 사용 가능한 옵션을 검토합니다.
+1. Azure DevOps 포털의 **SonarExamples** 창에 표시된 웹 브라우저 창으로 전환합니다. **프로젝트 설정** 으로 이동하고 **표시 유형** 을 비공개로 변경하고 **저장** 합니다.
 
-    > **참고**: 두 가지 옵션이 있습니다. **YAML 편집기** 나 **클래식 편집기** 를 사용하여 파이프라인을 구성할 수 있습니다. 클래식 편집기 사용 시에는 앞에서 SonarCloud 확장을 설치할 때 함께 설치되었던 미리 정의된 템플릿을 활용할 수 있습니다. YAML 편집기에서는 별도로 제공되는 YAML 파일을 사용해야 합니다. 여기서는 이 두 가지 옵션을 각각 선택하여 해당 단계를 진행합니다. 
-
-    > **참고**: 클래식 편집기를 사용하려는 경우 다음 작업을 건너뛰세요.
+    > **참고**: Mod 00의 단계를 수행하여 프라이빗 프로젝트에만 병렬 작업을 설정했으며 조직에 현재 공용 프로젝트에 사용할 수 있는 작업이 없는 경우 이 작업을 수행해야 합니다.
 
 #### <a name="task-2-create-a-pipeline-by-using-the-yaml-editor"></a>작업 2: YAML 편집기를 사용하여 파이프라인 만들기
 
@@ -167,12 +163,7 @@ Azure DevOps에서 *기술적인 문제* 란 전략 목표 달성을 위해 사�
 
 > **참고**: YAML 파이프라인 구성을 계속 진행하려면 먼저 SonarCloud용 서비스 연결을 생성해야 합니다.
 
-1.  다른 브라우저 탭을 열고 Azure DevOps 포털에서 **SonarExamples** 의 홈 페이지로 이동합니다.
-1.  Azure DevOps 포털의 **SonarExamples** 창이 표시된 웹 브라우저 창 왼쪽 아래에서 **프로젝트 설정** 을 클릭합니다.
-1.  **프로젝트 설정** 창의 세로 메뉴 모음에 있는 **파이프라인** 섹션에서 **서비스 연결**, **서비스 연결 만들기** 를 차례로 클릭합니다.
-1.  **새 서비스 연결** 창에서 **SonarCloud** 옵션을 선택하고 **다음** 을 클릭합니다.
-1.  **새 SonarCloud 서비스 연결** 창의 **SonarCloud 토큰** 텍스트 상자에 이전 작업에서 적어 두었던 토큰의 값을 붙여넣고 **서비스 연결 이름** 텍스트 상자에는 **SC** 를 입력한 후에 **확인 및 저장** 을 클릭합니다. 
-1.  **코드 위치** 창이 표시된 웹 브라우저 탭으로 다시 전환합니다. Azure DevOps 포털에서 **SonarExamples** 창이 표시된 웹 브라우저 창으로 전환하여 Azure DevOps 포털 맨 왼쪽의 세로 메뉴 모음에 있는 **Pipelines** 를 클릭하고 **파이프라인 만들기** 를 클릭합니다.
+1.  Azure DevOps 포털의 맨 왼쪽에 있는 세로 메뉴 모음에서 **Pipelines** 를 클릭한 다음 **파이프라인 만들기** 를 클릭합니다.
 1.  **코드 위치** 창에서 **Azure Repos Git** 를 클릭합니다.
 1.  **리포지토리 선택** 창에서 **SonarExamples** 를 클릭합니다. 
 1.  **파이프라인 구성** 창에서 **.NET Desktop** YAML 템플릿을 클릭합니다.
@@ -240,44 +231,15 @@ Azure DevOps에서 *기술적인 문제* 란 전략 목표 달성을 위해 사�
     > **참고**: 이 작업의 나머지 단계를 수행하여 YAML 파이프라인을 수정해야 합니다. 
 
 1. **NuGetCommand@2** 작업에서 `restoreSolution: 'SomeConsoleApplication.sln'`을 `restoreSolution: '**\SomeConsoleApplication.sln'`으로 바꿔서 솔루션이 리포지토리의 루트에 없다는 사실을 고려합니다.
+1.  **SonarCloudPrepare@1** 작업에서 **설정** 옵션을 클릭하여 시각적 도우미를 열고, 생성된 **sonarSC** 서비스 연결을 드롭다운에서 선택하고, **Sonarcloud 웹 사이트 > Azure Pipeline 구성** 에 제안된 필드의 값을 바꿉니다. **추가** 를 클릭하여 파이프라인에 대한 변경 내용을 포함합니다.
 1.  **VSBuild@1** 작업에서 `solution: 'SomeConsoleApplication.sln'`을 `solution: '**\SomeConsoleApplication.sln'`으로 바꿔서 솔루션이 리포지토리의 루트에 없다는 사실을 고려합니다.
-1.  **SonarCloudPrepare@1** 작업에서 `organization: 'myorga'` 항목의 `myorga` 자리 표시자 값을 SonarCloud 조직의 이름으로 바꿉니다.
-1.  **SonarCloudPrepare@1** 작업에서 `projectKey: 'dotnet-framework-on-azdo'` 항목의 `dotnet-framework-on-azdo` 자리 표시자 값을 SonarCloud 프로젝트 키의 이름으로 바꿉니다.
-1.  **SonarCloudPrepare@1** 작업에서 `projectName: 'Sample .NET Framework project with Azure DevOps'` 항목의 `Sample .NET Framework project with Azure DevOps` 자리 표시자 값을 SonarCloud 이름(`SonarExamples`)의 이름으로 바꿉니다.
 1.  **파이프라인 YAML 검토** 창에서 **저장 및 실행** 을 클릭하고 **저장 및 실행** 창에서 **저장 및 실행** 을 클릭합니다.
 
     > **참고**: YAML 편집기에서 이 작업을 완료한 경우 다음 작업을 건너뛰세요.
 
-1. Azure Pipelines > Pipelines로 이동하여 **Sonarexample** 파이프라인을 클릭하고 최신 실행 항목을 엽니다. 대기 중인 것을 볼 수 있는데 보류 중인 항목을 **취소** 하고 **예** 를 클릭합니다. 이제 **새로 실행** > **실행** 을 클릭하여 새로 실행을 트리거합니다. 이번에는 파이프라인에 비공개 프로젝트 맞는 에이전트가 할당될 것입니다.
+1. Azure Pipelines > Pipelines로 이동하여 **Sonarexample** 파이프라인을 클릭하고 파이프라인이 완료되기를 기다립니다.
 
-#### <a name="task-3-create-a-pipeline-by-using-the-classic-editor"></a>작업 3: 클래식 편집기를 사용하여 파이프라인 만들기
-
-이 작업에서는 클래식 편집기를 사용하여 파이프라인을 만듭니다.
-
-1.  **코드 위치** 창에서 **클래식 편집기 사용** 을 클릭합니다.
-1.  **소스 선택** 창에서 **Azure Repos Git** 옵션이 선택되어 있고, **리포지토리** 드롭다운 목록에 **SonarExamples** 항목이 표시되어 있으며, **수동 및 예약된 빌드의 기본 분기** 에는 **master** 분기가 표시되어 있는지 확인하고 **계속** 을 클릭합니다.
-
-    > **참고**: 앞에서 설치한 SonarCloud 확장에서는 Maven, Gradle, .NET Core 및 .NET Desktop 애플리케이션용으로 SonarCloud 지원 사용자 지정 빌드 템플릿을 제공합니다. 이러한 템플릿은 표준 Azure DevOps 템플릿을 기반으로 작성되었지만 분석 관련 작업과 몇 가지 기본 구성된 설정이 추가로 포함되어 있습니다.
-
-1.  **템플릿 선택** 창 아래쪽의 **기타** 섹션으로 스크롤하여 **.NET Desktop with SonarCloud** 템플릿 항목을 클릭하고 **적용** 을 클릭합니다.
-
-    > **참고**: 이 템플릿에는 필요한 모든 작업과 대부분의 필수 설정이 포함되어 있습니다. 나머지 설정은 직접 입력해야 합니다.
-
-1.  빌드 파이프라인 정의의 **작업** 탭에서 **파이프라인** 항목이 선택되어 있는지 확인합니다. 그런 다음 오른쪽의 **에이전트 풀** 드롭다운 목록에서 **Azure Pipelines** 항목을 선택하고 **에이전트 사양** 드롭다운 목록에서는 **vs2017-win2016** 항목을 선택합니다.
-1.  파이프라인 작업 목록에서 **SonarCloud에서 분석 준비** 작업을 선택한 다음 **+ 새로 만들기** 를 클릭합니다.
-1.  **새 서비스 연결** 창의 **SonarCloud 토큰** 텍스트 상자에 이 랩의 앞부분에서 적어 두었던 토큰의 값을 붙여넣고 **확인** 을 클릭하여 값의 유효성을 검사합니다. 그런 다음 **서비스 연결 이름** 텍스트 상자에 **SC** 를 입력하고 **확인 및 저장** 을 클릭합니다. 
-1.  **분석 준비 구성** 창으로 돌아와 **조직** 드롭다운 목록에서 SonarCloud 조직의 이름을 선택합니다. 
-1.  **분석 준비 구성** 창의 **프로젝트 키** 텍스트 상자에 이 랩의 앞부분에서 적어 두었던 프로젝트 키의 이름을 입력합니다.
-1.  **분석 준비 구성** 창의 **프로젝트 이름** 텍스트 상자에 이 랩의 앞부분에서 적어 두었던 프로젝트 이름(`SonarExamples`)을 입력합니다.
-1.  원하는 경우 품질 게이트 결과 게시를 사용하지 않도록 설정할 수 있습니다. 이렇게 하려면 파이프라인 작업 목록에서 **품질 게이트 결과 게시** 작업을 선택하고 **품질 게이트 결과 게시** 창에서 **제어 옵션** 섹션을 확장한 후에 **사용** 체크박스 선택을 취소합니다. 
-
-    > **참고**: 릴리스 파이프라인과 함께 배포 전 게이트를 사용하려는 경우가 아니면 이 작업을 수행할 필요가 없습니다.
-
-    > **참고**: 이 단계를 사용하도록 설정하면 **빌드 요약** 페이지의 **확장** 탭에 분석 결과의 요약이 표시됩니다. 하지만 이렇게 하면 SonarCloud 처리가 끝날 때까지 빌드 완료가 지연됩니다.
-
-1.  빌드 파이프라인 편집기 창에서 **저장 및 큐에 넣기** 를 클릭하고 드롭다운 메뉴에서 **저장 및 큐에 넣기** 를 클릭합니다. 그런 다음 **파이프라인 실행** 창에서 **저장 및 실행** 을 클릭하고 빌드가 완료될 때까지 기다립니다.
-
-#### <a name="task-4-check-pipeline-results"></a>작업 4: 파이프라인 결과 확인
+#### <a name="task-3-check-pipeline-results"></a>작업 3: 파이프라인 결과 확인
 
 이 작업에서는 파이프라인 결과를 확인합니다.
 
@@ -293,12 +255,12 @@ Azure DevOps에서 *기술적인 문제* 란 전략 목표 달성을 위해 사�
 
     > **참고**: 품질 게이트 결과를 확인하려면 첫 번째 보고서를 실행한 후에 **새 코드 정의** 를 설정해야 합니다. 이렇게 하면 후속 파이프라인 실행 시에는 품질 게이트 결과가 포함됩니다.
 
-1.  SonarCloud 프로젝트의 **개요** 탭에서 **새 코드 정의 설정** 을 클릭합니다. 
-1.  SonarCloud 프로젝트의 **관리** 탭에서 **이전 버전** 을 클릭합니다.
-1.  Azure DevOps 포털에서 **SonarExamples** 프로젝트 창에 최신 빌드 실행이 표시된 웹 브라우저 창으로 전환하여 **새로 실행** 을 클릭하고 **파이프라인 실행** 창에서 **실행** 을 클릭합니다.
+1.  SonarCloud 프로젝트의 **개요** 탭(Sonarcloud 웹 사이트)에서 **관리** 아이콘(왼쪽 열) 및 **새 코드** 를 클릭합니다. 
+1.  SonarCloud 프로젝트의 **새 코드** 탭에서 **이전 버전** 을 클릭합니다.
+1.  **Azure DevOps 포털** 에서 최신 빌드가 실행되는 **SonarExamples** 프로젝트 창이 표시된 웹 브라우저 창으로 전환하여 **새로 실행** 을 클릭하고 **파이프라인 실행** 창에서 **실행** 을 클릭합니다.
 1.  빌드 실행 창에서 **요약** 탭의 내용을 검토하고 **확장** 탭 머리글을 클릭합니다.
 1.  **확장** 탭에서 **자세한 SonarCloud 보고서** 를 클릭합니다. 그러면 새 브라우저 탭이 자동으로 열리고 SonarCloud 프로젝트 페이지의 보고서가 표시됩니다.
-1.  이제 보고서에 품질 게이트 결과가 포함되어 있음을 확인합니다.
+1.  이제 보고서 및 Azure DevOps **확장** 탭에 **품질 게이트 결과가 포함되어 있는지** 확인합니다.
 
     > **참고**: 지금까지 SonarCloud에서 새 조직을 만들었으며, 분석을 수행하고 빌드 결과를 SonarCloud로 푸시하도록 Azure DevOps 빌드를 구성했습니다.
 
@@ -310,9 +272,9 @@ Azure DevOps에서 *기술적인 문제* 란 전략 목표 달성을 위해 사�
 
 이 작업에서는 SonarCloud 보고서를 분석합니다.
 
-1.  SonarCloud 프로젝트의 **개요** 탭에 있는 **안정성 측정값** 섹션에 버그 항목 하나가 있음을 확인합니다.
+1.  SonarCloud 프로젝트의 **개요** 탭에 **주** 분기에 대한 보고서에 대한 요약이 표시됩니다. **주 분기** 아이콘(왼쪽 열)을 클릭하고 **전체 코드** 를 선택하면 더 자세한 보고서가 표시됩니다.
 
-    > **참고**: 이 페이지에는 **코드 스멜**, **검사**, **중복**, **크기**(코드 줄) 등의 다른 메트릭도 있습니다. 아래 표에 이러한 각 용어의 간략한 설명이 나와 있습니다.
+    > **참고**: 이 페이지에는 **코드 스멜**, **범위**, **중복** 및 **크기**(코드 줄) 등의 다른 메트릭도 있습니다. 아래 표에 이러한 각 용어의 간략한 설명이 나와 있습니다.
 
     | 사용 약관 | Description |
     | --- | --- |
@@ -348,7 +310,7 @@ Azure DevOps에서 *기술적인 문제* 란 전략 목표 달성을 위해 사�
 이 작업에서는 SonarCloud 프로젝트와 Azure DevOps 끌어오기 요청 통합을 구현하기 위한 개인용 액세스 토큰 요구 사항을 검토합니다.
 
 1.  Azure DevOps 포털의 **SonarExamples** 프로젝트가 표시된 웹 브라우저 창으로 전환합니다.
-1.  이 랩 앞부분에서 설명한 단계를 반복하여 **SonarExamples** 프로젝트에 대한 **읽기 및 쓰기** 권한이 있으며 범위는 **코드** 인 개인용 액세스 토큰을 생성합니다. 
+1.  이 랩의 앞에서 생성한 Azure DevOps 개인용 액세스 토큰을 **다시 사용** 하거나 이 랩의 앞부분에서 설명한 단계를 반복하여 **SonarExamples** 프로젝트에 대한 **코드** 범위 및 **읽기 & 쓰기** 권한이 있는 개인용 액세스 토큰을 생성합니다. 
 
     > **참고**: 이 랩의 앞부분에서 생성한 개인용 액세스 토큰을 재사용할 수도 있습니다.
 
@@ -358,8 +320,8 @@ Azure DevOps에서 *기술적인 문제* 란 전략 목표 달성을 위해 사�
 
 이 작업에서는 SonarCloud 프로젝트에 Azure DevOps 개인용 액세스 토큰을 할당하여 SonarCloud에서 끌어오기 요청 통합을 구성합니다.
 
-1.  SonarCloud 포털의 **SonarExamples** 프로젝트가 표시된 웹 브라우저 창으로 전환합니다. 
-1.  프로젝트 대시보드 페이지에서 **관리** 탭 머리글을 클릭하고 드롭다운 메뉴에서 **일반 설정** 을 클릭합니다.
+1.  **SonarCloud 포털** 의 **SonarExamples** 프로젝트가 표시된 웹 브라우저 창으로 전환합니다. 
+1.  프로젝트 대시보드 페이지에서 **관리** 탭 아이콘을 클릭하고 드롭다운 메뉴에서 **일반 설정** 을 클릭합니다.
 1.  **일반 설정** 페이지에서 **끌어오기 요청** 을 클릭합니다.
 1.  **끌어오기 요청** 설정의 **일반** 섹션에 있는 **공급자** 드롭다운 목록에서 **Azure DevOps Services** 를 선택하고 **저장** 을 클릭합니다.
 1.  **끌어오기 요** 청 설정의 **Azure DevOps Services와 통합** 섹션에 있는 **개인용 액세스 토큰** 텍스트 상자에 앞에서 생성한 Azure DevOps 개인용 액세스 토큰을 붙여넣고 **저장** 을 클릭합니다.
@@ -368,7 +330,7 @@ Azure DevOps에서 *기술적인 문제* 란 전략 목표 달성을 위해 사�
 
 이 작업에서는 SonarCloud와의 통합을 위한 Azure DevOps 분기 정책을 구성합니다.
 
-1.  Azure DevOps 포털의 **SonarExamples** 프로젝트가 표시된 웹 브라우저 창으로 전환합니다.
+1.  **Azure DevOps 포털** 의 **SonarExamples** 프로젝트가 표시된 웹 브라우저 창으로 전환합니다.
 1.  Azure DevOps 포털 맨 왼쪽의 세로 메뉴 모음에 있는 **Repos** 를 클릭하고 **Repos** 섹션에서 **분기** 를 클릭합니다. 
 1.  **분기** 창의 분기 목록에서 **master** 분기 항목 오른쪽 모서리 위에 마우스를 놓으면 **자세히** 메뉴를 나타내는 세로 줄임표 문자가 표시됩니다. 이 문자를 클릭하고 팝업 메뉴에서 **분기 정책** 을 클릭합니다.
 1.  **master** 창에서 **빌드 유효성 검사** 오른쪽에 있는 **+** 를 클릭합니다.
