@@ -2,12 +2,12 @@
 lab:
   title: '랩 08: 릴리스 게이트를 사용하여 배포 제어'
   module: 'Module 04: Design and implement a release strategy'
-ms.openlocfilehash: c010c7cb2f4444be0a2ab1c850e8331d95c85ff6
-ms.sourcegitcommit: ea152638f54c729974e5cc91ef3dc7414d853ab5
+ms.openlocfilehash: 7bc9ba56b30f0d62032028872841d18994bb4d3e
+ms.sourcegitcommit: 3a7fe6a0cc9e03a34a688459b373f37cbcc8d879
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/26/2022
-ms.locfileid: "144012346"
+ms.lasthandoff: 06/01/2022
+ms.locfileid: "145985264"
 ---
 # <a name="lab-08-controlling-deployments-using-release-gates"></a>랩 08: 릴리스 게이트를 사용하여 배포 제어
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -119,13 +119,6 @@ ms.locfileid: "144012346"
     ```bash
     SERVICEPLANNAME='az400m01l01-sp1'
     az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
-    ```
-
-    > **참고**: `ModuleNotFoundError: No module named 'vsts_cd_manager'`로 시작하는 오류 메시지와 함께 `az appservice plan create` 명령이 실패하는 경우 다음 명령을 실행한 다음, 실패한 명령을 다시 실행합니다.
-
-    ```bash
-    az extension remove -n appservice-kube
-    az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py2.py3-none-any.whl"
     ```
 
 1.  고유한 앱 이름을 지정하여 웹앱 2개를 만듭니다.
