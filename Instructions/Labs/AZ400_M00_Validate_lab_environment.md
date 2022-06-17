@@ -2,14 +2,15 @@
 lab:
   title: '랩 00: 랩 환경 유효성 검사'
   module: 'Module 0: Welcome'
-ms.openlocfilehash: 6f17dfd8417f4e2b15f1e2ebedd9c88c961532cd
-ms.sourcegitcommit: b1421ee189fd5d980b6455e44b45cd3efea2a62a
+ms.openlocfilehash: f41ca6d4990f666ea9d33f4662ad131f23432516
+ms.sourcegitcommit: d78aebd7b14277a53f152e26cea68a30b0e90d73
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/09/2022
-ms.locfileid: "144822531"
+ms.lasthandoff: 06/13/2022
+ms.locfileid: "146276044"
 ---
 # <a name="lab-00-validate-lab-environment"></a>랩 00: 랩 환경 유효성 검사
+
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
 ## <a name="instructions"></a>Instructions
