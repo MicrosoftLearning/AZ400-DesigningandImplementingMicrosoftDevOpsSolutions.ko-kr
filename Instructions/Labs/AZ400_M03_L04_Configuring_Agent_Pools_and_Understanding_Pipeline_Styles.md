@@ -2,12 +2,12 @@
 lab:
   title: '랩 04: 에이전트 풀 구성 및 파이프라인 스타일 이해'
   module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
-ms.openlocfilehash: 41fe06e338c0cf62d7aff0513cf94550cb54de6b
-ms.sourcegitcommit: d78aebd7b14277a53f152e26cea68a30b0e90d73
+ms.openlocfilehash: 583d985e3529f9af22b07dc210a536a4451cac28
+ms.sourcegitcommit: ec8c8d929e4a5263af67a5ca17638128bc754bc0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/13/2022
-ms.locfileid: "146276132"
+ms.lasthandoff: 06/21/2022
+ms.locfileid: "146533397"
 ---
 # <a name="lab-04-configuring-agent-pools-and-understanding-pipeline-styles"></a>랩 04: 에이전트 풀 구성 및 파이프라인 스타일 이해
 
@@ -162,10 +162,7 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
 1.  Azure DevOps 포털 왼쪽의 세로 탐색 창에 있는 **Pipelines** 섹션에서 **파이프라인** 을 클릭합니다.
 1.  **파이프라인** 창의 **최근** 탭에서 **PartsUnlimited** 항목을 클릭하고 **PartsUnlimited** 창의 **실행** 탭에서 최신 실행을 선택합니다. 그런 다음 해당 실행의 **요약** 창에서 아래쪽으로 스크롤하여 **작업** 섹션에서 **1단계** 를 클릭하고 작업이 정상적으로 완료될 때까지 모니터링합니다. 
 
-1. `Task: NugetInstaller@0`의 경우 **설정(작업 위에 회색으로 표시되는 링크)** 을 클릭하고, **설치할 NuGet.exe 버전** 을 **4.0.0** 으로 수정하고, **추가** 를 클릭합니다.
-1. **PartsUnlimited** 편집 창 오른쪽 위의 **저장** 을 클릭하고 **저장** 창에서 **저장** 을 다시 클릭합니다. 그러면 이 파이프라인을 기반으로 하는 빌드가 자동으로 트리거됩니다.
-1. Azure DevOps 포털 왼쪽의 세로 탐색 창에 있는 **Pipelines** 섹션에서 **파이프라인** 을 클릭합니다.
-1. **파이프라인** 창의 **최근** 탭에서 **PartsUnlimited** 항목을 클릭하고 **PartsUnlimited** 창의 **실행** 탭에서 최신 실행을 선택합니다. 그런 다음 해당 실행의 **요약** 창에서 아래쪽으로 스크롤하여 **작업** 섹션에서 **1단계** 를 클릭하고 작업이 정상적으로 완료될 때까지 모니터링합니다.
+
 
 ## <a name="review"></a>검토
 
