@@ -2,12 +2,12 @@
 lab:
   title: '랩 07: DevOps Starter를 사용하여 GitHub Action 구현'
   module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
-ms.openlocfilehash: d4369acd15a31e2fae611bf74d3514abb500e367
-ms.sourcegitcommit: d78aebd7b14277a53f152e26cea68a30b0e90d73
+ms.openlocfilehash: aa16fd8e941c3e94eef0d4c9b0fdd23caa3e7866
+ms.sourcegitcommit: 73179152f51e48ada9641c4a6a33ea941606c469
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/13/2022
-ms.locfileid: "146276107"
+ms.lasthandoff: 07/01/2022
+ms.locfileid: "146774606"
 ---
 # <a name="lab-07-implementing-github-actions-by-using-devops-starter"></a>랩 07: DevOps Starter를 사용하여 GitHub Action 구현
 
@@ -121,17 +121,18 @@ ms.locfileid: "146276107"
 1. **모든 워크플로** 섹션에서 **Index.cshtml 업데이트** 항목을 클릭합니다.
 1. **devops-starter-workflow.yml** 섹션에서 배포 진행률을 모니터링하고 정상적으로 완료되었는지 확인합니다.
      > **참고**: **“azure/CLI@1”를 사용하는 작업이 실패** 하면 **devops-starter-workflow.yml** 파일(기본 azure cli 버전 변경)에 다음 변경 내용을 커밋하고 성공적으로 완료되었는지 확인합니다.
-
-       ```
-       - name: Deploy ARM Template
-          uses: azure/CLI@v1
-          continue-on-error: false
-          with:
-            azcliversion: 2.29.2
-            inlineScript: |
-              az group create --name "${{ env.RESOURCEGROUPNAME }}" --location "${{ env.LOCATION }}"
-              az deployment group create --resource-group "${{ env.RESOURCEGROUPNAME }}" --template-file ./ArmTemplates/windows-webapp-     template.json --parameters webAppName="${{ env.AZURE_WEBAPP_NAME }}" hostingPlanName="${{ env.HOSTINGPLANNAME }}"   appInsightsLocation="${{ env.APPINSIGHTLOCATION }}" sku="${{ env.SKU }}"
-       ```
+     > <!-- {% raw %}) -->
+     > ```
+     >     - name: Deploy ARM Template
+     >       uses: azure/CLI@v1
+     >       continue-on-error: false
+     >       with:
+     >         azcliversion: 2.29.2
+     >         inlineScript: |
+     >           az group create --name "${{ env.RESOURCEGROUPNAME }}" --location "${{ env.LOCATION }}"
+     >           az deployment group create --resource-group "${{ env.RESOURCEGROUPNAME }}" --template-file ./ArmTemplates/windows-webapp-template.json --parameters webAppName="${{ env.AZURE_WEBAPP_NAME }}" hostingPlanName="${{ env.HOSTINGPLANNAME }}" appInsightsLocation="${{ env.APPINSIGHTLOCATION }}" sku="${{ env.SKU }}"
+     > ```
+     > <!-- {% endraw %}) -->
 
 1. Azure Portal에서 DevOps Starter 블레이드를 표시하는 브라우저 창으로 전환하여 **애플리케이션 엔드포인트** 항목 옆에 있는 **찾아보기** 링크를 클릭합니다.
 1. 새로 연 웹 브라우저 창에서 GitHub 리포지토리에서 커밋한 변경 내용을 나타내는 업데이트된 텍스트가 웹앱 홈 페이지에 표시되는지 확인합니다.
