@@ -2,12 +2,12 @@
 lab:
   title: '랩 10: 릴리스 대시보드 만들기'
   module: 'Module 04: Design and implement a release strategy'
-ms.openlocfilehash: fff8ad410e278a809489cf4dd8a0e5f1cac4570f
-ms.sourcegitcommit: d78aebd7b14277a53f152e26cea68a30b0e90d73
+ms.openlocfilehash: 3d2f730f3c38f20561cfab1b7ce7e4ea971594f3
+ms.sourcegitcommit: 73179152f51e48ada9641c4a6a33ea941606c469
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/13/2022
-ms.locfileid: "146276111"
+ms.lasthandoff: 07/01/2022
+ms.locfileid: "146774610"
 ---
 # <a name="lab-10-creating-a-release-dashboard"></a>랩 10: 릴리스 대시보드 만들기
 
@@ -103,11 +103,11 @@ ms.locfileid: "146276111"
     > **참고**: 이제 배포가 실패하는 새 릴리스를 만듭니다. 배포가 실패하는 이유는 기본 제공 어셈블리 테스트에서 새 릴리스 관련 변경 내용을 잘못된 것으로 간주하기 때문입니다.
 
 1. Azure DevOps 포털 왼쪽의 세로 메뉴에서 **Repos** 를 클릭하고, 리포지토리의 폴더 목록에서 **Applications\\aspnet-core-dotnet-core\\Pages** 폴더로 이동하고, **Index.chtml** 항목을 클릭합니다.
-1. **Index.cshtml** 창에서 **편집** 을 클릭하고, 줄 **4** 에서 `ViewData["Title"] = "Home Page - ASP.NET Core";`를 `ViewData["Title"] = "Home Page v1.2 - ASP.NET Core";`로 바꾸고, **커밋** 을 클릭하고, **커밋** 창에서 **커밋** 을 다시 클릭합니다. 이렇게 하면 자동으로 빌드 파이프라인이 트리거됩니다.
+1. **Index.cshtml** 창에서 **편집** 을 클릭합니다. **4** 번 줄에서 `ViewData["Title"] = "Home Page - ASP.NET Core";`를 `ViewData["Title"] = "Home Page v1.2 - ASP.NET Core";`로 바꿉니다. **커밋** 을 클릭합니다. **커밋** 창에서 **커밋** 을 클릭합니다. 이렇게 하면 자동으로 빌드 파이프라인이 트리거됩니다.
 1. Azure DevOps 포털 왼쪽의 세로 탐색 창에 있는 **파이프라인** 을 클릭합니다.
 1. **파이프라인** 창의 **최신** 탭에서 **az400m10l02-CI** 항목을 클릭하고 **az400m10l02-CI** 창의 **실행** 탭에서 최신 실행을 선택합니다. 그런 다음 해당 실행의 **요약** 탭 **작업** 섹션에서 **빌드** 를 클릭하고 작업이 정상적으로 완료될 때까지 모니터링합니다.
 1. 작업이 완료되면 Azure DevOps 포털 왼쪽의 세로 탐색 창에 있는 **파이프라인** 섹션에서 **릴리스** 를 클릭합니다.
-1. **az400m10l02 - CD** 창의 **릴리스** 탭에서 **릴리스-2** 항목을 클릭하고 **릴리스-2** 창의 **파이프라인** 탭에서 **개발** 단계를 클릭합니다. 그런 다음 **개발** 창에서 **로그 보기** 를 클릭하고 **테스트 어셈블리** 단계 중에 배포가 실패할 때까지 진행률을 모니터링합니다.
+1. **az400m10l02 - CD** 창의 **릴리스** 탭에서 **릴리스-3** 항목을 클릭하고 **릴리스-3** 창의 **파이프라인** 탭에서 **개발** 단계를 클릭합니다. 그런 다음 **개발** 창에서 **로그 보기** 를 클릭하고 **테스트 어셈블리** 단계 중에 배포가 실패할 때까지 진행률을 모니터링합니다.
 
 #### <a name="task-3-create-an-azure-devops-release-dashboard"></a>작업 3: Azure DevOps 릴리스 대시보드 만들기
 

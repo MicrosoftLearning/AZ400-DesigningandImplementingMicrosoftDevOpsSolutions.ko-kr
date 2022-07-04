@@ -2,12 +2,12 @@
 lab:
   title: '랩 06: Azure Pipelines를 사용하여 외부 소스 제어 기능 통합'
   module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
-ms.openlocfilehash: d725318a4b016a5e32eef84993b2c3989d6d4c6c
-ms.sourcegitcommit: d78aebd7b14277a53f152e26cea68a30b0e90d73
+ms.openlocfilehash: af9b06398bffd5ede41513f4423ce875a018d214
+ms.sourcegitcommit: 73179152f51e48ada9641c4a6a33ea941606c469
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/13/2022
-ms.locfileid: "146276108"
+ms.lasthandoff: 07/01/2022
+ms.locfileid: "146774607"
 ---
 # <a name="lab-06-integrating-external-source-control-with-azure-pipelines"></a>랩 06: Azure Pipelines를 사용하여 외부 소스 제어 기능 통합
 
@@ -174,7 +174,7 @@ Microsoft는 Azure DevOps의 출시와 함께 새로운 CI/CD(연속 통합/지�
     > **참고**: 변수를 숫자 표현으로 강제 변환하려면 각 변수 앞에 더하기 기호가 필요함을 모르는 사람이 변경을 수행한 것으로 보입니다. 이 더하기 기호를 제거했기 때문에 JavaScript에서 가운데의 더하기 기호를 문자열 연결 연산자로 해석하여 실패한 테스트에서처럼 21 + 21 = 2121이 표시된 것입니다.
 
 1. **Modifying the add function #1** GitHub 페이지에서 **Review changes** 단추 바로 아래의 줄임표 기호를 클릭하고 드롭다운 메뉴에서 **Edit file** 을 클릭합니다.
-1. **a** 및 **b** 변수 앞에 더하기 기호를 추가하여 원래 변경 내용을 되돌려서 ‘add’: function(a,b) { return +a + +b }를 생성합니다.`. In addition, include a comment on the preceding line stating`// + 연산자를 사용하여 문자열 연결을 방지하기 위해 캐스트 변수를 정수로 입력합니다.
+1. **a** 및 **b** 변수 앞에 더하기 기호를 추가하여 원래 변경 내용을 되돌리면 `'add':      function(a,b) { return +a + +b },`가 됩니다. 또한 앞줄에 `// Using + operator to type cast variables as integers in order to prevent string concatenation`을 나타내는 주석을 포함합니다.
 1. 페이지 아래쪽으로 스크롤하여 기본 커밋 메시지를 **Fixing the add function** 으로 바꾸고 **Commit directly to the addition-cleanup branch** 옵션이 선택되어 있는지 확인한 후에 **Commit changes** 를 클릭합니다.
 1. **Modifying the add function #1** GitHub 페이지에서 **Conversation** 탭을 선택합니다.
 
