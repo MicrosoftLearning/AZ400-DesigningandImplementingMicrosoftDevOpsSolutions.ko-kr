@@ -2,12 +2,12 @@
 lab:
   title: '랩 18: Application Insights를 사용하여 애플리케이션 성능 모니터링'
   module: 'Module 09: Implement continuous feedback'
-ms.openlocfilehash: 3e69170fc72f330fd83dda9df84f7b79fbe2ee2e
-ms.sourcegitcommit: d78aebd7b14277a53f152e26cea68a30b0e90d73
+ms.openlocfilehash: 6fce4d36fc4bc7e8eb48ffde0b5443fde335db9d
+ms.sourcegitcommit: 0edaa2709ad93baf1078fe5c11bc99c4937bbaf6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/13/2022
-ms.locfileid: "146276140"
+ms.lasthandoff: 07/28/2022
+ms.locfileid: "147433384"
 ---
 # <a name="lab-18-monitoring-application-performance-with-application-insights"></a>랩 18: Application Insights를 사용하여 애플리케이션 성능 모니터링
 
@@ -25,7 +25,7 @@ ms.locfileid: "146276140"
 
 ## <a name="lab-overview"></a>랩 개요
 
-Application Insights는 여러 플랫폼의 웹 개발자를 위한 확장 가능한 APM(애플리케이션 성능 관리) 서비스입니다. Application Insights를 사용하여 라이브 웹 애플리케이션을 모니터링할 수 있습니다. Application Insights는 성능 관련 이상 현상을 자동으로 검색합니다. 또한 문제를 쉽게 진단할 수 있는 효율적인 분석 도구를 제공하며, 지속적인 성능과 유용성 개선도 지원합니다. Application Insights는 .NET, Node.js 및 Java EE, 호스트된 온-프레미스, 하이브리드 또는 퍼블릭 클라우드 등 다양한 플랫폼에서 작동합니다. 다양한 개발 도구에서 제공되는 연결점을 사용하여 DevOps 프로세스와 통합할 수 있습니다. 또한 Visual Studio App Center와 통합하여 모바일 앱의 원격 분석을 모니터링하고 분석할 수도 있습니다.
+Application Insights는 여러 플랫폼의 웹 개발자를 위한 확장 가능한 APM(애플리케이션 성능 관리) 서비스입니다. Application Insights를 사용하여 라이브 웹 애플리케이션을 모니터링할 수 있습니다. Application Insights는 성능 관련 이상 현상을 자동으로 검색합니다. 또한 문제를 쉽게 진단할 수 있는 효율적인 분석 도구를 제공하며, 지속적인 성능과 유용성 개선도 지원합니다. Application Insights는 .NET, Node.js, Java EE, 호스트된 온-프레미스, 하이브리드 또는 퍼블릭 클라우드 등 다양한 플랫폼에서 작동합니다. 다양한 개발 도구에서 제공되는 연결점을 사용하여 DevOps 프로세스와 통합할 수 있습니다. 또한 Visual Studio App Center와 통합하여 모바일 앱의 원격 분석을 모니터링하고 분석할 수도 있습니다.
 
 이 랩에서는 Application Insights를 기존 웹 애플리케이션에 추가하는 방법과 Azure Portal을 통해 애플리케이션을 모니터링하는 방법을 알아봅니다.
 
@@ -34,9 +34,9 @@ Application Insights는 여러 플랫폼의 웹 개발자를 위한 확장 가�
 이 랩을 완료하면 다음 작업을 수행할 수 있습니다.
 
 - Azure App Service 웹앱 배포
-- Application Insights를 사용하여 Azure 웹앱 애플리케이션 트래픽 생성 및 모니터링
-- Application Insights를 사용하여 Azure 웹앱 성능 조사
-- Application Insights를 사용하여 Azure 웹앱 사용량 추적
+- Application Insights를 사용하여 Azure 웹앱 애플리케이션 트래픽 생성 및 모니터링.
+- Application Insights를 사용하여 Azure 웹앱 성능 조사.
+- Application Insights를 사용하여 Azure 웹앱 사용량 추적.
 - Application Insights를 사용하여 Azure 웹앱 경고 생성
 
 ## <a name="estimated-timing-60-minutes"></a>예상 소요 시간: 60분
@@ -90,13 +90,6 @@ Application Insights는 여러 플랫폼의 웹 개발자를 위한 확장 가�
     SERVICEPLANNAME='az400l17-sp'
     az appservice plan create --resource-group $RESOURCEGROUPNAME \
         --name $SERVICEPLANNAME --sku B3 
-    ```
-
-    > **참고**: `ModuleNotFoundError: No module named 'vsts_cd_manager'`로 시작하는 오류 메시지와 함께 `az appservice plan create` 명령이 실패하는 경우 다음 명령을 실행한 다음, 실패한 명령을 다시 실행합니다.
-
-    ```bash
-    az extension remove --name appservice-kube
-    az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py2.py3-none-any.whl"
     ```
 
 1. 고유한 이름을 사용하여 웹앱을 만듭니다.
@@ -300,7 +293,7 @@ Application Insights는 여러 플랫폼의 웹 개발자를 위한 확장 가�
 
     > **참고**: 웹앱이나 웹 사이트를 서버에 배포하고 나면 테스트를 설정하여 사용 가능성과 응답 여부를 모니터링할 수 있습니다. Application Insights는 전 세계 지점에서 정기적인 간격으로 애플리케이션에 웹 요청을 보냅니다. 그리고 애플리케이션이 응답하지 않거나 느리게 응답하는 경우 경고를 제공합니다.
 
-1. **사용 가능성** 블레이드의 도구 모음에서 **+ 테스트 추가** 를 클릭합니다.
+1. **사용 가능성** 블레이드의 도구 모음에서 **+ 클래식 테스트 추가** 를 클릭합니다.
 1. **테스트 만들기** 창의 **테스트 이름** 텍스트 상자에 홈 페이지를 입력하고 **URL** 을 App Service 웹앱 루트로 설정한 후에 **만들기** 를 클릭합니다.
 
     > **참고**: 테스트는 즉시 실행되지 않으므로 데이터는 생성되지 않습니다. 나중에 다시 확인하면 라이브 사이트를 대상으로 실행된 테스트를 반영해 사용 가능성 데이터가 업데이트되었음을 확인할 수 있습니다. 지금은 데이터가 생성될 때까지 기다리지 않아도 됩니다.
