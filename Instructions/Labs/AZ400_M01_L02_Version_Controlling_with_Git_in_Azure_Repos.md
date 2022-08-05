@@ -2,12 +2,12 @@
 lab:
   title: '랩 02: Azure Repos에서 Git를 사용하여 버전 제어'
   module: 'Module 01: Get started on a DevOps transformation journey'
-ms.openlocfilehash: ad29d97569e33610b9af258c844b83f6604c7584
-ms.sourcegitcommit: d78aebd7b14277a53f152e26cea68a30b0e90d73
+ms.openlocfilehash: 5fb833b26326d7cb8a16a9afe5fea797e556a6ee
+ms.sourcegitcommit: 58522c7b8b9457fb6394709998d6f14594533be5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/13/2022
-ms.locfileid: "146276176"
+ms.lasthandoff: 08/02/2022
+ms.locfileid: "147447575"
 ---
 # <a name="lab-02-version-controlling-with-git-in-azure-repos"></a>랩 02: Azure Repos에서 Git를 사용하여 버전 제어
 
