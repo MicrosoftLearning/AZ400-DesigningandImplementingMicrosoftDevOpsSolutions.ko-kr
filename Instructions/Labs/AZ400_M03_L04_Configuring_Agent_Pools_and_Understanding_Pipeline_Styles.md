@@ -2,12 +2,12 @@
 lab:
   title: '랩 04: 에이전트 풀 구성 및 파이프라인 스타일 이해'
   module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
-ms.openlocfilehash: 583d985e3529f9af22b07dc210a536a4451cac28
-ms.sourcegitcommit: ec8c8d929e4a5263af67a5ca17638128bc754bc0
+ms.openlocfilehash: 114bcefd6798265a41ffb7c3ced16f6f9f4cc28c
+ms.sourcegitcommit: ec2e4b7c653ff81fcf62ef96d3720c60d074176e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/21/2022
-ms.locfileid: "146533397"
+ms.lasthandoff: 08/06/2022
+ms.locfileid: "147503646"
 ---
 # <a name="lab-04-configuring-agent-pools-and-understanding-pipeline-styles"></a>랩 04: 에이전트 풀 구성 및 파이프라인 스타일 이해
 
@@ -139,6 +139,7 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
     | 작업 폴더 입력(_work를 사용하려면 Enter 키 누르기) | **Enter** |
     | **(표시되는 경우만 해당)** 각 단계의 작업에서 압축 풀기 수행 여부 입력 (N을 입력하려면 Enter 키 누르기) | **Enter** |
     | 에이전트를 서비스로 실행할지 여부 입력 (Y/N)(N을 입력하려면 Enter 키 누르기) | **예** |
+    | SERVICE_SID_TYPE_UNRESTRICTED 사용 입력 (Y/N)(N을 입력하려면 Enter 키 누르기) | **예** |
     | 서비스에 사용할 사용자 계정 입력(NT AUTHORITY\NETWORK SERVICE에 대해 Enter 키 누르기) | **Enter** |
     | 구성이 완료된 직후 서비스가 시작되지 않도록 할지 여부를 입력할까요? (Y/N)(N을 입력하려면 Enter 키 누르기) | **Enter** |
 

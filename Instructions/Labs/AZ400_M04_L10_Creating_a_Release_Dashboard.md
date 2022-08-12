@@ -2,12 +2,12 @@
 lab:
   title: '랩 10: 릴리스 대시보드 만들기'
   module: 'Module 04: Design and implement a release strategy'
-ms.openlocfilehash: 3d2f730f3c38f20561cfab1b7ce7e4ea971594f3
-ms.sourcegitcommit: 73179152f51e48ada9641c4a6a33ea941606c469
+ms.openlocfilehash: 87adc2517e0262de87f4b9608d066dd1934673b2
+ms.sourcegitcommit: ec2e4b7c653ff81fcf62ef96d3720c60d074176e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2022
-ms.locfileid: "146774610"
+ms.lasthandoff: 08/06/2022
+ms.locfileid: "147503647"
 ---
 # <a name="lab-10-creating-a-release-dashboard"></a>랩 10: 릴리스 대시보드 만들기
 
@@ -93,7 +93,7 @@ ms.locfileid: "146774610"
 
     > **참고**: 먼저 정상적으로 배포되는 새 릴리스를 만듭니다.
 
-1. Azure DevOps 포털 왼쪽의 세로 메뉴에서 **Repos** 를 클릭하고, 리포지토리의 폴더 목록에서 **Applications\\aspnet-core-dotnet-core\\Pages** 폴더로 이동하고, **Index.chtml** 항목을 클릭합니다.
+1. Azure DevOps 포털 왼쪽의 세로 메뉴에서 **Repos** 를 클릭하고, 리포지토리의 폴더 목록에서 **Application\\aspnet-core-dotnet-core\\Pages** 폴더로 이동하고, **Index.chtml** 항목을 클릭합니다.
 1. **Index.cshtml** 창에서 **편집** 을 클릭하고, 줄 **20** 에서 `<div class="description line-2"> Your ASP.NET Core app is up and running on Azure</div>`를 `<div class="description line-2"> Your ASP.NET Core app v1.1 is up and running on Azure</div>`로 바꾸고, **커밋** 을 클릭하고, **커밋** 창에서 **커밋** 을 다시 클릭합니다. 이렇게 하면 자동으로 빌드 파이프라인이 트리거됩니다.
 1. Azure DevOps 포털 왼쪽의 세로 탐색 창에 있는 **파이프라인** 을 클릭합니다.
 1. **파이프라인** 창의 **최신** 탭에서 **az400m10l02-CI** 항목을 클릭하고 **az400m10l02-CI** 창의 **실행** 탭에서 최신 실행을 선택합니다. 그런 다음 해당 실행의 **요약** 탭 **작업** 섹션에서 **빌드** 를 클릭하고 작업이 정상적으로 완료될 때까지 모니터링합니다.
@@ -102,7 +102,7 @@ ms.locfileid: "146774610"
 
     > **참고**: 이제 배포가 실패하는 새 릴리스를 만듭니다. 배포가 실패하는 이유는 기본 제공 어셈블리 테스트에서 새 릴리스 관련 변경 내용을 잘못된 것으로 간주하기 때문입니다.
 
-1. Azure DevOps 포털 왼쪽의 세로 메뉴에서 **Repos** 를 클릭하고, 리포지토리의 폴더 목록에서 **Applications\\aspnet-core-dotnet-core\\Pages** 폴더로 이동하고, **Index.chtml** 항목을 클릭합니다.
+1. Azure DevOps 포털 왼쪽의 세로 메뉴에서 **Repos** 를 클릭하고, 리포지토리의 폴더 목록에서 **Application\\aspnet-core-dotnet-core\\Pages** 폴더로 이동하고, **Index.chtml** 항목을 클릭합니다.
 1. **Index.cshtml** 창에서 **편집** 을 클릭합니다. **4** 번 줄에서 `ViewData["Title"] = "Home Page - ASP.NET Core";`를 `ViewData["Title"] = "Home Page v1.2 - ASP.NET Core";`로 바꿉니다. **커밋** 을 클릭합니다. **커밋** 창에서 **커밋** 을 클릭합니다. 이렇게 하면 자동으로 빌드 파이프라인이 트리거됩니다.
 1. Azure DevOps 포털 왼쪽의 세로 탐색 창에 있는 **파이프라인** 을 클릭합니다.
 1. **파이프라인** 창의 **최신** 탭에서 **az400m10l02-CI** 항목을 클릭하고 **az400m10l02-CI** 창의 **실행** 탭에서 최신 실행을 선택합니다. 그런 다음 해당 실행의 **요약** 탭 **작업** 섹션에서 **빌드** 를 클릭하고 작업이 정상적으로 완료될 때까지 모니터링합니다.
