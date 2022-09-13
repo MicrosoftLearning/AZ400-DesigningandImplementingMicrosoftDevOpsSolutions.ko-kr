@@ -2,12 +2,12 @@
 lab:
   title: '랩 13: Azure Key Vault와 Azure DevOps 통합'
   module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
-ms.openlocfilehash: 9be7385294511e1d2a67b87521895951a95e5573
-ms.sourcegitcommit: d78aebd7b14277a53f152e26cea68a30b0e90d73
+ms.openlocfilehash: 7e9be63b9c66718c82bddd58559fee586fe37a7b
+ms.sourcegitcommit: 7f9f6520944441639574d22603a45303f8a26a87
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/13/2022
-ms.locfileid: "146276110"
+ms.lasthandoff: 09/05/2022
+ms.locfileid: "147783010"
 ---
 # <a name="lab-13-integrating-azure-key-vault-with-azure-devops"></a>랩 13: Azure Key Vault와 Azure DevOps 통합
 
@@ -170,7 +170,7 @@ Azure Pipelines에서 Azure 리소스에 앱을 배포하려면 서비스 주체
 
     > **참고**: Azure에 배포할 수 있는 권한을 파이프라인에 부여해야 합니다. Azure 파이프라인은 새 서비스 주체를 사용하여 서비스 연결을 자동으로 만들 수 있습니다. **하지만 여기서는 앞에서 만든 연결을 사용합니다.** 비밀을 읽을 수 있는 권한이 있기 때문입니다.
 
-1. **에이전트에서 실행** 을 선택하고 **에이전트 풀** 필드를 **Azure Pipelines** 및 에이전트 사양 **ubuntu 18.04** 로 수정합니다.
+1. **에이전트에서 실행** 을 선택하고 **에이전트 풀** 필드를 **Azure Pipelines** 및 에이전트 사양 **ubuntu 20.04** 로 수정합니다.
 1. **Azure Key Vault** 작업을 선택하고 오른쪽의 **Azure Key Vault** 작업 속성에서 **Azure 구독** 레이블 옆에 있는 **관리** 를 클릭합니다.
 그러면 다른 브라우저 탭이 열리고 Azure DevOps 포털의 **서비스 연결** 창이 표시됩니다.
 1. **서비스 연결** 창에서 **새 서비스 연결** 을 클릭합니다.
