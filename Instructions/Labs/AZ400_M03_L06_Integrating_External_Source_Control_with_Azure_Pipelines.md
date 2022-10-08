@@ -2,13 +2,8 @@
 lab:
   title: '랩 06: Azure Pipelines를 사용하여 외부 소스 제어 기능 통합'
   module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
-ms.openlocfilehash: af9b06398bffd5ede41513f4423ce875a018d214
-ms.sourcegitcommit: 73179152f51e48ada9641c4a6a33ea941606c469
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2022
-ms.locfileid: "146774607"
 ---
+
 # <a name="lab-06-integrating-external-source-control-with-azure-pipelines"></a>랩 06: Azure Pipelines를 사용하여 외부 소스 제어 기능 통합
 
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -53,24 +48,24 @@ Microsoft는 Azure DevOps의 출시와 함께 새로운 CI/CD(연속 통합/지�
 
     > **참고**: 이 랩에서는 이 기준 프로젝트를 포크하여 사용합니다.
 
-1. **actionsdemos/calculator site** 페이지에서 **Fork** 를 클릭하여 사용자의 GitHub 계정에 리포지토리를 포크합니다. 메시지가 표시되면 리포지토리를 포크할 계정을 선택합니다.
-1. 포크된 리포지토리가 표시된 페이지의 위쪽 메뉴에서 **Marketplace** 를 클릭합니다.
-    > **참고**: **GitHub Marketplace** 에서는 프로젝트 워크프로를 확장하는 데 사용할 수 있는 Microsoft와 타사의 다양한 도구를 제공합니다.
-2. **Search for apps and actions** 에 **Azure Pipelines** 를 입력하고 **Enter** 키를 누른 다음 결과 목록에서 **Azure Pipelines** 를 클릭합니다.
-3. **Azure Pipelines** 페이지에서 **Read more** 를 클릭하여 Azure Pipelines의 이점 설명을 확인합니다.
+1. **actionsdemos/calculator site** 페이지에서 **Fork**를 클릭하여 사용자의 GitHub 계정에 리포지토리를 포크합니다. 메시지가 표시되면 리포지토리를 포크할 계정을 선택합니다.
+1. 포크된 리포지토리가 표시된 페이지의 위쪽 메뉴에서 **Marketplace**를 클릭합니다.
+    > **참고**: **GitHub Marketplace**에서는 프로젝트 워크프로를 확장하는 데 사용할 수 있는 Microsoft와 타사의 다양한 도구를 제공합니다.
+2. **Search for apps and actions**에 **Azure Pipelines**를 입력하고 **Enter** 키를 누른 다음 결과 목록에서 **Azure Pipelines**를 클릭합니다.
+3. **Azure Pipelines** 페이지에서 **Read more**를 클릭하여 Azure Pipelines의 이점 설명을 확인합니다.
 
     > **참고**: 퍼블릭 리포지토리에서는 누구나 Azure Pipelines 서비스를 무료로 사용할 수 있습니다. 프라이빗 리포지토리 사용 시에는 빌드 큐 하나에서 Azure Pipelines 서비스를 무료로 사용할 수 있습니다.
 
-4. **Azure Pipelines** 페이지에서 **Install it for free** 를 클릭합니다. **GitHub** 계정이 여러 개이면 **Switch billing account** 드롭다운에서 calculator를 포크한 계정을 선택합니다.
-5. **Review your order** 페이지에서 **Complete order and begin installation** 을 클릭합니다.
-6. **Install Azure Pipelines** 페이지에서 기본 옵션인 **All repositories** 를 그대로 적용하고 **Install** 을 클릭합니다.
+4. **Azure Pipelines** 페이지에서 **Install it for free**를 클릭합니다. **GitHub** 계정이 여러 개이면 **Switch billing account** 드롭다운에서 calculator를 포크한 계정을 선택합니다.
+5. **Review your order** 페이지에서 **Complete order and begin installation**을 클릭합니다.
+6. **Install Azure Pipelines** 페이지에서 기본 옵션인 **All repositories**를 그대로 적용하고 **Install**을 클릭합니다.
 
     > **참고**: 포함할 리포지토리를 지정할 수도 있지만 이 랩에서는 모든 리포지토리를 포함합니다. Azure DevOps가 서비스를 제공하려면 권한 세트 목록이 필요합니다.
 
 7.  메시지가 표시되면 GitHub 암호를 입력해 인증을 하고 작업을 계속 진행합니다.
-8.  메시지가 표시되면 **Azure Pipelines 프로젝트 설정** 페이지에서 먼저 **디렉터리 전환** 을 클릭하고 ‘기본 디렉터리’가 선택되어 있는지 확인합니다. 그런 후 **Azure DevOps 조직 선택** 드롭다운 목록에서 Azure DevOps 계정을 선택한 후 **새 프로젝트 만들기** 를 클릭합니다.
-9.  메시지가 표시되면 **Setup your Azure Pipelines project** 페이지의 **Project name** 텍스트 상자에 **Integrating External Source Control with Azure Pipelines** 를 입력합니다. **Project visibility** 는 **Private** 으로 설정된 상태로 유지하고 **Continue** 를 클릭합니다.
-10. **Azure Pipelines by Microsoft would like permission to** 페이지에서 **Authorize Azure Pipelines** 를 클릭합니다.
+8.  메시지가 표시되면 **Azure Pipelines 프로젝트 설정** 페이지에서 먼저 **디렉터리 전환**을 클릭하고 ‘기본 디렉터리’가 선택되어 있는지 확인합니다. 그런 후 **Azure DevOps 조직 선택** 드롭다운 목록에서 Azure DevOps 계정을 선택한 후 **새 프로젝트 만들기**를 클릭합니다.
+9.  메시지가 표시되면 **Setup your Azure Pipelines project** 페이지의 **Project name** 텍스트 상자에 **Integrating External Source Control with Azure Pipelines**를 입력합니다. **Project visibility**는 **Private**으로 설정된 상태로 유지하고 **Continue**를 클릭합니다.
+10. **Azure Pipelines by Microsoft would like permission to** 페이지에서 **Authorize Azure Pipelines**를 클릭합니다.
 
 #### <a name="task-2-configuring-your-azure-pipelines-project"></a>작업 2: Azure Pipelines 프로젝트 구성
 
@@ -78,19 +73,19 @@ Microsoft는 Azure DevOps의 출시와 함께 새로운 CI/CD(연속 통합/지�
 
 > **참고**: 이제 Azure DevOps 사이트에서 Azure Pipelines 프로젝트를 설정해야 합니다.
 
-1. Azure DevOps 포털의 왼쪽 탐색 창에서 **Pipelines** 를 클릭합니다.
+1. Azure DevOps 포털의 왼쪽 탐색 창에서 **Pipelines**를 클릭합니다.
 
 1. 오른쪽 위에서 **파이프라인 만들기** 단추를 클릭합니다.
 
 1. Azure DevOps 포털 **파이프라인** 보기의 **리포지토리 선택** 창에서 이전 작업에서 만든 GitHub calculator 리포지토리의 포크를 선택합니다.
 
-    > **참고**: Azure Pipelines에서 프로젝트를 분석하여 해당 프로젝트에 적합한 기존 템플이 있는지를 확인합니다. 여기서는 프로젝트 요구를 충족할 수 있는 **Node.js** 용 템플릿을 사용하는 것이 좋습니다. 대체 템플릿도 제시되지만 이 랩에서는 권장 템플릿이 가장 적합합니다.
-1. **파이프라인 구성** 에서 **Node.js** 를 선택합니다.
+    > **참고**: Azure Pipelines에서 프로젝트를 분석하여 해당 프로젝트에 적합한 기존 템플이 있는지를 확인합니다. 여기서는 프로젝트 요구를 충족할 수 있는 **Node.js**용 템플릿을 사용하는 것이 좋습니다. 대체 템플릿도 제시되지만 이 랩에서는 권장 템플릿이 가장 적합합니다.
+1. **파이프라인 구성**에서 **Node.js**를 선택합니다.
 
-    > **참고**: 빌드 파이프라인은 이러한 프로세스를 정의하는 데 적합한 태그 구문인 **YAML** 로 정의됩니다. 이 구문을 사용하면 리포지토리 내의 기타 모든 파일과 마찬가지로 파이프라인 구성을 관리할 수 있기 때문입니다. 이 템플릿은 빌드용 VM을 끌어올 풀, 빌드용으로 Node.js를 설치할 프로세스, 그리고 실제 빌드 자체를 확인하는 단순한 템플릿입니다.
+    > **참고**: 빌드 파이프라인은 이러한 프로세스를 정의하는 데 적합한 태그 구문인 **YAML**로 정의됩니다. 이 구문을 사용하면 리포지토리 내의 기타 모든 파일과 마찬가지로 파이프라인 구성을 관리할 수 있기 때문입니다. 이 템플릿은 빌드용 VM을 끌어올 풀, 빌드용으로 Node.js를 설치할 프로세스, 그리고 실제 빌드 자체를 확인하는 단순한 템플릿입니다.
 
-1. **파이프라인 YAML 검토** 에서 **저장 및 실행** 을 클릭하여 파이프라인을 저장하고 새 빌드를 큐에 넣습니다.
-1. **저장 및 실행** 창에서 기본 설정을 수락하고 **저장 및 실행** 을 클릭합니다.
+1. **파이프라인 YAML 검토**에서 **저장 및 실행**을 클릭하여 파이프라인을 저장하고 새 빌드를 큐에 넣습니다.
+1. **저장 및 실행** 창에서 기본 설정을 수락하고 **저장 및 실행**을 클릭합니다.
 
     > **참고**: 이 랩에서는 master 분기에 이 새 파일을 바로 커밋할 수 있습니다.
 
@@ -104,7 +99,7 @@ Microsoft는 Azure DevOps의 출시와 함께 새로운 CI/CD(연속 통합/지�
 
 > **참고**: 기본 파이프라인으로도 빌드를 시작할 수 있지만, 이 파이프라인에서는 자동화 가능한 작업이 수행되지 않습니다. 가령 변경 시 버그가 발생하지 않음을 확인할 수 있는 테스트도 실행된다면 매우 유용할 것입니다. 그러면 GitHub로 돌아가서 YAML을 수동으로 편집해 보겠습니다.
 
-1. 빌드 작업 창의 **요약** 탭에서 **리포지토리 및 버전** 레이블 옆에 있는 항목(이 랩 앞부분에서 만든 포크를 호스트하는 GitHub 프로젝트 리포지토리를 나타내는 항목)을 마우스 오른쪽 단추로 클릭하고 **새 탭에서 링크 열기** 를 선택합니다. 그러면 새 브라우저 탭이 열리고 포크 내용이 포함된 GitHub 페이지가 표시됩니다.
+1. 빌드 작업 창의 **요약** 탭에서 **리포지토리 및 버전** 레이블 옆에 있는 항목(이 랩 앞부분에서 만든 포크를 호스트하는 GitHub 프로젝트 리포지토리를 나타내는 항목)을 마우스 오른쪽 단추로 클릭하고 **새 탭에서 링크 열기**를 선택합니다. 그러면 새 브라우저 탭이 열리고 포크 내용이 포함된 GitHub 페이지가 표시됩니다.
 
     > **참고**: 이 랩에서는 GitHub와 Azure DevOps 간을 전환해 가면서 작업을 진행할 것이므로 GitHub와 Azure DevOps의 브라우저 탭을 열어 두면 랩을 더 쉽게 진행할 수 있습니다.
 
@@ -120,7 +115,7 @@ Microsoft는 Azure DevOps의 출시와 함께 새로운 CI/CD(연속 통합/지�
     displayName: 'npm install, build, and test'
     ```
 
-1. 페이지 아래쪽으로 스크롤하여 기본 커밋 메시지를 **Adding npm test** 로 바꾸고 **Commit changes** 를 클릭합니다.
+1. 페이지 아래쪽으로 스크롤하여 기본 커밋 메시지를 **Adding npm test**로 바꾸고 **Commit changes**를 클릭합니다.
 
     > **참고**: 이전과 마찬가지로 랩 환경에서는 이 변경 내용을 master 분기에 바로 커밋해도 됩니다.
 
@@ -134,8 +129,8 @@ Microsoft는 Azure DevOps의 출시와 함께 새로운 CI/CD(연속 통합/지�
 
 > **참고**: 이 파이프라인 설정에서 제공되는 유용한 이점 중 하나는, 변경을 커밋할 때마다 품질 게이트가 자동으로 실행된다는 것입니다. 그러므로 여러 품질 수준에서 다수의 기여자가 업데이트할 가능성이 있는 프로젝트를 훨씬 쉽게 관리할 수 있습니다.
 
-1. **azure-pipelines.yml** 파일의 내용이 나와 있는 GitHub 페이지가 표시된 브라우저 탭으로 다시 전환합니다. 그런 후에 포크한 리포지토리의 내용이 나열된 페이지로 다시 이동하여 **azure-pipelines.yml** 을 클릭합니다.
-1. **calculator/** 프롬프트에 **arithmeticController.js** 를 입력하고 결과 목록에서 **api/controllers/arithmeticController.js** 를 클릭합니다. 그러면 브라우저 세션이 **master/calculator/api/controllers/arithmeticController.js** 페이지로 자동 리디렉션되어 해당 파일의 내용이 표시됩니다.
+1. **azure-pipelines.yml** 파일의 내용이 나와 있는 GitHub 페이지가 표시된 브라우저 탭으로 다시 전환합니다. 그런 후에 포크한 리포지토리의 내용이 나열된 페이지로 다시 이동하여 **azure-pipelines.yml**을 클릭합니다.
+1. **calculator/** 프롬프트에 **arithmeticController.js**를 입력하고 결과 목록에서 **api/controllers/arithmeticController.js**를 클릭합니다. 그러면 브라우저 세션이 **master/calculator/api/controllers/arithmeticController.js** 페이지로 자동 리디렉션되어 해당 파일의 내용이 표시됩니다.
 
     > **참고**: 이 컨트롤러에는 앱의 핵심 기능이 포함되어 있습니다. 하지만 **add** 작업의 코드를 명확하게 확인하기가 어렵습니다. 여기서는 JavaScript 사용법을 잘 모르는 개발자가 코드를 더 쉽게 알아볼 수 있도록 정리하여 개선하려 한다고 가정해 보겠습니다.
 
@@ -144,14 +139,14 @@ Microsoft는 Azure DevOps의 출시와 함께 새로운 CI/CD(연속 통합/지�
 
     > **참고**: 이 변경은 잘못된 작업이므로 잘못된 결과가 생성됩니다.
 
-1. 페이지 아래쪽으로 스크롤하여 기본 커밋 메시지를 **Modifying the add function** 으로 바꾸고 **Create a new branch** 를 선택하여 이름을 **addition-cleanup** 으로 설정한 후에 **Propose file change** 를 클릭합니다.
-1. **Open a pull request** 페이지에서 **Create pull request** 를 클릭하여 테스트하지 않은 변경 내용을 프로덕션 코드로 가져오는 프로세스를 시작합니다.
+1. 페이지 아래쪽으로 스크롤하여 기본 커밋 메시지를 **Modifying the add function**으로 바꾸고 **Create a new branch**를 선택하여 이름을 **addition-cleanup**으로 설정한 후에 **Propose file change**를 클릭합니다.
+1. **Open a pull request** 페이지에서 **Create pull request**를 클릭하여 테스트하지 않은 변경 내용을 프로덕션 코드로 가져오는 프로세스를 시작합니다.
 
     > **참고**: Azure DevOps에서 변경 내용을 검색하여 빌드 파이프라인을 시작합니다. 그러면 확인이 실패하여 GitHub UI에서 업데이트가 트리거됩니다.
 
     > **참고**: 이제 프로젝트 소유자로서 코드를 다시 올바르게 수정해 보겠습니다.
 
-1. **Modifying the add function #1** 끌어오기 요청 페이지의 **All checks have failed** 섹션에서 **Details** 를 클릭하여 자세한 내용을 확인합니다.
+1. **Modifying the add function #1** 끌어오기 요청 페이지의 **All checks have failed** 섹션에서 **Details**를 클릭하여 자세한 내용을 확인합니다.
 1. **ANNOTATIONS** 섹션을 검토한 후 해당 섹션 바로 아래의 **View more details on Azure Pipelines** 링크를 클릭합니다. 그러면 새 브라우저 탭이 열리고 Azure DevOps 포털의 작업에서 실패한 실행이 표시됩니다.
 1. Azure Portal의 실패한 작업 창에서 **작업** 항목을 클릭하여 작업 세부 정보를 표시합니다.
 1. 작업 태스크 목록에서 **npm 설치, 빌드 및 테스트** 태스크를 클릭하여 해당 출력을 확인합니다.
@@ -168,19 +163,19 @@ Microsoft는 Azure DevOps의 출시와 함께 새로운 CI/CD(연속 통합/지�
 > **참고**: 이제 프로젝트 소유자로서 코드를 다시 올바르게 수정해 보겠습니다.
 
 1. **Modifying the add function #1** GitHub 페이지가 표시된 브라우저 탭으로 돌아와 포크한 리포지토리의 내용이 나열된 기본 페이지를 다시 표시합니다.
-1. 리포지토리 파일 목록이 포함된 창의 위쪽에서 **Pull requests** 를 클릭한 다음 최신 끌어오기 요청을 나타내는 항목을 클릭합니다.
+1. 리포지토리 파일 목록이 포함된 창의 위쪽에서 **Pull requests**를 클릭한 다음 최신 끌어오기 요청을 나타내는 항목을 클릭합니다.
 1. **Modifying the add function #1** GitHub 페이지에서 **File changed** 탭을 클릭하고 해당 내용을 검토합니다.
 
     > **참고**: 변수를 숫자 표현으로 강제 변환하려면 각 변수 앞에 더하기 기호가 필요함을 모르는 사람이 변경을 수행한 것으로 보입니다. 이 더하기 기호를 제거했기 때문에 JavaScript에서 가운데의 더하기 기호를 문자열 연결 연산자로 해석하여 실패한 테스트에서처럼 21 + 21 = 2121이 표시된 것입니다.
 
-1. **Modifying the add function #1** GitHub 페이지에서 **Review changes** 단추 바로 아래의 줄임표 기호를 클릭하고 드롭다운 메뉴에서 **Edit file** 을 클릭합니다.
+1. **Modifying the add function #1** GitHub 페이지에서 **Review changes** 단추 바로 아래의 줄임표 기호를 클릭하고 드롭다운 메뉴에서 **Edit file**을 클릭합니다.
 1. **a** 및 **b** 변수 앞에 더하기 기호를 추가하여 원래 변경 내용을 되돌리면 `'add':      function(a,b) { return +a + +b },`가 됩니다. 또한 앞줄에 `// Using + operator to type cast variables as integers in order to prevent string concatenation`을 나타내는 주석을 포함합니다.
-1. 페이지 아래쪽으로 스크롤하여 기본 커밋 메시지를 **Fixing the add function** 으로 바꾸고 **Commit directly to the addition-cleanup branch** 옵션이 선택되어 있는지 확인한 후에 **Commit changes** 를 클릭합니다.
+1. 페이지 아래쪽으로 스크롤하여 기본 커밋 메시지를 **Fixing the add function**으로 바꾸고 **Commit directly to the addition-cleanup branch** 옵션이 선택되어 있는지 확인한 후에 **Commit changes**를 클릭합니다.
 1. **Modifying the add function #1** GitHub 페이지에서 **Conversation** 탭을 선택합니다.
 
     > **참고**: Azure DevOps에서 변경 내용을 다시 검색하여 빌드 파이프라인을 시작합니다. 모든 검사에 통과할 때까지 기다립니다.
 
-1. 모든 검사에 통과하면 **끌어오기 요청 병합** 을 클릭한 다음 **병합 확인** 을 클릭합니다.
+1. 모든 검사에 통과하면 **끌어오기 요청 병합**을 클릭한 다음 **병합 확인**을 클릭합니다.
 
 #### <a name="task-6-adding-a-build-status-badge"></a>작업 6: 빌드 상태 배지 추가
 
@@ -190,15 +185,15 @@ Microsoft는 Azure DevOps의 출시와 함께 새로운 CI/CD(연속 통합/지�
 
 1. **Azure DevOps** 포털이 표시된 브라우저 탭으로 다시 전환한 다음 이동 경로를 탐색하여 **파이프라인** 보기의 **파이프라인** 창 **최근** 탭으로 이동합니다.
 1. **최근** 탭의 **최근에 실행한 파이프라인** 목록에서 이 랩에서 사용한 파이프라인에 해당하는 항목을 클릭합니다.
-1. 파이프라인 창 오른쪽 위의 줄임표 기호를 클릭하고 드롭다운 목록에서 **상태 배지** 를 선택합니다.
+1. 파이프라인 창 오른쪽 위의 줄임표 기호를 클릭하고 드롭다운 목록에서 **상태 배지**를 선택합니다.
 
     > **참고**: **상태 배지** UI를 사용하면 빌드 상태를 빠르고 쉽게 참조할 수 있습니다. 사용자 대시보드에서 제공된 URL을 사용하거나, Markdown 조각을 사용해 Wiki 페이지 등의 위치에 상태 배지를 추가하는 경우가 많습니다.
 
-1. **상태 배지** 창에서 **샘플 Markdown** 의 **클립보드에 복사** 단추를 클릭합니다.
+1. **상태 배지** 창에서 **샘플 Markdown**의 **클립보드에 복사** 단추를 클릭합니다.
 1. 포크한 리포지토리의 내용이 나와 있는 GitHub 페이지가 표시된 브라우저 탭으로 다시 전환합니다. 그런 후에 필요한 경우 **<> Code** 탭을 클릭합니다.
-1. 리포지토리 파일 목록에서 **README<nolink>.md** 를 클릭하고 **master/calculator/README.md** 페이지에서 파일 콘텐츠가 표시된 창 오른쪽 위에 있는 연필 모양 **Edit this file** 아이콘을 클릭합니다.
+1. 리포지토리 파일 목록에서 **README<nolink>.md**를 클릭하고 **master/calculator/README.md** 페이지에서 파일 콘텐츠가 표시된 창 오른쪽 위에 있는 연필 모양 **Edit this file** 아이콘을 클릭합니다.
 1. 줄 6 위에 줄을 하나 더 추가하여 클립보드의 내용을 붙여넣습니다.
-1. 페이지 아래쪽으로 스크롤하여 기본 커밋 메시지를 **Add an Azure Pipelines status badge** 로 바꾸고 **Commit changes** 를 클릭합니다.
+1. 페이지 아래쪽으로 스크롤하여 기본 커밋 메시지를 **Add an Azure Pipelines status badge**로 바꾸고 **Commit changes**를 클릭합니다.
 
     > **참고**: 이제 프로젝트 전면 페이지에 동적 빌드 상태 배지가 추가되었습니다. 따라서 프로젝트를 효율적으로 관리하고 있음을 누구나 확인할 수 있습니다.
 

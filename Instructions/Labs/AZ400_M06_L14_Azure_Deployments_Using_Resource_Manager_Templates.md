@@ -2,13 +2,8 @@
 lab:
   title: '랩 14: Azure Resource Manager 템플릿을 사용하여 Azure 배포'
   module: 'Module 06: Manage infrastructure as code using Azure and DSC'
-ms.openlocfilehash: 943ae78045dffc1bf0bd77c281870f7f6f1177b2
-ms.sourcegitcommit: d78aebd7b14277a53f152e26cea68a30b0e90d73
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 06/13/2022
-ms.locfileid: "146276113"
 ---
+
 # <a name="lab-14-azure-deployments-using-azure-resource-manager-templates"></a>랩 14: Azure Resource Manager 템플릿을 사용하여 Azure 배포
 
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -62,17 +57,17 @@ ms.locfileid: "146276113"
 
 이 작업에서는 Visual Studio Code를 사용하여 Resource Manager 템플릿을 만듭니다.
 
-1. 랩 컴퓨터에서 Visual Studio Code를 시작하고 Visual Studio Code에서 **파일** 최상위 메뉴를 클릭합니다. 그런 다음 드롭다운 메뉴에서 **기본 설정** 을 선택하고 계단식 메뉴에서 **확장** 을 선택한 후에 **확장 검색** 텍스트 상자에 **Azure Resource Manager(ARM) 도구** 를 입력합니다. 그 후에 해당하는 검색 결과를 선택하고 **설치** 를 클릭하여 Azure Resource Manager 도구를 설치합니다.
+1. 랩 컴퓨터에서 Visual Studio Code를 시작하고 Visual Studio Code에서 **파일** 최상위 메뉴를 클릭합니다. 그런 다음 드롭다운 메뉴에서 **기본 설정**을 선택하고 계단식 메뉴에서 **확장**을 선택한 후에 **확장 검색** 텍스트 상자에 **Azure Resource Manager(ARM) 도구**를 입력합니다. 그 후에 해당하는 검색 결과를 선택하고 **설치**를 클릭하여 Azure Resource Manager 도구를 설치합니다.
 1. 웹 브라우저에서 **<https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json>** 에 연결합니다. 파일에 대해 **원시** 옵션을 클릭합니다. 코드 창의 내용을 복사하여 Visual Studio Code 편집기에 붙여넣습니다.
 
-    > **참고**: 여기서는 템플릿을 처음부터 만들지 않고 [Azure 빠른 시작 템플릿](https://azure.microsoft.com/en-us/resources/templates/) 중 하나인 **간단한 Windows 템플릿 VM 배포** 를 사용합니다. GitHub([vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows))에서 이 템플릿을 다운로드할 수 있습니다.
+    > **참고**: 여기서는 템플릿을 처음부터 만들지 않고 [Azure 빠른 시작 템플릿](https://azure.microsoft.com/en-us/resources/templates/) 중 하나인 **간단한 Windows 템플릿 VM 배포**를 사용합니다. GitHub([vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows))에서 이 템플릿을 다운로드할 수 있습니다.
 
 1. 랩 컴퓨터에서 파일 탐색기를 열고 템플릿을 저장할 다음 로컬 폴더를 만듭니다.
 
     - **C:\\templates**
     - **C:\\templates\\storage**
 
-1. azuredeploy.json 템플릿이 표시된 Visual Studio Code 창으로 다시 전환하고, **파일** 최상위 메뉴를 클릭하고, 드롭다운 메뉴에서 **다른 이름으로 저장** 을 클릭하고, 새로 만든 로컬 폴더 **C:\\templates** 에 템플릿을 **azuredeploy.json** 으로 저장합니다.
+1. azuredeploy.json 템플릿이 표시된 Visual Studio Code 창으로 다시 전환하고, **파일** 최상위 메뉴를 클릭하고, 드롭다운 메뉴에서 **다른 이름으로 저장**을 클릭하고, 새로 만든 로컬 폴더 **C:\\templates**에 템플릿을 **azuredeploy.json**으로 저장합니다.
 1. 템플릿을 검토하여 구조를 자세히 파악합니다. 이 템플릿에는 5가지 리소스 종류가 포함되어 있습니다.
 
     - Microsoft.Storage/storageAccounts
@@ -81,15 +76,15 @@ ms.locfileid: "146276113"
     - Microsoft.Network/networkInterfaces
     - Microsoft.Compute/virtualMachines
 
-1. Visual Studio Code에서 파일을 다시 저장합니다. 이번에는 대상으로 **C:\\templates\\storage** 를 선택하고 파일 이름으로는 **storage.json** 을 선택합니다.
+1. Visual Studio Code에서 파일을 다시 저장합니다. 이번에는 대상으로**C:\\templates\\storage**를 선택하고 파일 이름으로는 **storage.json**을 선택합니다.
 
     > **참고**: 같은 JSON 파일 **C:\\templates\\azuredeploy.json** 및 **C:\\templates\\storage\\storage.json**.
 
 #### <a name="task-2-create-a-linked-template-for-storage-resources"></a>작업 2: 스토리지 리소스용 연결된 템플릿 만들기
 
-이 작업에서는 이전 작업에서 저장한 템플릿을 수정합니다. 즉, 연결된 스토리지 템플릿 **storage.json** 은 첫 번째 템플릿을 통해 실행하도록 호출되며 스토리지 계정만 만들도록 수정합니다. 연결된 스토리지 템플릿은 기본 템플릿인 **azuredeploy.json** 에 값을 다시 전달해야 합니다. 연결된 스토리지 템플릿의 outputs 요소에서 이 값을 정의합니다.
+이 작업에서는 이전 작업에서 저장한 템플릿을 수정합니다. 즉, 연결된 스토리지 템플릿 **storage.json**은 첫 번째 템플릿을 통해 실행하도록 호출되며 스토리지 계정만 만들도록 수정합니다. 연결된 스토리지 템플릿은 기본 템플릿인 **azuredeploy.json**에 값을 다시 전달해야 합니다. 연결된 스토리지 템플릿의 outputs 요소에서 이 값을 정의합니다.
 
-1. Visual Studio Code 창에 **storage.json** 파일이 표시된 상태로 **resources 섹션** 아래에서 **storageAccounts** 를 제외한 모든 resource 요소를 제거합니다. resources 섹션이 다음과 같이 표시되어야 합니다.
+1. Visual Studio Code 창에 **storage.json** 파일이 표시된 상태로 **resources 섹션** 아래에서 **storageAccounts**를 제외한 모든 resource 요소를 제거합니다. resources 섹션이 다음과 같이 표시되어야 합니다.
 
     ```json
     "resources": [
@@ -240,7 +235,7 @@ ms.locfileid: "146276113"
 
 이 작업에서는 이전 작업에서 만든 연결된 템플릿을 Azure Blob Storage에 업로드하고, 후속 배포에서 해당 템플릿에 액세스할 수 있도록 SAS 토큰을 생성합니다.
 
-> **참고**: 템플릿에 연결할 때는 Azure Resource Manager 서비스가 http 또는 https를 통해 이 템플릿에 액세스할 수 있어야 합니다. 여기서는 서비스가 템플릿에 액세스할 수 있도록 연결된 스토리지 템플릿인 **storage.json** 을 Azure의 Blob Storage에 업로드합니다. 그런 다음 디지털 서명된 URL을 생성합니다. 이 URL에서 해당 Blob에 액세스(제한된 액세스)할 수 있습니다. Azure Cloud Shell에서 Azure CLI를 사용하여 이러한 단계를 수행합니다. Azure Portal을 통해 Blob 컨테이너를 수동으로 만들어 파일을 업로드한 다음 URL을 생성하거나, 랩 컴퓨터에 설치된 Azure CLI 또는 Azure PowerShell 모듈을 사용할 수도 있습니다.
+> **참고**: 템플릿에 연결할 때는 Azure Resource Manager 서비스가 http 또는 https를 통해 이 템플릿에 액세스할 수 있어야 합니다. 여기서는 서비스가 템플릿에 액세스할 수 있도록 연결된 스토리지 템플릿인 **storage.json**을 Azure의 Blob Storage에 업로드합니다. 그런 다음 디지털 서명된 URL을 생성합니다. 이 URL에서 해당 Blob에 액세스(제한된 액세스)할 수 있습니다. Azure Cloud Shell에서 Azure CLI를 사용하여 이러한 단계를 수행합니다. Azure Portal을 통해 Blob 컨테이너를 수동으로 만들어 파일을 업로드한 다음 URL을 생성하거나, 랩 컴퓨터에 설치된 Azure CLI 또는 Azure PowerShell 모듈을 사용할 수도 있습니다.
 
 1. 랩 컴퓨터에서 웹 브라우저를 시작하고, [**Azure Portal**](https://portal.azure.com)로 이동하고, 이 랩에서 사용할 Azure 구독에서 Contributor 이상의 역할이 지정된 사용자 계정으로 로그인합니다.
 
@@ -248,9 +243,9 @@ ms.locfileid: "146276113"
 
     > **참고**: [Azure Cloud Shell](http://shell.azure.com)로 직접 이동할 수도 있습니다.
 
-1. **Bash** 와 **PowerShell** 중에서 선택하라는 메시지가 표시되면 **PowerShell** 을 선택합니다.
+1. **Bash**와 **PowerShell** 중에서 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다.
 
-    >**참고**: **Cloud Shell** 을 처음 시작했는데 **탑재된 스토리지 없음** 이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기** 를 선택합니다.
+    >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 선택합니다.
 
 1. Cloud Shell 창의 **PowerShell** 세션에서 다음 명령을 실행하여 Blob Storage 컨테이너를 만들고 이전 작업에서 만든 템플릿 파일을 업로드한 다음 SAS 토큰을 생성합니다. 기본 템플릿에서 이 토큰을 참조하여 연결된 템플에 액세스합니다.
 1. 먼저, 다음 코드 줄을 복사하고 붙여넣어 배포할 Azure 지역의 값을 설정합니다. 명령은 사용자 입력이 프롬프트에 표시될 때까지 기다립니다.
@@ -290,7 +285,7 @@ ms.locfileid: "146276113"
     New-AzureStorageContainer -Name $containerName -Context $context
     ```
 
-1. Cloud Shell 창에서 **파일 업로드/다운로드** 아이콘을 클릭하고 드롭다운 메뉴에서 **업로드** 를 클릭합니다. **열기** 대화 상자에서 **C:\\templates\\storage\\storage.json** 으로 이동하여 해당 파일을 선택하고 **열기** 를 클릭합니다.
+1. Cloud Shell 창에서 **파일 업로드/다운로드** 아이콘을 클릭하고 드롭다운 메뉴에서 **업로드**를 클릭합니다. **열기** 대화 상자에서 **C:\\templates\\storage\\storage.json**으로 이동하여 해당 파일을 선택하고 **열기**를 클릭합니다.
 
       ```powershell
       # Upload the linked template
@@ -332,7 +327,7 @@ ms.locfileid: "146276113"
 
 > **참고**: 모든 스토리지 요소를 모듈화하여 변경된 템플릿 구조를 적용하려면 기본 템플릿이 새 스토리지 리소스 정의를 호출하도록 수정해야 합니다.
 
-1. Visual Studio Code에서 **파일** 최상위 메뉴를 클릭하고, 드롭다운 메뉴에서 **파일 열기** 를 선택하고, 파일 열기 대화 상자에서 **C:\\templates\\azuredeploy.json** 으로 이동하여 해당 파일을 선택하고, **열기** 를 클릭합니다.
+1. Visual Studio Code에서 **파일** 최상위 메뉴를 클릭하고, 드롭다운 메뉴에서 **파일 열기**를 선택하고, 파일 열기 대화 상자에서 **C:\\templates\\azuredeploy.json**으로 이동하여 해당 파일을 선택하고, **열기**를 클릭합니다.
 1. **azuredeploy.json** 파일의 resource 섹션에서 스토리지 리소스 요소를 제거합니다.
 
     ```json
@@ -435,17 +430,17 @@ ms.locfileid: "146276113"
 
 1. 랩 컴퓨터에서 Azure Portal이 표시된 웹 브라우저의 **Cloud Shell** 아이콘을 클릭하여 Cloud Shell을 엽니다.
     > **참고**: 이 연습의 앞부분에서 사용한 PowerShell 세션이 아직 활성 상태이면 Bash로 전환하지 않고(다음 단계) 해당 세션을 사용할 수 있습니다. 다음 단계는 PowerShell 그리고 Cloud Shell의 Bash 세션에서 모두 실행될 수 있습니다. 새 Cloud Shell 세션을 여는 경우에는 지침을 따르세요.
-1. Cloud Shell 창에서 **PowerShell** 을 클릭하고 드롭다운 메뉴에서 **Bash** 를 클릭한 다음 메시지가 표시되면 **확인** 을 클릭합니다.
-1. Cloud Shell 창에서 **파일 업로드/다운로드** 아이콘을 클릭하고 드롭다운 메뉴에서 **업로드** 를 클릭합니다.
-1. **열기** 대화 상자에서 **C:\\templates\\azuredeploy.json** 으로 이동하여 해당 파일을 선택하고 **열기** 를 클릭합니다.
+1. Cloud Shell 창에서 **PowerShell**을 클릭하고 드롭다운 메뉴에서 **Bash**를 클릭한 다음 메시지가 표시되면 **확인**을 클릭합니다.
+1. Cloud Shell 창에서 **파일 업로드/다운로드** 아이콘을 클릭하고 드롭다운 메뉴에서 **업로드**를 클릭합니다.
+1. **열기** 대화 상자에서 **C:\\templates\\azuredeploy.json**으로 이동하여 해당 파일을 선택하고 **열기**를 클릭합니다.
 1. Cloud Shell 창의 **Bash** 세션에서 다음 명령을 실행하여 새로 업로드한 템플릿을 사용해 배포를 수행합니다.
 
     ```bash
     az deployment group create --name az400m13l01deployment --resource-group az400m13l01-RG --template-file azuredeploy.json
     ```
 
-1. 'adminUsername'의 값을 입력하라는 메시지가 표시되면 **Student** 를 입력하고 **Enter** 키를 누릅니다.
-1. 'adminPassword'의 값을 입력하라는 메시지가 표시되면 **Pa55w.rd1234** 를 입력하고 **Enter** 키를 누릅니다. (암호 입력은 표시되지 않음)
+1. 'adminUsername'의 값을 입력하라는 메시지가 표시되면 **Student**를 입력하고 **Enter** 키를 누릅니다.
+1. 'adminPassword'의 값을 입력하라는 메시지가 표시되면 **Pa55w.rd1234**를 입력하고 **Enter** 키를 누릅니다. (암호 입력은 표시되지 않음)
 
 1. 위의 명령을 실행하여 템플릿을 배포할 때 오류가 발생하면 다음 방법을 시도해 봅니다.
 
@@ -454,7 +449,7 @@ ms.locfileid: "146276113"
 
 > **참고**: 다음 단계에서는 네트워크 및 가상 머신 리소스 정의와 같은 기본 배포 템플릿의 나머지 리소스 정의를 모듈화할 수 있습니다.
 
-> **참고**: 배포한 리소스를 사용하지 않으려는 경우에는 관련 요금이 발생하지 않도록 해당 리소스를 삭제해야 합니다. 리소스 그룹 **az400m13l01-RG** 를 삭제하면 됩니다.
+> **참고**: 배포한 리소스를 사용하지 않으려는 경우에는 관련 요금이 발생하지 않도록 해당 리소스를 삭제해야 합니다. 리소스 그룹 **az400m13l01-RG**를 삭제하면 됩니다.
 
 ### <a name="exercise-2-remove-the-azure-lab-resources"></a>연습 2: Azure 랩 리소스 제거
 

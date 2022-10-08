@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: c7a689e184a4f1475d50dad2c44ed0f83506c1ba
-ms.sourcegitcommit: d78aebd7b14277a53f152e26cea68a30b0e90d73
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 06/13/2022
-ms.locfileid: "146276037"
----
 # <a name="az-400-designing-and-implementing-microsoft-devops-solutions"></a>AZ-400: Designing and Implementing Microsoft DevOps Solutions
 
 ## <a name="welcome"></a>환영
@@ -30,7 +22,7 @@ ms.locfileid: "146276037"
 
 - 이를 통해 이전에 경험하지 못한 방식으로 랩에 대한 협업을 경험하기 바랍니다. Azure가 변경하고 실시간 제공 중에 이를 먼저 발견하면 랩 소스에서 바로 개선 작업을 진행합니다.  동료 MCT를 도와주세요.
 
-## <a name="how-should-i-use-these-files-relative-to-the-released-moc-files"></a>릴리스된 MOC 파일과 비교하여 이러한 파일을 사용하려면 어떻게 해야 하나요?
+## <a name="how-should-i-use-these-files-relative-to-the-released-moc-files"></a>이러한 파일을 릴리스된 MOC 파일과 관련하여 어떻게 사용해야 하나요?
 
 - 강사 핸드북과 PowerPoint는 여전히 과정 콘텐츠 교육의 기본 소스입니다.
 
@@ -40,7 +32,7 @@ ms.locfileid: "146276037"
 
 ## <a name="how-do-i-contribute"></a>기고하려면 어떻게 해야 하나요?
 
-- MCT라면 누구나 GitHub 리포지토리에서 코드 또는 콘텐츠에 대한 끌어오기 요청을 제출할 수 있으며, Microsoft와 과정 작성자는 필요하다면 콘텐츠 및 랩 코드 변경 내용을 심사하고 포함합니다.
+- MCT라면 누구나 GitHub 리포지토리에서 코드 또는 콘텐츠에 대한 끌어오기 요청을 제출할 수 있으며, Microsoft와 과정 작성자는 필요한 경우 콘텐츠 및 랩 코드 변경 내용을 심사하고 포함합니다.
 
 - 버그, 변경 내용, 개선 사항 및 아이디어를 제출할 수 있습니다.  우리보다 먼저 새 Azure 기능을 찾으셨나요?  새로운 데모를 제출해 주세요!
 
