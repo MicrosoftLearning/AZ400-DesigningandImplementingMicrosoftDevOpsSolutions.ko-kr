@@ -176,7 +176,7 @@ Git 커밋의 구성 요소는 다음과 같습니다.
 이 작업에서는 Visual Studio Code를 사용하여 변경 내용을 스테이징하는 방법을 살펴봅니다. 변경 내용을 스테이징하면 커밋에 특정 파일을 선택하여 추가하고 다른 파일의 변경 내용은 제외할 수 있습니다.
 
 1. **Visual Studio Code** 창으로 다시 전환합니다.
-1. 첫 번째 주석을 `//My second change`로 변경하고 파일을 저장하여 열려 있는 **CartItem.cs** 클래스를 업데이트합니다.
+1. 첫 번째 주석을 다음으로 변경하고 파일을 저장하여 열려 있는 **CartItem.cs** 클래스를 업데이트합니다.
 1. Visual Studio Code 창에서 **탐색기** 탭으로 다시 전환한 후 **/PartsUnlimited-aspnet45/src/PartsUnlimitedWebsite/Models/Category.cs** 파일로 이동하여 해당 파일을 선택합니다. 그러면 세부 정보 창에 파일 내용이 자동으로 표시됩니다.
 1. **Category.cs** 파일의 `public int CategoryId { get; set; }` 항목 바로 위에 다음 주석이 포함된 줄을 추가하고 파일을 저장합니다.
 
