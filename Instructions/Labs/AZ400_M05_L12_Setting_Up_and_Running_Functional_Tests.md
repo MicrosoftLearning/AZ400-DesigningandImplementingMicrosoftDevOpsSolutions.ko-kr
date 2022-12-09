@@ -66,12 +66,12 @@ lab:
 1. **[Azure에 배포](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Falmvm%2Fmaster%2Flabs%2Fvstsextend%2Fselenium%2Farmtemplate%2Fazuredeploy.json)** 링크에서 여기를 클릭합니다. 그러면 Azure Portal의 **사용자 지정 배포** 블레이드로 자동 리디렉션됩니다.
 1. 메시지가 표시되면 이 랩에서 사용할 Azure 구독의 Owner 역할, 그리고 해당 구독과 연결된 Azure AD 테넌트의 전역 관리자 역할이 지정된 사용자 계정으로 로그인합니다.
 1. **사용자 지정 배포** 블레이드에서 **템플릿 편집**을 클릭합니다.
-1. **템플릿 편집** 블레이드에서 줄 `"https://raw.githubusercontent.com/microsoft/azuredevopslabs/master/labs/vstsextend/selenium/armtemplate/chrome_firefox_VSTSagent_IIS.ps1"`을 찾아서 `https://raw.githubusercontent.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/master/Allfiles/Labs/11b/chrome_firefox_VSTSagent_IIS.ps1`로 바꾸고 **저장**을 클릭합니다.
+1. **템플릿 편집** 블레이드에서 줄 `"https://raw.githubusercontent.com/microsoft/azuredevopslabs/master/labs/vstsextend/selenium/armtemplate/chrome_firefox_VSTSagent_IIS.ps1"`을 찾아서 `"https://raw.githubusercontent.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/master/Allfiles/Labs/11b/chrome_firefox_VSTSagent_IIS.ps1"`로 바꾸고 **저장**을 클릭합니다.
 1. **사용자 지정 배포** 블레이드로 돌아가서 다음 설정을 지정합니다.
 
     | 설정 | 값 |
     | --- | --- |
-    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | 새 리소스 그룹의 이름 **az400m11l02-RG** |
     | 지역 | 이 랩에서 Azure 리소스를 배포할 Azure 지역의 이름 |
     | 가상 컴퓨터 이름 | **az40011bvm** |
