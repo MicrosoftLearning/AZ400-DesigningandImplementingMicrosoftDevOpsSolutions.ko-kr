@@ -1,10 +1,10 @@
 ---
 lab:
-  title: '랩 12: 기능 테스트 설정 및 실행'
+  title: 기능 테스트 설정 및 실행
   module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
 ---
 
-# <a name="lab-12-settingupandrunningfunctionaltests"></a>랩 12: 기능 테스트 설정 및 실행
+# <a name="settingupandrunningfunctionaltests"></a>기능 테스트 설정 및 실행
 
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
@@ -71,7 +71,7 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | 새 리소스 그룹의 이름 **az400m11l02-RG** |
     | 지역 | 이 랩에서 Azure 리소스를 배포할 Azure 지역의 이름 |
     | 가상 컴퓨터 이름 | **az40011bvm** |

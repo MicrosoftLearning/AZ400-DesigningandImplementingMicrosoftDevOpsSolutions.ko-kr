@@ -1,10 +1,10 @@
 ---
 lab:
-  title: '랩 04: 에이전트 풀 구성 및 파이프라인 스타일 이해'
+  title: 에이전트 풀 구성 및 파이프라인 스타일 이해
   module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# <a name="lab-04-configuring-agent-pools-and-understanding-pipeline-styles"></a>랩 04: 에이전트 풀 구성 및 파이프라인 스타일 이해
+# <a name="configuring-agent-pools-and-understanding-pipeline-styles"></a>에이전트 풀 구성 및 파이프라인 스타일 이해
 
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 

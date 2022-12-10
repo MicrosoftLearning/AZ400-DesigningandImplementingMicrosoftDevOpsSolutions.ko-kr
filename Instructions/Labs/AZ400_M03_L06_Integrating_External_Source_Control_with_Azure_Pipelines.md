@@ -1,10 +1,10 @@
 ---
 lab:
-  title: '랩 06: Azure Pipelines를 사용하여 외부 소스 제어 기능 통합'
+  title: 외부 소스 제어를 Azure Pipelines와 통합
   module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# <a name="lab-06-integrating-external-source-control-with-azure-pipelines"></a>랩 06: Azure Pipelines를 사용하여 외부 소스 제어 기능 통합
+# <a name="integrating-external-source-control-with-azure-pipelines"></a>외부 소스 제어를 Azure Pipelines와 통합
 
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 

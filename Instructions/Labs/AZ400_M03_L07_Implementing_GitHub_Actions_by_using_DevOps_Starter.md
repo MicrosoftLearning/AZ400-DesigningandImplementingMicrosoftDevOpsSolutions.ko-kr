@@ -76,32 +76,34 @@ lab:
     | 리포지토리 | **az400m08l01** |
     | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | 웹앱 이름 | **azurewebsites.net** DNS 네임스페이스에서 유효하고 전역적으로 고유한 호스트 이름 |
-    | 위치 | Azure 웹앱을 프로비저닝할 수 있는 Azure 지역의 이름. **참고**: 프로비전이 완료될 때까지 기다립니다. |
+    | 위치 | Azure 웹앱을 프로비저닝할 수 있는 Azure 지역의 이름. |
 
-   > 이 작업은 1분 정도 걸립니다. **Deploy_DevOps_Project_az400m08l01 \| 개요** 블레이드에서 **리소스로 이동**을 클릭합니다.
-   > **az400m08l01** 블레이드의 **GitHub 워크플로** 타일에서 **권한 부여**를 클릭합니다. **GitHub 권한 부여** 블레이드에서 **권한 부여**를 다시 클릭합니다.
+  > **참고**: 프로비전이 완료될 때까지 기다립니다. 이 작업은 1분 정도 걸립니다.
 
+1. **Deploy_DevOps_Project_az400m08l01 \| 개요** 블레이드에서 **리소스로 이동**을 클릭합니다.
+1. **az400m08l01** 블레이드의 **GitHub 워크플로** 타일에서 **권한 부여**를 클릭합니다.
+1. **GitHub 권한 부여** 블레이드에서 **권한 부여**를 다시 클릭합니다.
 1. **az400m08l01** 블레이드로 돌아가 **GitHub 워크플로** 타일의 작업 진행률을 모니터링합니다.
-1. **참고**: GitHub 워크플로의 빌드, 배포 및 기능 테스트 작업이 완료될 때가지 기다립니다.
-1. 이 작업은 5분 정도 걸립니다.
-1. 작업 2: DevOps Starter 프로젝트 만들기 결과 검토
 
-    > 이 작업에서는 DevOps Starter 프로젝트 만들기 결과를 검토합니다. Azure Portal이 표시되는 웹 브라우저 창의 **az400m08l01** 블레이드에서 **GitHub 워크플로** 섹션을 검토하고 **빌드**, **배포** 및 **기능 테스트** 작업이 정상적으로 완료되었는지 확인합니다.
+    > **참고**: GitHub 워크플로의 빌드, 배포 및 기능 테스트 작업이 완료될 때가지 기다립니다. 이 작업은 5분 정도 걸립니다.
 
-#### <a name="task-2-review-the-results-of-creating-the-devops-starter-project"></a>**az400m08l01** 블레이드에서 **Azure 리소스** 섹션을 검토하고 여기에 App Service 웹앱 인스턴스 및 해당 Application Insights 리소스가 포함되어 있는지 확인합니다.
+#### <a name="task-2-review-the-results-of-creating-the-devops-starter-project"></a>작업 2: DevOps Starter 프로젝트 만들기 결과 검토
 
-**az400m08l01** 블레이드 위쪽에서 이전 작업에서 만든 **워크플로 파일** 및 GitHub 리포지토리 링크를 확인합니다.
+이 작업에서는 DevOps Starter 프로젝트 만들기 결과를 검토합니다.
 
+1. Azure Portal이 표시되는 웹 브라우저 창의 **az400m08l01** 블레이드에서 **GitHub 워크플로** 섹션을 검토하고 **빌드**, **배포** 및 **기능 테스트** 작업이 정상적으로 완료되었는지 확인합니다.
+1. **az400m08l01** 블레이드에서 **Azure 리소스** 섹션을 검토하고 여기에 App Service 웹앱 인스턴스 및 해당 Application Insights 리소스가 포함되어 있는지 확인합니다.
+1. **az400m08l01** 블레이드 위쪽에서 이전 작업에서 만든 **워크플로 파일** 및 GitHub 리포지토리 링크를 확인합니다.
 1. **az400m08l01** 블레이드 위쪽에서 GitHub 리포지토리 링크를 클릭합니다.
 1. GitHub 리포지토리 페이지에서 다음 레이블이 있는 3개의 폴더를 확인합니다.
-1. **.github\workflows** - YAML 형식의 워크플로 파일 포함
-1. **Application** - 샘플 웹 사이트의 코드 포함
-1. **ArmTemplates** - 워크플로에서 Azure 리소스 프로비저닝에 사용되는 Azure Resource Manager 템플릿 포함
 
-    - GitHub 리포지토리 페이지에서 **.github/workflows**를 클릭한 다음, **devops-starter-workflow.yml** 항목을 클릭합니다.
-    - **devops-starter-workflow.yml**의 내용이 표시된 GitHub 리포지토리 페이지에서 해당 내용을 검토하고 **빌드**, **배포** 및 **기능 테스트** 작업 정의가 포함되었는지 확인합니다.
-    - GitHub 리포지토리 페이지의 도구 모음에서 **작업**을 클릭합니다.
+    - **.github\workflows** - YAML 형식의 워크플로 파일 포함
+    - **Application** - 샘플 웹 사이트의 코드 포함
+    - **ArmTemplates** - 워크플로에서 Azure 리소스 프로비저닝에 사용되는 Azure Resource Manager 템플릿 포함
 
+1. GitHub 리포지토리 페이지에서 **.github/workflows**를 클릭한 다음, **devops-starter-workflow.yml** 항목을 클릭합니다.
+1. **devops-starter-workflow.yml**의 내용이 표시된 GitHub 리포지토리 페이지에서 해당 내용을 검토하고 **빌드**, **배포** 및 **기능 테스트** 작업 정의가 포함되었는지 확인합니다.
+1. GitHub 리포지토리 페이지의 도구 모음에서 **작업**을 클릭합니다.
 1. GitHub 리포지토리 페이지의 **작업** 탭에 있는 **모든 워크플로** 섹션에서 가장 최근에 실행된 워크플로를 나타내는 항목을 클릭합니다.
 1. 워크플로 실행 페이지에서 워크플로 상태뿐만 아니라 **주석** 및 **아티팩트** 목록도 검토합니다.
 1. GitHub 리포지토리 페이지의 도구 모음에서 **설정**을 클릭하고 **설정** 탭에서 **비밀**을 클릭합니다.
@@ -112,10 +114,7 @@ lab:
 1. GitHub 리포지토리 페이지의 도구 모음에서 **작업**을 클릭합니다.
 1. **모든 워크플로** 섹션에서 **Index.cshtml 업데이트** 항목을 클릭합니다.
 1. **devops-starter-workflow.yml** 섹션에서 배포 진행률을 모니터링하고 정상적으로 완료되었는지 확인합니다.
-1. **참고**: **“azure/CLI@1”를 사용하는 작업이 실패**하면 **devops-starter-workflow.yml** 파일(기본 azure cli 버전 변경)에 다음 변경 내용을 커밋하고 성공적으로 완료되었는지 확인합니다.
-1. Azure Portal에서 DevOps Starter 블레이드를 표시하는 브라우저 창으로 전환하여 **애플리케이션 엔드포인트** 항목 옆에 있는 **찾아보기** 링크를 클릭합니다.
-1. 새로 연 웹 브라우저 창에서 GitHub 리포지토리에서 커밋한 변경 내용을 나타내는 업데이트된 텍스트가 웹앱 홈 페이지에 표시되는지 확인합니다.
-     > 연습 2: Azure 랩 리소스 제거
+     > **참고**: **“azure/CLI@1”를 사용하는 작업이 실패**하면 **devops-starter-workflow.yml** 파일(기본 azure cli 버전 변경)에 다음 변경 내용을 커밋하고 성공적으로 완료되었는지 확인합니다.
      > <!-- {% raw %}) -->
      > ```
      >     - name: Deploy ARM Template
@@ -129,34 +128,34 @@ lab:
      > ```
      > <!-- {% endraw %}) -->
 
-1. 이 연습에서는 예상치 못한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
-1. **참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요.
+1. Azure Portal에서 DevOps Starter 블레이드를 표시하는 브라우저 창으로 전환하여 **애플리케이션 엔드포인트** 항목 옆에 있는 **찾아보기** 링크를 클릭합니다.
+1. 새로 연 웹 브라우저 창에서 GitHub 리포지토리에서 커밋한 변경 내용을 나타내는 업데이트된 텍스트가 웹앱 홈 페이지에 표시되는지 확인합니다.
 
-### <a name="exercise-2-remove-the-azure-lab-resources"></a>사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
+### <a name="exercise-2-remove-the-azure-lab-resources"></a>연습 2: Azure 랩 리소스 제거
 
-작업 1: Azure 랩 리소스 제거
+이 연습에서는 예상치 못한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
 
->이 작업에서는 Azure Cloud Shell을 사용하여 불필요한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다. Azure Portal의 **Cloud Shell** 창에서 **Bash** 세션을 시작합니다.
+>**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
-#### <a name="task-1-remove-the-azure-lab-resources"></a>다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
+#### <a name="task-1-remove-the-azure-lab-resources"></a>작업 1: Azure 랩 리소스 제거
 
-다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
+이 작업에서는 Azure Cloud Shell을 사용하여 불필요한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
 
-1. **참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
-1. 검토
+1. Azure Portal의 **Cloud Shell** 창에서 **Bash** 세션을 시작합니다.
+1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
 
     ```sh
     az group list --query "[?starts_with(name,'az400m08l01')].name" --output tsv
     ```
 
-1. 이 랩에서는 DevOps Starter를 사용하여 Azure 웹앱을 배포하는 GitHub Action 워크플로를 구현했습니다.
+1. 다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
 
     ```sh
     az group list --query "[?starts_with(name,'az400m08l01')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+    >**참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
 
-## <a name="review"></a>Review
+## <a name="review"></a>검토
 
-In this lab, you implemented a GitHub Action workflow that deploys an Azure web app by using DevOps Starter.
+이 랩에서는 DevOps Starter를 사용하여 Azure 웹앱을 배포하는 GitHub Action 워크플로를 구현했습니다.

@@ -1,10 +1,10 @@
 ---
 lab:
-  title: '랩 05: Azure Pipelines를 통한 연속 통합 지원'
+  title: Azure Pipelines를 통한 연속 통합 지원
   module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# <a name="lab-05-enabling-continuous-integration-with-azure-pipelines"></a>랩 05: Azure Pipelines를 통한 연속 통합 지원
+# <a name="enabling-continuous-integration-with-azure-pipelines"></a>Azure Pipelines를 통한 연속 통합 지원
 
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 

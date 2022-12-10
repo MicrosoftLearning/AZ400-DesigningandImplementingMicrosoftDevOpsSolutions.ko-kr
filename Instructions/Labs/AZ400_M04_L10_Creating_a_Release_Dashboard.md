@@ -1,10 +1,10 @@
 ---
 lab:
-  title: '랩 10: 릴리스 대시보드 만들기'
+  title: 릴리스 대시보드 만들기
   module: 'Module 04: Design and implement a release strategy'
 ---
 
-# <a name="lab-10-creating-a-release-dashboard"></a>랩 10: 릴리스 대시보드 만들기
+# <a name="creating-a-release-dashboard"></a>릴리스 대시보드 만들기
 
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 

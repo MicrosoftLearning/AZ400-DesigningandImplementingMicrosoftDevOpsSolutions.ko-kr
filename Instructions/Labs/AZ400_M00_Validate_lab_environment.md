@@ -1,10 +1,10 @@
 ---
 lab:
-  title: '랩 00: 랩 환경 유효성 검사'
+  title: 랩 환경 유효성 검사
   module: 'Module 0: Welcome'
 ---
 
-# <a name="lab-00-validate-lab-environment"></a>랩 00: 랩 환경 유효성 검사
+# <a name="validate-lab-environment"></a>랩 환경 유효성 검사
 
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
