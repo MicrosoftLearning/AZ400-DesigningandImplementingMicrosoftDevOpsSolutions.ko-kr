@@ -14,9 +14,9 @@ lab:
 
 1. 강사 또는 다른 소스로부터 새로운 **Azure Pass 프로모션 코드**를 받습니다.
 2. 프라이빗 브라우저 세션을 사용하여 [https://account.microsoft.com](https://account.microsoft.com)에서 새로운 **개인 MSA(Microsoft 계정)** 을 받습니다.
-3. 같은 브라우저 세션을 사용하여 [https://www.microsoftazurepass.com](https://www.microsoftazurepass.com)으로 이동하고 MSA(Microsoft 계정)를 사용하여 Azure Pass를 상환합니다. 자세한 내용은 [Microsoft Azure Pass 교환](https://www.microsoftazurepass.com/Home/HowTo?Length=5)을 참조하세요. 교환을 위한 지침을 따릅니다. 
+3. 같은 브라우저 세션을 사용하여 [https://www.microsoftazurepass.com](https://www.microsoftazurepass.com)으로 이동하고 MSA(Microsoft 계정)를 사용하여 Azure Pass를 상환합니다. 자세한 내용은 [Microsoft Azure Pass 교환](https://www.microsoftazurepass.com/Home/HowTo?Length=5)을 참조하세요. 교환을 위한 지침을 따릅니다.
 
-4. 브라우저를 열고 [https://portal.azure.com](https://portal.azure.com)으로 이동한 다음, Azure 포털 화면 위에서 **Azure DevOps**를 검색합니다. 최종 페이지에서 **Azure DevOps 조직**을 클릭합니다. 
+4. 브라우저를 열고 [https://portal.azure.com](https://portal.azure.com)으로 이동한 다음, Azure 포털 화면 위에서 **Azure DevOps**를 검색합니다. 최종 페이지에서 **Azure DevOps 조직**을 클릭합니다.
 5. 그런 다음 **내 Azure DevOps 조직**이라고 표시된 링크를 클릭하거나 [https://aex.dev.azure.com](https://aex.dev.azure.com)으로 바로 이동합니다.
 6. On the **몇 가지 추가 정보를 입력해 주세요** 페이지에서 **계속**을 선택합니다.
 7. 왼쪽의 드롭다운 상자에서 “Microsoft 계정” 대신 **기본 디렉터리**를 선택합니다.
@@ -27,7 +27,7 @@ lab:
 12. **Azure DevOps**에서 새로 만든 조직이 열리면 왼쪽 아래에서 **조직 설정**을 클릭합니다.
 13. **조직 설정** 화면에서 **청구**를 클릭합니다(이 화면이 열리기까지 몇 초 정도 걸림).
 14. **청구 설정**을 클릭하고 화면 오른쪽에서 **Azure Pass - 스폰서쉽** 구독을 선택합니다. 그런 다음 **저장**을 클릭하여 해당 구독과 조직을 연결합니다.
-15. 화면 위쪽에 연결된 Azure Subscription ID가 표시되면 **MS Hosted CI/CD**의 **Paid parallel jobs**의 수를 0에서 **1**로 변경합니다. 그런 다음 아래쪽에 있는 **저장** 단추를 클릭합니다. 
+15. 화면 위쪽에 연결된 Azure Subscription ID가 표시되면 **MS Hosted CI/CD**의 **Paid parallel jobs**의 수를 0에서 **1**로 변경합니다. 그런 다음 아래쪽에 있는 **저장** 단추를 클릭합니다.
 16. **조직 설정**에서 **보안** 섹션으로 이동하여 **정책**을 클릭합니다.
 17. **OAuth를 통해 타사 애플리케이션 액세스**를 **켜기**로 전환합니다.
     > 참고: OAuth 설정으로 DemoDevOpsGenerator와 같은 도구에서 확장을 등록할 수 있습니다. 이 기능이 없으면 필요한 확장이 부족하여 일부 랩이 실패할 수 있습니다.
