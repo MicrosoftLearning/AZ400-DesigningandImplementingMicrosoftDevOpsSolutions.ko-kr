@@ -146,7 +146,7 @@ Azure Artifacts를 활용하면 Azure DevOps에서 NuGet, npm 및 Maven 패키�
 1. 같은 파일 탐색기 창에서 **파일** 메뉴 머리글을 선택하고 드롭다운 메뉴에서 **Windows PowerShell 열기**를 선택합니다. 그런 다음 계단식 메뉴에서 **관리자 권한으로 Windows PowerShell 열기**를 클릭합니다.
 1. **관리자: Windows PowerShell** 창에서 다음을 실행하여 프로젝트에서 **.nupkg** 파일을 만듭니다.
 
-    > **참고**: 이 방법을 사용하면 배포용 NuGet 비트를 빠르게 패키지로 만들 수 있습니다. NuGet은 매우 자세하게 사용자 지정할 수 있습니다. 자세한 내용은 [NuGet 패키지 만들기 페이지](https://docs.microsoft.com/en-us/nuget/create-packages/overview-and-workflowhttps:/docs.microsoft.com/en-us/nuget/create-packages/overview-and-workflow)를 참조하세요.
+    > **참고**: 이 방법을 사용하면 배포용 NuGet 비트를 빠르게 패키지로 만들 수 있습니다. NuGet은 매우 자세하게 사용자 지정할 수 있습니다. 자세한 내용은 [NuGet 패키지 만들기 페이지](https://docs.microsoft.com/en-us/nuget/create-packages/overview-and-workflow)를 참조하세요.
 
     ```
     ./nuget.exe pack ./PartsUnlimited.Shared.csproj
