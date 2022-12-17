@@ -1,10 +1,10 @@
 ---
 lab:
-  title: '랩 11: YAML을 통해 파이프라인을 코드로 구성'
+  title: YAML을 통해 파이프라인을 코드로 구성
   module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
 ---
 
-# <a name="lab-11-configuring-pipelines-as-code-with-yaml"></a>랩 11: YAML을 통해 파이프라인을 코드로 구성
+# <a name="configuring-pipelines-as-code-with-yaml"></a>YAML을 통해 파이프라인을 코드로 구성
 
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
@@ -34,29 +34,34 @@ lab:
 
 ### <a name="exercise-0-configure-the-lab-prerequisites"></a>연습 0: 랩 필수 구성 요소 구성
 
-이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 Azure DevOps 데모 생성기 템플릿과 Azure 리소스(Azure 웹앱 및 Azure SQL 데이터베이스 포함)를 기반으로 하여 미리 구성된 Parts Unlimited 팀 프로젝트를 설정합니다.
+이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 [eShopOnWeb](https://dev.azure.com/unhueteb/_git/eshopweb-az400)을 기반으로 하여 새 Azure DevOps 프로젝트와 리포지토리를 설정합니다.
 
-#### <a name="task-1-configure-the-team-project"></a>작업 1: 팀 프로젝트 구성
+#### <a name="task-1--skip-if-done-create-and-configure-the-team-project"></a>작업 1: (완료된 경우 건너뛰기) 팀 프로젝트 만들기 및 구성
 
-이 작업에서는 Azure DevOps 데모 생성기를 사용하여 **PartsUnlimited-YAML** 템플릿을 기반으로 새 프로젝트를 생성합니다.
+이 작업에서는 여러 랩에서 사용할 **eShopOnWeb_MultiStageYAML** Azure DevOps 프로젝트를 만듭니다.
 
-1. 랩 컴퓨터에서 웹 브라우저를 시작하고 [Azure DevOps 데모 생성기](https://azuredevopsdemogenerator.azurewebsites.net)로 이동합니다. 이 유틸리티 사이트에서는 계정 내에서 새 Azure DevOps 프로젝트를 만드는 프로세스를 자동으로 진행할 수 있습니다. 이 프로젝트에는 랩에 필요한 작업 항목, 리포지토리 등의 콘텐츠가 미리 입력되어 있습니다.
+1.  랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직을 엽니다. **새 프로젝트**를 클릭합니다. 프로젝트 이름을 **eShopOnWeb_MultiStageYAML**로 설정하고 다른 필드는 기본값으로 유지합니다. **만들기**를 클릭합니다.
 
-    > **참고**: 사이트에 대한 자세한 내용은 [Azure DevOps Services 데모 생성기 도구란 무엇인가요?](https://docs.microsoft.com/en-us/azure/devops/demo-gen)를 참조하세요.
+    ![프로젝트 만들기](images/create-project.png)
 
-1. **로그인**을 클릭하고 Azure DevOps 구독과 연결된 Microsoft 계정을 사용하여 로그인합니다.
-1. 필요한 경우 **Azure DevOps 데모 생성기** 페이지에서 **수락**을 클릭하여 Azure DevOps 구독에 액세스하는 데 필요한 권한 요청을 수락합니다.
-1. **새 프로젝트 만들기** 페이지의 **새 프로젝트 이름** 텍스트 상자에 **YAML을 통해 파이프라인을 코드로 구성**을 입력합니다. 그런 다음 **조직 선택** 드롭다운 목록에서 Azure DevOps 조직을 선택하고 **템플릿 선택**을 클릭합니다.
-1. 템플릿 목록의 도구 모음에서 **일반**을 클릭하고 **PartsUnlimited-YAML** 템플릿을 선택한 다음 **템플릿 선택**을 클릭합니다.
-1. **새 프로젝트 만들기** 페이지로 돌아와서 **프로젝트 만들기**를 클릭합니다.
+#### <a name="task-2--skip-if-done-import-eshoponweb-git-repository"></a>작업 2: (완료된 경우 건너뛰기) eShopOnWeb Git 리포지토리 가져오기
 
-    > **참고**: 프로세스가 완료될 때까지 기다립니다. 이 작업은 2분 정도 걸립니다. 프로세스가 실패하면 DevOps 조직으로 이동하여 프로젝트를 삭제한 후에 다시 시도합니다.
+이 작업에서는 여러 랩에서 사용할 eShopOnWeb Git 리포지토리를 가져옵니다.
 
-1. **새 프로젝트 만들기** 페이지에서 **프로젝트로 이동**을 클릭합니다.
+1.  랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb_MultiStageYAML** 프로젝트를 엽니다. **Repos > 파일**, **리포지토리 가져오기**를 클릭합니다. **가져오기**를 선택합니다. **Git 리포지토리 가져오기** 창에서 다음 URL https://github.com/MicrosoftLearning/eShopOnWeb.git 을 붙여넣고 **가져오기**를 클릭합니다.
+
+    ![리포지토리 가져오기](images/import-repo.png)
+
+1.  리포지토리는 다음과 같은 방식으로 구성됩니다.
+    - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
+    - 컨테이너를 사용(VS Code 또는 GitHub Codespaces에서 로컬로 사용)하여 개발하는 **.devcontainer** 폴더 컨테이너 설정
+    - **.azure** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
+    - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
+    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 6 웹 사이트가 포함되어 있습니다.
 
 #### <a name="task-2-create-azure-resources"></a>작업 2: Azure 리소스 생성
 
-이 작업에서는 Azure Portal을 사용하여 Azure 웹앱과 Azure SQL 데이터베이스를 만듭니다.
+이 작업에서는 Azure Portal을 사용하여 Azure 웹앱을 만듭니다.
 
 1. 랩 컴퓨터에서 웹 브라우저를 시작하여 [**Azure Portal**](https://portal.azure.com)로 이동한 다음, 이 랩에서 사용할 Azure 구독의 Owner 역할, 그리고 해당 구독과 연결된 Azure AD 테넌트의 전역 관리자 역할을 가진 사용자 계정으로 로그인합니다.
 1. Azure Portal의 도구 모음에서 검색 텍스트 상자 바로 오른쪽에 있는 **Cloud Shell** 아이콘을 클릭합니다.
@@ -64,151 +69,81 @@ lab:
 
     >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 선택합니다.
 
-1. **Cloud Shell** 창의 **Bash** 프롬프트에서 다음 명령을 실행하여 리소스 그룹을 만듭니다. 여기서 `<region>` 자리 표시자는 ‘eastus’ 등의 가장 가까운 Azure 지역 이름으로 바꿉니다.
+    > **참고:** 지역 목록 및 해당 별칭을 보려면 Azure Cloud Shell - Bash에서 다음 명령을 실행합니다.
+
+    ```bash
+    az account list-locations -o table
+    ```
+
+1. **Bash** 프롬프트의 **Cloud Shell** 창에서 다음 명령을 실행하여 리소스 그룹을 만듭니다. 여기서 `<region>` 자리 표시자는 가장 가까운 지역(예: 'centralus', 'westeurope' 또는 사용자가 선택하는 기타 사용 가능한 지역) 이름으로 바꿉니다.
 
     ```bash
     LOCATION='<region>'
     ```
 
     ```bash
-    RESOURCEGROUPNAME='az400m11l01-RG'
+    RESOURCEGROUPNAME='az400m05l11-RG'
     az group create --name $RESOURCEGROUPNAME --location $LOCATION
     ```
 
 1. 다음 명령을 실행하여 Windows App Service 요금제를 만들려면:
 
     ```bash
-    SERVICEPLANNAME='az400l11a-sp1'
+    SERVICEPLANNAME='az400m05l11-sp1'
     az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
     ```
 
 1. 고유한 이름을 사용하여 웹앱을 만듭니다.
 
     ```bash
-    WEBAPPNAME=partsunlimited$RANDOM$RANDOM
+    WEBAPPNAME=eshoponWebYAML$RANDOM$RANDOM
     az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME
     ```
 
     > **참고**: 웹앱의 이름을 적어 둡니다. 이 랩의 후반부에서 필요합니다.
 
-1. 다음으로, Azure SQL Server를 만듭니다.
-
-    ```bash
-    USERNAME="Student"
-    SQLSERVERPASSWORD="Pa55w.rd1234"
-    SERVERNAME="partsunlimitedserver$RANDOM"
-
-    az sql server create --name $SERVERNAME --resource-group $RESOURCEGROUPNAME \
-    --location $LOCATION --admin-user $USERNAME --admin-password $SQLSERVERPASSWORD
-    ```
-
-1. 웹앱은 SQL 서버에 액세스할 수 있어야 하므로 SQL Server 방화벽 규칙에서 Azure 리소스에 대한 액세스를 허용해야 합니다.
-
-    ```bash
-    STARTIP="0.0.0.0"
-    ENDIP="0.0.0.0"
-    az sql server firewall-rule create --server $SERVERNAME --resource-group $RESOURCEGROUPNAME \
-    --name AllowAzureResources --start-ip-address $STARTIP --end-ip-address $ENDIP
-    ```
-
-1. 이제 해당 서버 내에 데이터베이스를 만듭니다.
-
-    ```bash
-    az sql db create --server $SERVERNAME --resource-group $RESOURCEGROUPNAME --name PartsUnlimited \
-    --service-objective S0
-    ```
-
-1. 만든 웹앱에는 해당 구성의 데이터베이스 연결 문자열이 필요하므로 다음 명령을 실행하여 이 문자열을 준비하고 웹앱의 앱 설정에 추가합니다.
-
-    ```bash
-    CONNSTRING=$(az sql db show-connection-string --name PartsUnlimited --server $SERVERNAME \
-    --client ado.net --output tsv)
-
-    CONNSTRING=${CONNSTRING//<username>/$USERNAME}
-    CONNSTRING=${CONNSTRING//<password>/$SQLSERVERPASSWORD}
-
-    az webapp config connection-string set --name $WEBAPPNAME --resource-group $RESOURCEGROUPNAME \
-    -t SQLAzure --settings "DefaultConnectionString=$CONNSTRING" 
-    ```
+1. Azure Cloud Shell은 닫고, 브라우저에서 Azure Portal은 열어 둡니다.
 
 ### <a name="exercise-1-configure-cicd-pipelines-as-code-with-yaml-in-azure-devops"></a>연습 1: Azure DevOps에서 YAML을 사용하여 CI/CD 파이프라인을 코드로 구성
 
 이 연습에서는 Azure DevOps에서 YAML을 사용하여 CI/CD 파이프라인을 코드로 구성합니다.
 
-#### <a name="task-1-delete-the-existing-pipeline"></a>작업 1: 기존 파이프라인 삭제
-
-이 작업에서는 기존 파이프라인을 삭제합니다.
-
-1. 랩 컴퓨터에서 Azure DevOps 포털의 **YAML을 통해 파이프라인을 코드로 구성** 프로젝트가 표시된 브라우저 창으로 전환한 다음 세로 탐색 창에서 **파이프라인**을 선택합니다.
-
-    > **참고**: YAML 파이프라인을 구성하기 전에 기존 빌드 파이프라인을 사용하지 않도록 설정해야 합니다.
-
-1. **파이프라인** 창에서 **PartsUnlimited** 항목을 선택합니다.
-1. **PartsUnlimited** 블레이드 오른쪽 위의 세로 줄임표 기호를 클릭하고 드롭다운 메뉴에서 **삭제**를 선택합니다.
-1. **PartsUnlimited**라고 쓰고 **삭제**를 클릭합니다.
-1. 세로 탐색 창에서 **Repos > 파일**을 선택합니다. **azure-pipelines.yml** 파일에서 **master** 분기(**파일** 창 상단의 드롭다운)에 있는지 확인하고, 세로 줄임표 기호를 클릭하고 드롭다운 메뉴에서 **삭제**를 선택합니다. **커밋**을 클릭하여 master 분기에 변경 사항을 커밋합니다(기본 옵션 유지).
-
-#### <a name="task-2-add-a-yaml-build-definition"></a>작업 2: YAML 빌드 정의 추가
+#### <a name="task-1-add-a-yaml-build-definition"></a>작업 1: YAML 빌드 정의 추가
 
 이 작업에서는 기존 프로젝트에 YAML 빌드 정의를 추가합니다.
 
 1. **Pipelines** 허브의 **파이프라인** 창으로 다시 이동합니다.
 1. **첫 번째 파이프라인 만들기** 창에서 **파이프라인 만들기**를 클릭합니다.
 
-    > **참고**: 여기서는 마법사를 사용하여 프로젝트를 기준으로 YAML 정의를 자동 작성합니다.
+    > **참고**: 여기서는 마법사를 사용하여 프로젝트를 기준으로 YAML 파이프라인 정의를 만듭니다.
 
 1. **코드 위치** 창에서 **Azure Repos Git(YAML)** 옵션을 클릭합니다.
-1. **리포지토리 선택** 창에서 **PartsUnlimited**를 클릭합니다.
-1. **파이프라인 구성** 창에서 **ASP<nolink>.NET**을 클릭하여 이 템플릿을 파이프라인의 시작점으로 사용합니다. 그러면 **파이프라인 YAML 검토** 창이 열립니다.
-
-    > **참고**: 파이프라인 정의는 리포지토리 루트에 **azure-pipelines.yml** 파일로 저장됩니다. 이 파일에는 일반적인 ASP<nolink>.NET 솔루션을 빌드하고 테스트하는 데 필요한 단계가 포함됩니다. 필요에 따라 빌드를 사용자 지정할 수도 있습니다. 이 시나리오에서는 Windows 2019를 실행하는 VM을 강제로 사용하도록 **풀**을 업데이트합니다.
-
-1. `trigger`가 **마스터**인지 확인합니다.
-
-    > **참고**: Repos에서 리포지토리에 **master** 또는 **main** 분기가 있는지 확인합니다. 새로운 리포지토리에 대한 기본 분기 이름을 선택할 수 있습니다. [기본 분기 변경](https://docs.microsoft.com/en-us/azure/devops/repos/git/change-default-branch?view=azure-devops#choosing-a-name).
-
-1. **파이프라인 YAML 검토** 창의 줄 **10**에서 `vmImage: 'windows-latest'`를 `vmImage: 'windows-2019'`로 바꿉니다.
-1. **VSTest@2** 작업을 제거합니다.
-
-    ```yaml
-    - task: VSTest@2
-      inputs:
-        platform: '$(buildPlatform)'
-        configuration: '$(buildConfiguration)'
-    ```
-
-1. **파이프라인 YAML 검토** 창에서 **저장 및 실행**을 클릭합니다.
-1. **저장 및 실행** 창에서 기본 설정을 수락하고 **저장 및 실행**을 클릭합니다.
-1. 파이프라인 실행 창의 **작업** 섹션에서 **작업**을 클릭하여 작업 진행률을 모니터링하여 작업이 정상적으로 완료되는지 확인합니다.
+1. **리포지토리 선택** 창에서 **eShopOnWeb_MultiStageYAML**을 클릭합니다.
+1. **파이프라인 구성** 창에서 아래로 스크롤하여 **기존 Azure Pipelines YAML 파일**을 선택합니다.
+1. **기존 YAML 파일 선택** 블레이드에서 다음 매개 변수를 지정합니다.
+- 분기: **main**
+- 경로: **.ado/eshoponweb-ci.yml**
+1. **계속**을 클릭하여 이러한 설정을 저장합니다.
+1. **파이프라인 YAML 검토** 화면에서 **실행**을 클릭하여 빌드 파이프라인 프로세스를 시작합니다.
+1. 빌드 파이프라인이 성공적으로 완료될 때까지 기다립니다. 소스 코드 자체에 대한 경고는 이 랩 연습과 관련이 없으므로 무시하십시오.
 
     > **참고**: YAML 파일의 각 작업(경고와 오류 포함)을 검토할 수 있습니다.
 
-#### <a name="task-3-add-continuous-delivery-to-the-yaml-definition"></a>작업 3: YAML 정의에 지속적인 업데이트 추가
+#### <a name="task-2-add-continuous-delivery-to-the-yaml-definition"></a>작업 2: YAML 정의에 지속적인 업데이트 추가
 
 이 작업에서는 이전 작업에서 만든 파이프라인의 YAML 기반 정의에 지속적인 업데이트를 추가합니다.
 
 > **참고**: 빌드 및 테스트 프로세스가 정상적으로 완료되었으므로 이제 YAML 정의에 업데이트를 추가할 수 있습니다.
 
 1. 파이프라인 실행 창 오른쪽 위의 줄임표 기호를 클릭하고 드롭다운 메뉴에서 **파이프라인 편집**을 클릭합니다.
-1. **azure-pipelines.yaml** 파일 콘텐츠가 표시된 창의 줄 **8**에서 `trigger` 섹션 뒤에 아래 콘텐츠를 추가하여 YAML 파이프라인에서 **빌드** 단계를 정의합니다.
+1. **eShopOnWeb_MultiStageYAML/.ado/eshoponweb-ci.yml** 파일의 내용이 표시된 창에서 파일의 끝(56번 줄)으로 이동한 후 **Enter/Return** 키를 눌러 빈 줄을 새로 추가합니다.
+1. **57**번 줄에서 다음 콘텐츠를 추가하여 YAML 파이프라인에서 **릴리스** 단계를 정의합니다.
 
     > **참고**: 파이프라인을 더욱 효율적으로 구성하고 진행률을 추적하는 데 필요한 어떤 단계든 정의할 수 있습니다.
 
     ```yaml
-    stages:
-    - stage: Build
-      jobs:
-      - job: Build
-    ```
-
-1. YAML 파일의 나머지 콘텐츠를 선택하고 **Tab** 키를 두 번 눌러 4칸 들여쓰기를 적용합니다(```job: Build```와 동일한 들여쓰기로 배치되어야 함).
-
-    > **참고**: 이렇게 하면 `pool` 섹션으로 시작하는 모든 코드가 `job: Build`의 일부가 됩니다.
-
-1. 파일 아래쪽에 아래 구성을 추가하여 두 번째 단계를 정의합니다.
-
-    ```yaml
     - stage: Deploy
+      displayName: Deploy to an Azure Web App
       jobs:
       - job: Deploy
         pool:
@@ -225,120 +160,253 @@ lab:
 
     - **Azure 구독** 드롭다운 목록에서 **추가**를 클릭합니다. 이 랩 앞부분에서 Azure 리소스를 배포한 Azure 구독을 선택합니다. 그런 다음 권한 부여를 클릭하고 메시지가 표시되면 Azure 리소스를 배포할 때 사용한 것과 같은 사용자 계정을 사용하여 인증을 진행합니다.
     - **App Service 이름** 드롭다운 목록에서 랩 앞부분에서 배포한 웹앱의 이름을 선택합니다.
-    - **패키지 또는 폴더** 텍스트 상자에 `$(System.ArtifactsDirectory)/drop/*.zip`을 입력합니다.
+    - **패키지 또는 폴더** 텍스트 상자에서 기본값을 `$(Build.ArtifactStagingDirectory)/**/Web.zip`으로 **업데이트**합니다.
+1. **추가** 단추를 클릭하여 도우미 창에서 설정을 확인합니다.
 
     > **참고**: 그러면 YAML 파이프라인 정의에 배포 작업이 자동으로 추가됩니다.
 
-1. 편집기에서 추가한 작업을 선택한 상태로 **Tab** 키를 두 번 눌러 4칸 들여쓰기를 적용합니다. 그러면 해당 작업이 **steps** 작업의 하위 작업으로 나열됩니다.
+1. 편집기에 추가된 코드 조각은 azureSubscription 및 WebappName 매개 변수의 이름을 반영하여 아래와 유사해야 합니다.
+
+```yaml
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
+        appType: 'webApp'
+        WebAppName: 'eshoponWebYAML369825031'
+        packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
+```
+
+1. 작업이 **단계** 작업의 자식으로 나열되어 있는지 확인합니다. 그렇지 않은 경우, 추가된 작업에서 모든 줄을 선택하고 **Tab** 키를 두 번 눌러 4칸 들여쓰기를 적용합니다. 그러면 해당 작업이 **단계** 작업의 자식으로 나열됩니다.
 
     > **참고**: 이 랩에서는 **packageForLinux** 매개 변수를 사용하면 안 되지만 Windows나 Linux에서는 해당 매개 변수를 사용할 수 있습니다.
 
-    > **참고**: 기본적으로 이 두 단계는 독립적으로 실행됩니다. 그러므로 첫 단계의 빌드 출력을 추가로 변경하지 않으면 두 번째 단계에서 사용하지 못할 수도 있습니다. 여기서는 이러한 변경을 구현하기 위해 빌드 단계 종료 시 빌드 출력을 게시하는 작업과, 배포 단계 시작 시에 해당 출력을 다운로드하는 작업을 각각 사용합니다.
+    > **참고**: 기본적으로 이 두 단계는 독립적으로 실행됩니다. 그러므로 첫 단계의 빌드 출력을 추가로 변경하지 않으면 두 번째 단계에서 사용하지 못할 수도 있습니다. 이러한 변경 내용을 구현하기 위해, 새 작업을 추가하여 배포 스테이지의 시작 부분에서 배포 아티팩트를 다운로드합니다.
 
-1. 다른 작업을 추가하려면 빌드 단계 끝부분의 빈 줄에 커서를 놓습니다. (`task: VSBuild@1` 바로 아래)
-1. **작업** 창에서 **빌드 아티팩트 게시** 작업을 검색하여 선택합니다.
-1. **빌드 아티팩트 게시** 창에서 기본 설정을 수락하고 **추가**를 클릭합니다.
-
-    > **참고**: 그러면 빌드 아티팩트가 다운로드 가능 위치에 **drop** 별칭으로 게시됩니다.
-
-1. 편집기에서 추가한 작업을 선택한 상태로 **Tab** 키를 두 번 눌러 4칸 들여쓰기를 적용합니다. (아니면 작업이 위에 있는 것처럼 들여쓰여질 때까지 **Tab**을 누릅니다.)
-
-    > **참고**: 해당 작업을 쉽게 읽을 수 있도록 앞뒤에 빈 줄을 추가할 수도 있습니다.
-
-1. **배포** 단계 **steps** 노드 아래의 첫 줄에 커서를 놓습니다.
+1. **배포** 스테이지의 **단계** 노드 아래에 있는 첫 번째 줄에 커서를 놓고 Enter/Return 키를 눌러 빈 줄(64번 줄)을 추가합니다.
 1. **작업** 창에서 **빌드 아티팩트 다운로드** 작업을 검색하여 선택합니다.
+1. 이 작업에 대해 다음 매개 변수를 지정합니다.
+- 다음에 의해 생성된 아티팩트 다운로드: **현재 빌드**
+- 다운로드 유형: **특정 아티팩트**
+- 아티팩트 이름: **목록에서 '웹 사이트' 선택**
+- 대상 디렉터리: **$(Build.ArtifactStagingDirectory)**
 1. **추가**를 클릭합니다.
-1. 편집기에서 추가한 작업을 선택한 상태로 **Tab** 키를 두 번 눌러 4칸 들여쓰기를 적용합니다.
+1. 추가된 코드 조각은 아래와 유사합니다.
+
+```yaml
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'Website'
+        downloadPath: '$(Build.ArtifactStagingDirectory)'
+```
+1. YAML 들여쓰기를 끈 경우, 편집기에서 추가한 작업을 선택한 상태로 **Tab** 키를 두 번 눌러 4칸 들여쓰기를 적용합니다.
 
     > **참고**: 여기서도 해당 작업을 쉽게 읽을 수 있도록 앞뒤에 빈 줄을 추가할 수도 있습니다.
 
-1. `artifactName`을 `drop`으로 지정하는 속성을 다운로드 작업에 추가합니다(공백이 일치해야 함).
-
-    ```
-    artifactName: 'drop'
-    ```
-
 1. **저장**을 클릭하고 **저장** 창에서 **저장**을 다시 클릭하여 변경 내용을 마스터 분기에 직접 커밋합니다.
 
-    > **참고**: 이 작업을 수행하면 새 빌드가 자동으로 트리거됩니다.
+    > **참고**: 원래 CI-YAML이 새 빌드를 자동으로 트리거하도록 구성되지 않았기 때문에 이 빌드를 수동으로 시작해야 합니다.
 
-1. 파이프라인이 다음 예와 비슷하게 보일 것입니다(**마지막 작업에서 본인의 구독 및 웹앱 참조**).
+1. Azure DevOps 왼쪽 메뉴에서 **파이프라인**으로 이동한 후 **파이프라인을** 다시 선택합니다. 
+1. **EShopOnWeb_MultiStageYAML** 파이프라인을 열고 **파이프라인 실행**을 클릭합니다.
+1. 표시되는 창에서 **실행**을 확인합니다.
+1. 서로 다른 2가지 스테이지인 **.NET Core 솔루션 빌드** 및 **Azure 웹앱에 배포**가 표시됩니다.
+1. 파이프라인이 시작될 때까지 기다렸다가 빌드 스테이지가 성공적으로 완료될 때까지 기다립니다.
+1. 배포 스테이지가 시작되고 나면 **필요한 권한**과 주황색 표시줄이 표시됩니다. 
+```
+This pipeline needs permission to access a resource before this run can continue to Deploy to an Azure Web App
+```
+1. **보기**를 클릭합니다.
+1. **검토 대기** 창에서 **허용**을 클릭합니다.
+1. **허용 팝업** 창에서 메시지의 유효성을 검사하고 **허용**을 클릭하여 확인합니다.
+1. 이렇게 하면 배포 스테이지가 시작됩니다. 이 스테이지가 성공적으로 완료될 때까지 기다립니다.
 
-     > **참고**: 제대로 작동하려면 들여쓰기를 수정해야 합니다. 복사하여 붙여넣으면 수정할 수 있습니다.
+     > **참고**: YAML 파이프라인 구문 문제로 인해 배포가 실패할 경우, 다음을 참조로 사용하십시오.
 
-    ```
-    trigger:
-    - master
+ ```yaml
+#NAME THE PIPELINE SAME AS FILE (WITHOUT ".yml")
+# trigger:
+# - main
 
-    stages:
-    - stage: Build
-      jobs:
-      - job: Build
-        pool:
-            vmImage: 'windows-2019'
+resources:
+  repositories:
+    - repository: self
+      trigger: none
 
-        variables:
-            solution: '**/*.sln'
-            buildPlatform: 'Any CPU'
-            buildConfiguration: 'Release'
+stages:
+- stage: Build
+  displayName: Build .Net Core Solution
+  jobs:
+  - job: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: Restore
+      inputs:
+        command: 'restore'
+        projects: '**/*.sln'
+        feedsToUse: 'select'
 
-        steps:
-        - task: NuGetToolInstaller@1
+    - task: DotNetCoreCLI@2
+      displayName: Build
+      inputs:
+        command: 'build'
+        projects: '**/*.sln'
+    
+    - task: DotNetCoreCLI@2
+      displayName: Test
+      inputs:
+        command: 'test'
+        projects: 'tests/UnitTests/*.csproj'
+    
+    - task: DotNetCoreCLI@2
+      displayName: Publish
+      inputs:
+        command: 'publish'
+        publishWebProjects: true
+        arguments: '-o $(Build.ArtifactStagingDirectory)'
+    
+    - task: PublishBuildArtifacts@1
+      displayName: Publish Artifacts ADO - Website
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: Website
+    
+    - task: PublishBuildArtifacts@1
+      displayName: Publish Artifacts ADO - Bicep
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)/.azure/bicep/webapp.bicep'
+        ArtifactName: 'Bicep'
+        publishLocation: 'Container'
 
-        - task: NuGetCommand@2
-          inputs:
-            restoreSolution: '$(solution)'
+- stage: Deploy
+  displayName: Deploy to an Azure Web App
+  jobs:
+  - job: Deploy
+    pool:
+      vmImage: 'windows-2019'
+    steps:
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'Website'
+        downloadPath: '$(Build.ArtifactStagingDirectory)'
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
+        appType: 'webApp'
+        WebAppName: 'eshoponWebYAML369825031'
+        packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
 
-        - task: VSBuild@1
-          inputs:
-            solution: '$(solution)'
-            msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-            platform: '$(buildPlatform)'
-            configuration: '$(buildConfiguration)'
-
-        - task: PublishBuildArtifacts@1
-          inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName: 'drop'
-            publishLocation: 'Container'
-
-    - stage: Deploy
-      jobs:
-      - job: Deploy
-        pool:
-            vmImage: 'windows-2019'
-        steps:
-        - task: DownloadBuildArtifacts@0
-          inputs:
-            buildType: 'current'
-            downloadType: 'single'
-            downloadPath: '$(System.ArtifactsDirectory)'
-            artifactName: 'drop'
-        - task: AzureRmWebAppDeployment@4
-          inputs:
-            ConnectionType: 'AzureRM'
-            azureSubscription: 'YOUR-AZURE-SUBSCRIPTION'
-            appType: 'webApp'
-            WebAppName: 'YOUR-WEBAPP-NAME'
-            packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
-    ```
-
-1. Azure DevOps 포털이 표시된 웹 브라우저 창의 세로 탐색 창에서 **Pipelines**를 선택합니다.
-1. **파이프라인** 창에서 새로 구성한 파이프라인을 나타내는 항목을 클릭합니다.
-1. 가장 최근의 실행을 클릭합니다(자동으로 시작됨).
-1. **요약** 창에서 파이프라인 실행의 진행률을 모니터링합니다.
-1. *이 실행을 배포까지 계속 진행하려면 이 파이프라인에 리소스 액세스 권한이 필요합니다.* 라는 메시지가 표시되면 **보기**를 클릭하고 **검토 대기 중** 대화 상자에서 **허용**을 클릭합니다. 그런 다음 **액세스를 허용하시겠습니까?** 창에서 **허용**을 다시 클릭합니다.
-1. **요약** 창 아래쪽에서 **배포** 단계를 클릭하여 배포 세부 정보를 확인합니다.
-
-    > **참고**: 작업이 완료되면 앱이 Azure 웹앱에 배포됩니다.
+```
 
 #### <a name="task-4-review-the-deployed-site"></a>작업 4: 배포된 사이트 검토
 
 1. Azure Portal이 표시된 웹 브라우저 창으로 다시 전환한 다음 Azure 웹앱 속성이 표시된 블레이드로 이동합니다.
 1. Azure 웹앱 블레이드에서 **개요**를 클릭하고 개요 블레이드에서 **찾아보기**를 클릭하여 새 웹 브라우저 탭에서 사이트를 엽니다.
-1. 배포한 사이트가 새 브라우저 탭에서 정상적으로 로드되는지 확인합니다.
+1. EShopOnWeb 전자 상거래 웹 사이트를 보여 주는 새 브라우저 탭에서 배포된 사이트가 예상대로 로드되는지 확인합니다.
 
-### <a name="exercise-2-remove-the-azure-lab-resources"></a>연습 2: Azure 랩 리소스 제거
+### <a name="exercise-2-configure-environment-settings-for-cicd-pipelines-as-code-with-yaml-in-azure-devops"></a>연습 2: Azure DevOps에서 YAML을 사용하여 CI/CD 파이프라인에 대한 환경 설정 구성
+
+이 연습에서는 Azure DevOps의 YAML 기반 파이프라인에 승인을 추가합니다.
+
+#### <a name="task-1-set-up-pipeline-environments"></a>작업 1: 파이프라인 환경 설정
+
+코드로서의 YAML 파이프라인에는 Azure DevOps 클래식 릴리스 파이프라인과 마찬가지로 릴리스/품질 게이트가 없습니다. 그러나 **환경**을 사용하여 YAML Pipelines-as-Code에 대해 몇 가지 유사성을 구성할 수 있습니다. 이 작업에서는 이 메커니즘을 사용하여 빌드 스테이지에 대한 승인을 구성합니다.
+
+1. Azure DevOps 프로젝트 **EShopOnWeb_MultiStageYAML**에서 **파이프라인**으로 이동합니다.
+1. 왼쪽의 파이프라인 메뉴에서 **환경**을 선택합니다.
+1. **환경 만들기**를 클릭합니다.
+1. **새 환경** 창에서 **승인**이라는 환경의 이름을 추가합니다.
+1. **리소스**에서 **없음**을 선택합니다.
+1. **만들기** 단추를 눌러 설정을 확인합니다.
+1. 환경이 만들어지면 '리소스 추가' 단추 옆에 있는 '줄임표'(...)를 클릭합니다.
+1. **승인 및 확인**을 선택합니다.
+1. **첫 번째 검사 추가**에서 **승인**을 선택합니다.
+1. Azure DevOps 사용자 계정 이름을 **승인자** 필드에 추가합니다.
+
+    > **참고:** 실제 시나리오에서는 이 프로젝트에서 작업하는 DevOps 팀의 이름이 반영됩니다.
+
+1. **만들기** 단추를 눌러 정의된 승인 설정을 확인합니다.
+1. 마지막으로, 배포 단계의 YAML 파이프라인 코드에 필요한 '환경: 승인' 설정을 추가해야 합니다. 이렇게 하려면 **Repos**로 이동하여 **.ado 폴더**를 찾은 다음, **eshoponweb-ci.yml** Pipeline-as-Code 파일을 선택합니다.
+1. 콘텐츠 보기에서 **편집** 단추를 클릭하여 편집 모드로 전환합니다.
+1. **배포 작업**의 시작으로 이동합니다(-job: 60번 줄에서 배포).
+1. 바로 아래에 빈 줄을 새로 추가하고 다음 코드 조각을 추가합니다.
+
+```yaml
+  environment: approvals
+```
+
+결과 코드 조각은 다음과 같습니다.
+
+```yaml
+ jobs:
+  - job: Deploy
+    environment: approvals
+    pool:
+      vmImage: 'windows-2019'
+```
+1. 환경은 배포 스테이지의 특정 설정이므로 '작업'에서 사용할 수 없습니다. 따라서 현재의 작업 정의를 추가로 변경해야 합니다.
+1. **60**번 줄에서 '- job: Deploy'의 이름을 **- deployment: Deploy**로 바꿉니다.
+1. 그 다음, **63**번 줄(vmImage: Windows-2019)에서 빈 줄을 새로 추가합니다.
+1. 다음 Yaml 코드 조각을 붙여넣습니다.
+
+```yaml
+    strategy:
+      runOnce:
+        deploy:
+```
+1. 나머지 코드 조각(**67**번 줄 끝까지)을 선택하고 **Tab** 키를 사용하여 YAML 들여쓰기를 수정합니다. 
+
+결과 YAML 코드 조각은 이제 **배포 스테이지**를 반영하여 다음과 같이 표시됩니다.
+
+```yaml
+- stage: Deploy
+  displayName: Deploy to an Azure Web App
+  jobs:
+  - deployment: Deploy
+    environment: approvals
+    pool:
+      vmImage: 'windows-2019'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'Website'
+              downloadPath: '$(Build.ArtifactStagingDirectory)'
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
+              appType: 'webApp'
+              WebAppName: 'eshoponWebYAML369825031'
+              packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
+```
+
+1. **커밋**을 클릭하고, 표시되는 커밋 창에서 **커밋**을 다시 클릭하여 코드 YAML 파일의 변경 내용을 확인합니다.
+1. 왼쪽의 Azure DevOps 프로젝트 메뉴로 이동하여 **파이프라인**, **파이프라인을** 차례로 선택하고 앞에서 사용한 **EshopOnWeb_MultiStageYAML** 파이프라인을 확인합니다.
+1. 파이프라인을 엽니다.
+1. **파이프라인 실행**을 클릭하여 새 파이프라인 실행을 트리거합니다. **실행**을 클릭하여 확인합니다.
+1. 이전과 마찬가지로, 빌드 스테이지가 예상대로 시작됩니다. 해당 스테이지가 완료될 때까지 기다립니다.
+1. 그 다음, 배포 스테이지에 대해 *environment:approvals*가 구성되어 있으므로 시작하기 전에 승인 확인이 요청됩니다.
+1. 이는 파이프라인 보기에서 볼 수 있으며, **대기 중(0/1개 검사가 통과됨)** 으로 표시됩니다. **이를 계속 실행하여 Azure 웹앱에 배포하려면 우선 승인을 검토해야 한다는** 알림 메시지도 표시됩니다.
+1. 이 메시지의 옆에 있는 **보기** 단추를 클릭합니다.
+1. 표시되는 창에서 **Azure 웹앱에 배포에 대한 검사 및 수동 유효성 검사**를 클릭하고 **승인 대기** 메시지를 클릭합니다.
+1. **승인**을 클릭합니다.
+1. 이렇게 하면 배포 단계가 시작되고 Azure 웹앱 소스 코드를 성공적으로 배포할 수 있습니다.
+
+    > **참고:** 이 예제에서는 승인만 사용했지만 Azure Monitor, REST API 등과 같은 다른 검사를 비슷한 방식으로 사용할 수 있다는 점을 알아두십시오.
+
+### <a name="exercise-3-remove-the-azure-lab-resources"></a>연습 3: Azure 랩 리소스 제거
 
 이 연습에서는 예상치 못한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
 
@@ -352,13 +420,13 @@ lab:
 1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
 
     ```sh
-    az group list --query "[?starts_with(name,'az400m11l01-RG')].name" --output tsv
+    az group list --query "[?starts_with(name,'az400m05l11-RG')].name" --output tsv
     ```
 
 1. 다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
 
     ```sh
-    az group list --query "[?starts_with(name,'az400m11l01-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    az group list --query "[?starts_with(name,'az400m05l11-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
     >**참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
