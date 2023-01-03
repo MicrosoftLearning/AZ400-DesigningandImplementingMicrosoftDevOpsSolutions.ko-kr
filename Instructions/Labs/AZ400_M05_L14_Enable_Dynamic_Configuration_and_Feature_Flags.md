@@ -140,6 +140,8 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 
 #### <a name="task-3-import-and-run-the-cd-pipeline"></a>작업 3: CD 파이프라인 가져오기 및 실행
 
+이름이 [eshoponweb-cd-webapp-code.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-cd-webapp-code.yml)인 CD 파이프라인을 가져오겠습니다.
+
 1. **파이프라인 > 파이프라인**으로 이동합니다.
 
 1. **새 파이프라인** 단추를 클릭합니다.
@@ -150,7 +152,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 
 1. **기존 Azure Pipelines YAML 파일**을 선택합니다.
 
-1. **/.ado/eshoponweb-ci.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
+1. **/.ado/eshoponweb-cd-webapp-code.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
 
 1. YAML 파이프라인 정의에서 다음을 사용자 지정합니다.
 - **YOUR-SUBSCRIPTION-ID**를 Azure 구독 ID로 바꿉니다.
