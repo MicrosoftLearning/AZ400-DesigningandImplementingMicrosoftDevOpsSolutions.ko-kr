@@ -34,7 +34,7 @@ lab:
 
 ### <a name="exercise-0-configure-the-lab-prerequisites"></a>연습 0: 랩 필수 구성 요소 구성
 
-이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 [eShopOnWeb](https://dev.azure.com/unhueteb/_git/eshopweb-az400)을 기반으로 하여 새 Azure DevOps 프로젝트와 리포지토리를 설정합니다.
+이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)을 기반으로 하여 새 Azure DevOps 프로젝트와 리포지토리를 설정합니다.
 
 #### <a name="task-1--skip-if-done-create-and-configure-the-team-project"></a>작업 1: (완료된 경우 건너뛰기) 팀 프로젝트 만들기 및 구성
 
