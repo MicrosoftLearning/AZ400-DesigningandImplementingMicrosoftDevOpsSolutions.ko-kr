@@ -83,7 +83,7 @@ lab:
 1. 랩 컴퓨터의 브라우저 창에서 Azure Portal(https://portal.azure.com/) )을 엽니다.
 1. 포털에서 **리소스 그룹**을 찾아 클릭합니다.
 1. **+ 만들기**를 클릭하여 연습을 위한 새 리소스 그룹을 만듭니다.
-1. **리소스 그룹 만들기** 탭에서 리소스 그룹의 이름을 **rg-az400-eshopeonweb-NAME**으로 설정합니다(고유한 별칭을 원할 경우 NAME 바꾸기). **검토+만들기 > 만들기**를 클릭합니다.
+1. **리소스 그룹 만들기** 탭에서 리소스 그룹의 이름을 **rg-az400-eshoponweb-NAME**으로 설정합니다(고유한 별칭으로 NAME 바꾸기). **검토+만들기 > 만들기**를 클릭합니다.
 1. Azure Portal에서 검색 창 옆에 있는 **Cloud Shell**을 엽니다.
 
     > 참고: Cloud Shell을 처음 열 경우, [영구 스토리지](https://learn.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage#create-new-storage)를 구성해야 합니다.
@@ -182,13 +182,13 @@ lab:
 1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
 
     ```sh
-    az group list --query "[?starts_with(name,'rg-az400-eshopeonweb')].name" --output tsv
+    az group list --query "[?starts_with(name,'rg-az400-eshoponweb')].name" --output tsv
     ```
 
 1. 다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
 
     ```sh
-    az group list --query "[?starts_with(name,'rg-az400-eshopeonweb')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    az group list --query "[?starts_with(name,'rg-az400-eshoponweb')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
     >**참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
