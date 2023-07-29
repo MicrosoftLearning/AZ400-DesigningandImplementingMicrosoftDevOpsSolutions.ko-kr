@@ -206,7 +206,7 @@ lab:
    - 상대 경로는 템플릿 모듈에 사용됩니다.
    - 매개 변수를 사용하여 기본 템플릿의 값을 템플릿 모듈로 전달합니다.
 
-    > **참고**: Azure ARM 템플릿을 사용하면 다른 사용자가 더 쉽게 사용할 수 있도록 스토리지 계정을 사용하여 연결된 템플릿을 업로드했을 것입니다. Azure Bicep 모듈을 사용하면 공용 및 프라이빗 레지스트리 옵션이 모두 있는 Azure Bicep 모듈 레지스트리에 업로드할 수 있습니다. 자세한 내용은 [Azure Bicep 설명서](https://learn.microsoft.com/azure/azure-resource-manager/bicep/modules)에서 찾을 수 있습니다.
+   > **참고**: Azure ARM 템플릿을 사용하면 다른 사용자가 더 쉽게 사용할 수 있도록 스토리지 계정을 사용하여 연결된 템플릿을 업로드했을 것입니다. Azure Bicep 모듈을 사용하면 공용 및 프라이빗 레지스트리 옵션이 모두 있는 Azure Bicep 모듈 레지스트리에 업로드할 수 있습니다. 자세한 내용은 [Azure Bicep 설명서](https://learn.microsoft.com/azure/azure-resource-manager/bicep/modules)에서 찾을 수 있습니다.
 
 6. 템플릿을 저장하는 경우
 
@@ -229,28 +229,28 @@ lab:
 6. Cloud Shell 창의 **Bash** 세션에서 다음 명령을 실행하여 새로 업로드한 템플릿을 사용해 배포를 수행합니다.
 
    ```bash
+   LOCATION='<region>'
+   ```
+
+   > **참고**: 지역 이름을 위치와 가까운 지역으로 바꿉다. 사용할 수 있는 위치를 모르는 경우 명령을 실행합니다 `az account list-locations -o table` .
+
+   ```bash
+   az group create --name az400m06l15-RG --location $LOCATION
+   ```
+
+   ```bash
    az deployment group what-if --name az400m06l15deployment --resource-group az400m06l15-RG --template-file main.bicep
    ```
 
 7. 'adminUsername'의 값을 입력하라는 메시지가 표시되면 **Student**를 입력하고 **Enter** 키를 누릅니다.
 8. 'adminPassword'의 값을 입력하라는 메시지가 표시되면 **Pa55w.rd1234**를 입력하고 **Enter** 키를 누릅니다. (암호 입력은 표시되지 않음)
-9. 배포의 유효성을 검사하는 이 명령의 결과를 검토하고 템플릿에 오류가 있는지 알려주세요. 이는 특히 많은 리소스와 중요 비즈니스용 클라우드 환경에서 템플릿을 배포할 때 매우 중요합니다.
+9. 배포의 유효성을 검사하는 이 명령의 결과를 검토하고 템플릿에 오류가 있는지 살펴보겠습니다. 이는 특히 많은 리소스와 중요 비즈니스용 클라우드 환경에서 템플릿을 배포할 때 매우 중요합니다.
 
 10. Cloud Shell 창의 **Bash** 세션에서 다음 명령을 실행하여 새로 업로드한 템플릿을 사용해 배포를 수행합니다.
 
-       ```bash
-       LOCATION='<region>'
-       ```
-
-       > **참고**: 지역 이름을 위치와 가까운 지역으로 바꿉 있습니다. 사용할 수 있는 위치를 모르는 경우 명령을 실행합니다 `az account list-locations -o table` .
-
-       ```bash
-       az group create --name az400m06l15-RG --location $LOCATION
-       ```
-
-       ```bash
-       az deployment group create --name az400m06l15deployment --resource-group az400m06l15-RG --template-file main.bicep
-       ```
+    ```bash
+    az deployment group create --name az400m06l15deployment --resource-group az400m06l15-RG --template-file main.bicep
+    ```
 
 11. 'adminUsername'의 값을 입력하라는 메시지가 표시되면 **Student**를 입력하고 **Enter** 키를 누릅니다.
 12. 'adminPassword'의 값을 입력하라는 메시지가 표시되면 **Pa55w.rd1234**를 입력하고 **Enter** 키를 누릅니다. (암호 입력은 표시되지 않음)
