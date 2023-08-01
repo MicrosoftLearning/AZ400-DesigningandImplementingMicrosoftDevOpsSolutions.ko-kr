@@ -71,7 +71,7 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | 새 리소스 그룹의 이름 **az400m11l02-RG** |
     | 지역 | 이 랩에서 Azure 리소스를 배포할 Azure 지역의 이름 |
     | 가상 컴퓨터 이름 | **az40011bvm** |
