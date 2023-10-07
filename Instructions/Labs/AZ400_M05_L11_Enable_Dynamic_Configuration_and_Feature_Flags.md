@@ -16,7 +16,7 @@ lab:
 
 - 기존 Azure 구독을 확인하거나 새 구독을 만듭니다.
 
-- Azure 구독에서 Owner 또는 Contributor 역할이 지정된 Microsoft 계정 또는 Azure AD 계정이 있는지 확인합니다. 자세한 내용은 [Azure Portal을 사용하여 Azure 역할 할당 목록 표시](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) 및 [Azure Active Directory에서 관리자 역할 확인 및 할당](https://learn.microsoft.com/azure/active-directory/roles/manage-roles-portal)을 참조하세요.
+- Azure 구독에서 기여자 또는 소유자 역할이 있는 Microsoft 계정 또는 Microsoft Entra 계정이 있는지 확인합니다. 자세한 내용은 [Azure Portal을 사용하여 Azure 역할 할당 목록 표시](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) 및 [Azure Active Directory에서 관리자 역할 확인 및 할당](https://learn.microsoft.com/azure/active-directory/roles/manage-roles-portal)을 참조하세요.
 
 ## 랩 개요
 
@@ -94,7 +94,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 
 프로젝트 설정 페이지에서 새 서비스 연결을 만들거나 파이프라인 정의 내에서 Azure 구독에 연결하면 Azure Pipelines에서 서비스 주체가 자동으로 작성됩니다(자동 옵션). Azure Portal이나 Azure CLI를 통해 서비스 주체를 수동으로 만든 다음 여러 프로젝트에서 재사용할 수도 있습니다.
 
-1. 랩 컴퓨터에서 웹 브라우저를 시작하여 [**Azure Portal**](https://portal.azure.com)로 이동한 다음, 이 랩에서 사용할 Azure 구독의 Owner 역할, 그리고 해당 구독과 연결된 Azure AD 테넌트의 전역 관리자 역할을 가진 사용자 계정으로 로그인합니다.
+1. 랩 컴퓨터에서 웹 브라우저를 시작하고[**, Azure Portal**](https://portal.azure.com)로 이동하고, 이 랩에서 사용할 Azure 구독에서 소유자 역할이 있고 이 구독과 연결된 Microsoft Entra 테넌트에서 전역 관리자 역할이 있는 사용자 계정으로 로그인합니다.
 2. Azure Portal의 페이지 위쪽 검색 텍스트 상자 바로 오른쪽에 있는 **Cloud Shell** 아이콘을 클릭합니다.
 3. **Bash**와 **PowerShell** 중 선택하라는 메시지가 표시되면 **Bash**를 선택합니다.
 
@@ -161,7 +161,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 
 이 연습에서는 Azure에서 App Configuration 리소스를 만들고, 관리 ID를 사용하도록 설정한 다음 전체 솔루션을 테스트합니다.
 
-> **참고**: 이 연습에서는 코딩 기술이 필요하지 않습니다. 웹 사이트의 코드는 이미 Azure App Configuration 기능을 구현합니다.
+> **참고**: 이 연습에는 코딩 기술이 필요하지 않습니다. 웹 사이트의 코드는 이미 Azure App Configuration 기능을 구현합니다.
 
 애플리케이션에서 이를 구현하는 방법을 알고 싶다면 [ASP.NET Core 앱에서 동적 구성 사용](https://learn.microsoft.com/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core) 및 [Azure App Configuration에서 기능 플래그 관리](https://learn.microsoft.com/azure/azure-app-configuration/manage-feature-flags) 자습서를 살펴보십시오.
 
@@ -172,7 +172,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
     - Azure 구독.
     - 이전에 만든 리소스 그룹입니다( **AZ400-EWebShop-NAME**으로 명명되어야 합니다).
     - 위치를 나타냅니다.
-    - 예를 들어 **appcs-NAME-REGION** 과 같은 고유한 입니다.
+    - 예를 들어 **appcs-NAME-REGION** 과 같은 고유한 이름입니다.
     - **무료** 가격 책정 계층을 선택합니다.
 3. **검토 + 만들기**를 클릭한 다음 **만들기**를 클릭합니다.
 4. App Configuration 서비스를 만든 후 **개요**로 이동하고 **엔드포인트** 값을 복사/저장합니다.
@@ -180,11 +180,11 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 #### 작업 2: 관리 ID 사용
 
 1. 파이프라인을 사용하여 배포된 웹앱으로 이동합니다(이름이 **az400-webapp-NAME**이어야 함).
-2. **설정** 섹션에서 **ID**를 클릭한 다음 **시스템 할당** 섹션에서 상태 **켜기로 전환**하고 **예 > 저장**을 클릭하고 작업이 완료되기까지 몇 초 정도 기다립니다.
+2. **설정** 섹션에서 **ID**를 클릭한 다음 **시스템 할당** 섹션에서 상태 **켜**기로 전환하고 **> 저장**을 클릭하고 작업이 완료되기까지 몇 초 정도 기다립니다.
 3. App Configuration 서비스로 돌아간 후 **액세스 제어**를 클릭한 다음 **역할 할당 추가**를 클릭합니다.
 4. **역할** 섹션에서 **App Configuration 데이터 판독기를** 선택합니다.
 5. **멤버** 섹션에서 **ID 관리**를 선택한 다음, 웹앱의 관리 ID를 선택합니다(이름이 서로 같아야 함).
-6. **검토 및 할당을** 클릭합니다.
+6. **검토 및 할당**을 클릭합니다.
 
 #### 작업 3: 웹앱 구성
 

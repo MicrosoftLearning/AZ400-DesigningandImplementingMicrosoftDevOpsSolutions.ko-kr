@@ -14,7 +14,7 @@ lab:
 
 - 기존 Azure 구독을 확인하거나 새 구독을 만듭니다.
 
-- Azure 구독에서 Owner 또는 Contributor 역할이 지정된 Microsoft 계정 또는 Azure AD 계정이 있는지 확인합니다. 자세한 내용은 [Azure Portal을 사용하여 Azure 역할 할당 목록 표시](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) 및 [Azure Active Directory에서 관리자 역할 확인 및 할당](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal)을 참조하세요.
+- Azure 구독에서 기여자 또는 소유자 역할이 있는 Microsoft 계정 또는 Microsoft Entra 계정이 있는지 확인합니다. 자세한 내용은 [Azure Portal을 사용하여 Azure 역할 할당 목록 표시](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) 및 [Azure Active Directory에서 관리자 역할 확인 및 할당](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal)을 참조하세요.
 
 - **이 랩에 사용할 수 있는 GitHub 계정이 아직 없으면** [새 GitHub 계정 등록](https://github.com/join)에서 제공되는 지침에 따라 새 계정을 만듭니다.
 
@@ -87,14 +87,14 @@ lab:
 
     > 참고: Cloud Shell을 처음 열 경우, [영구 스토리지](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage)를 구성해야 합니다.
 
-6. 터미널이 **Bash** 모드에서 실행 중인지 확인하고 다음 명령을 실행하여 **SUBSCRIPTION-ID 및 RESOURCE-GROUP**을 **** 사용자 고유의 식별자(둘 다 리소스 그룹의 **개요** 페이지에서 찾을 수 있음)로 바꿉니다.
+6. 터미널이 **Bash** 모드에서 실행 중인지 확인하고 다음 명령을 실행하여 **SUBSCRIPTION-ID** 및 **RESOURCE-GROUP** 을 사용자 고유의 식별자로 바꿉니다(둘 다 리소스 그룹의 **개요** 페이지에서 찾을 수 있음).
 
     `az ad sp create-for-rbac --name GH-Action-eshoponweb --role contributor --scopes /subscriptions/SUBSCRIPTION-ID/resourceGroups/RESOURCE-GROUP --sdk-auth`
 
     > 참고: 한 줄로 입력하거나 붙여넣었는지 확인합니다.
     > 참고: 이 명령을 실행하면 이전에 만든 리소스 그룹에 대한 기여자 액세스 권한이 있는 서비스 주체가 생성됩니다. 이러한 방식을 사용하면 GitHub Actions가 이 리소스 그룹하고만 상호 작용하는 데 필요한 권한만 갖게 됩니다(구독의 나머지 부분은 포함 안 됨).
 
-7. 명령은 JSON 개체를 출력하고 나중에 워크플로에 대한 GitHub 비밀로 사용합니다. JSON을 복사합니다. JSON에는 Azure AD 애플리케이션 ID(서비스 주체)의 이름으로 Azure에 대해 인증하는 데 사용되는 식별자가 포함되어 있습니다.
+7. 명령은 JSON 개체를 출력하고 나중에 워크플로에 대한 GitHub 비밀로 사용합니다. JSON을 복사합니다. JSON에는 Microsoft Entra ID(서비스 주체)의 이름으로 Azure에 대해 인증하는 데 사용되는 식별자가 포함되어 있습니다.
 
     ```JSON
         {
@@ -110,7 +110,7 @@ lab:
    az provider register --namespace Microsoft.Web
    ``` 
 10. 브라우저 창에서 **eShopOnWeb** GitHub 리포지토리로 돌아갑니다.
-11. 리포지토리 페이지에서 **설정**으로 이동하여 **작업 > 비밀 및 변수를** 클릭합니다. **새 리포지토리 비밀**을 클릭합니다.
+11. 리포지토리 페이지에서 **설정**으로 이동하여 **비밀 및 변수 > 작업을** 클릭합니다. **새 리포지토리 비밀**을 클릭합니다.
     - 이름: **AZURE_CREDENTIALS**
     - 비밀: **이전에 복사한 JSON 개체 붙여넣기**(GitHub는 [azure/login](https://github.com/Azure/login) 작업에서 사용된 동일한 이름으로 여러 개의 비밀을 보관할 수 있음)
 
@@ -158,6 +158,9 @@ lab:
 
 3. 리포지토리 페이지에서 **설정**으로 이동하여 **환경**을 열고 **새 환경**을 클릭합니다.
 4. 이름을 **개발**로 지정하고 **환경 구성**을 클릭합니다.
+
+    > 참고: **환경 목록에 Development** 라는 환경이 이미 있는 경우 **환경** 이름을 클릭하여 해당 구성을 엽니다.  
+    
 5. **개발 구성** 탭에서 **필수 검토자** 옵션을 선택하고 GitHub 계정을 검토자로 선택합니다. **보호 규칙 저장**을 클릭합니다.
 6. 이제 보호 규칙을 테스트할 수 있습니다. 리포지토리 페이지에서 **작업**으로 이동하고 **eShopOnWeb 빌드 및 테스트** 워크플로를 클릭한 다음, **워크플로 실행 > 워크플로 실행**을 클릭하여 수동으로 실행합니다.
 

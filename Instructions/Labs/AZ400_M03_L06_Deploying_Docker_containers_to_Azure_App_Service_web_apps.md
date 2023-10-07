@@ -16,7 +16,7 @@ lab:
 
 - 기존 Azure 구독을 확인하거나 새 구독을 만듭니다.
 
-- Azure 구독에서 Owner 또는 Contributor 역할이 지정된 Microsoft 계정 또는 Azure AD 계정이 있는지 확인합니다. 자세한 내용은 [Azure Portal을 사용하여 Azure 역할 할당 목록 표시](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) 및 [Azure Active Directory에서 관리자 역할 확인 및 할당](https://learn.microsoft.com/azure/active-directory/roles/manage-roles-portal)을 참조하세요.
+- Azure 구독에서 기여자 또는 소유자 역할이 있는 Microsoft 계정 또는 Microsoft Entra 계정이 있는지 확인합니다. 자세한 내용은 [Azure Portal을 사용하여 Azure 역할 할당 목록 표시](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) 및 [Azure Active Directory에서 관리자 역할 확인 및 할당](https://learn.microsoft.com/azure/active-directory/roles/manage-roles-portal)을 참조하세요.
 
 ## 랩 개요
 
@@ -83,7 +83,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 
 프로젝트 설정 페이지에서 새 서비스 연결을 만들거나 파이프라인 정의 내에서 Azure 구독에 연결하면 Azure Pipelines에서 서비스 주체가 자동으로 작성됩니다(자동 옵션). Azure Portal이나 Azure CLI를 통해 서비스 주체를 수동으로 만든 다음 여러 프로젝트에서 재사용할 수도 있습니다.
 
-1. 랩 컴퓨터에서 웹 브라우저를 시작하여 [**Azure Portal**](https://portal.azure.com)로 이동한 다음, 이 랩에서 사용할 Azure 구독의 Owner 역할, 그리고 해당 구독과 연결된 Azure AD 테넌트의 전역 관리자 역할을 가진 사용자 계정으로 로그인합니다.
+1. 랩 컴퓨터에서 웹 브라우저를 시작하고[**, Azure Portal**](https://portal.azure.com)로 이동하고, 이 랩에서 사용할 Azure 구독에서 소유자 역할이 있고 이 구독과 연결된 Microsoft Entra 테넌트에서 전역 관리자 역할이 있는 사용자 계정으로 로그인합니다.
 2. Azure Portal의 페이지 위쪽 검색 텍스트 상자 바로 오른쪽에 있는 **Cloud Shell** 아이콘을 클릭합니다.
 3. **Bash**와 **PowerShell** 중 선택하라는 메시지가 표시되면 **Bash**를 선택합니다.
 
@@ -128,7 +128,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 2. **새 파이프라인** 단추를 클릭합니다.
 3. **Azure Repos Git(YAML)** 선택
 4. **eShopOnWeb** 리포지토리를 선택합니다.
-5. **기존 Azure Pipelines YAML 파일** 선택
+5. **기존 Azure Pipelines YAML 파일**을 선택합니다.
 6. **/.ado/eshoponweb-ci-docker.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
 7. YAML 파이프라인 정의에서 다음을 사용자 지정합니다.
    - Azure **구독 ID가 있는 YOUR-SUBSCRIPTION-ID**입니다.
@@ -194,6 +194,8 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 8. **저장 및 실행**을 클릭하고 파이프라인이 성공적으로 실행될 때까지 기다립니다.
 
     > **참고**: 배포가 완료될 때까지 몇 분 정도 걸릴 수 있습니다.
+    
+    > **중요**: "TF402455: 이 분기로 푸시할 수 없습니다. 끌어오기 요청을 사용하여 이 분기를 업데이트해야 합니다." 이전 랩에서 사용하도록 설정된 "최소 검토자 수 필요" 분기 보호 규칙을 선택 취소해야 합니다.
 
     CD 정의는 다음과 같은 작업으로 구성되어 있습니다.
     - **리소스**: 다음 작업에 사용할 리포지토리 파일을 다운로드합니다.
