@@ -16,7 +16,7 @@ lab:
 
 - 기존 Azure 구독을 확인하거나 새 구독을 만듭니다.
 
-- Azure 구독의 소유자 역할과 Azure 구독과 연결된 Microsoft Entra 테넌트에서 전역 관리자 역할이 있는 Microsoft 계정 또는 Microsoft Entra 계정이 있는지 확인합니다. 자세한 내용은 [Azure Portal을 사용하여 Azure 역할 할당 목록 표시](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) 및 [Azure Active Directory에서 관리자 역할 확인 및 할당](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal)을 참조하세요.
+- Azure 구독의 소유자 역할, 그리고 Azure 구독과 연결된 Microsoft Entra 테넌트의 전역 관리자 역할이 지정되어 있는 Microsoft 계정 또는 Microsoft Entra 계정이 있는지 확인합니다. 자세한 내용은 [Azure Portal을 사용하여 Azure 역할 할당 목록 표시](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) 및 [Azure Active Directory에서 관리자 역할 확인 및 할당](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal)을 참조하세요.
 
 ## 랩 개요
 
@@ -54,7 +54,7 @@ lab:
 
 2. 리포지토리는 다음과 같은 방식으로 구성됩니다.
     - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
-    - 컨테이너를 사용하여 개발하는 **.devcontainer** 폴더 컨테이너 설정(VS Code 또는 GitHub Codespaces에서 로컬로).
+    - **컨테이너를 사용하여 개발하는 .devcontainer** 폴더 컨테이너 설정(VS Code 또는 GitHub Codespaces의 로컬).
     - **.azure** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
     - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
     - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 6 웹 사이트가 포함되어 있습니다.
@@ -63,7 +63,7 @@ lab:
 
 이 작업에서는 Azure Portal을 사용하여 Azure 웹앱을 만듭니다.
 
-1. 랩 컴퓨터에서 웹 브라우저를 시작하고[**, Azure Portal**](https://portal.azure.com)로 이동하고, 이 랩에서 사용할 Azure 구독에서 소유자 역할이 있고 이 구독과 연결된 Microsoft Entra 테넌트에서 전역 관리자 역할이 있는 사용자 계정으로 로그인합니다.
+1. 랩 컴퓨터에서 웹 브라우저를 시작하고, Azure Portal**[로 ](https://portal.azure.com)** 이동하고, 이 랩에서 사용할 Azure 구독의 소유자 역할이 있고 이 구독과 연결된 Microsoft Entra 테넌트에서 Global 관리istrator의 역할을 가진 사용자 계정으로 로그인합니다.
 2. Azure Portal의 도구 모음에서 검색 텍스트 상자 바로 오른쪽에 있는 **Cloud Shell** 아이콘을 클릭합니다.
 3. **Bash**와 **PowerShell** 중 선택하라는 메시지가 표시되면 **Bash**를 선택합니다.
 
@@ -188,7 +188,7 @@ lab:
 12. 이 작업에 대해 다음 매개 변수를 지정합니다.
     - 다음에 의해 생성된 아티팩트 다운로드: **현재 빌드**
     - 다운로드 유형: **특정 아티팩트**
-    - 아티팩트 이름: **목록에서 "웹 사이트"를 선택하거나 목록에** 자동으로 표시되지 않는 경우 **"웹 사이트"** 를 직접 입력합니다.
+    - 아티팩트 이름: **목록에서 "웹 사이트"를 선택하거나 **목록에** 자동으로 표시되지 않는 경우 "웹 사이트"** 를 직접 입력합니다.
     - 대상 디렉터리: **$(Build.ArtifactStagingDirectory)**
 13. **추가**를 클릭합니다.
 14. 추가된 코드 조각은 아래와 유사합니다.
@@ -206,7 +206,7 @@ lab:
 
     > **참고**: 여기서도 해당 작업을 쉽게 읽을 수 있도록 앞뒤에 빈 줄을 추가할 수도 있습니다.
 
-16. **저장**을 클릭하고 **저장** 창에서 **저장**을 다시 클릭하여 변경 내용을 기본 분기에 직접 커밋합니다.
+16. 저장을 클릭하고 **저장** 창에서 **다시 저장**을 클릭하여 **변경 내용을 기본 분기에 직접 커밋합니다.**
 
     > **참고**: 원래 CI-YAML이 새 빌드를 자동으로 트리거하도록 구성되지 않았기 때문에 이 빌드를 수동으로 시작해야 합니다.
 
@@ -215,7 +215,7 @@ lab:
 19. 표시되는 창에서 **실행**을 확인합니다.
 20. 서로 다른 2가지 스테이지인 **.NET Core 솔루션 빌드** 및 **Azure 웹앱에 배포**가 표시됩니다.
 21. 파이프라인이 시작될 때까지 기다렸다가 빌드 스테이지가 성공적으로 완료될 때까지 기다립니다.
-22. 배포 스테이지가 시작되고 나면 **필요한 권한**과 다음을 나타내는 주황색 막대가 표시됩니다.
+22. 배포 단계가 시작되고 나면 필요한** 사용 권한과 **다음을 나타내는 주황색 막대가 표시됩니다.
 
     ```text
     This pipeline needs permission to access a resource before this run can continue to Deploy to an Azure Web App
@@ -368,7 +368,7 @@ lab:
 
 20. 나머지 코드 조각(**67**번 줄 끝까지)을 선택하고 **Tab** 키를 사용하여 YAML 들여쓰기를 수정합니다.
 
-    결과 YAML 코드 조각은 **이제 배포 단계를** 반영하여 다음과 같이 표시됩니다.
+    결과 YAML 코드 조각은 배포 단계를** 반영하여 **다음과 같이 표시됩니다.
 
     ```yaml
     - stage: Deploy
