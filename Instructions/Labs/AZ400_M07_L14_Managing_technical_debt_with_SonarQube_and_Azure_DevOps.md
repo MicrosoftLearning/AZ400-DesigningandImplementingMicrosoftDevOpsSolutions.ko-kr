@@ -137,7 +137,7 @@ Azure DevOps 맥락에서 **기술 부채**란 전술 목표 달성을 위해 �
 
     > **참고**: 다음으로 새로 만든 조직 내에서 Azure DevOps 프로젝트 SonarExamples를 미러 SonarCloud 프로젝트를 **만듭니다**.
 
-11. **프로젝트 분석 - 리포지**토리 선택 페이지의 Azure DevOps 프로젝트 목록에서 **eshoponweb/eshoponweb ** 항목 옆에 있는 검사 상자를 선택하고 설정을** 클릭합니다**.
+11. **프로젝트 분석 - 리포지**토리 선택 페이지의 Azure DevOps 프로젝트 목록에서 eshoponweb/eshoponweb** 항목 옆에 있는 **검사 상자를 선택하고 설정을** 클릭합니다**.
 12. **분석 방법** 선택 페이지에서 Azure DevOps 파이프라인** 타일을 클릭합니다**.
 
     ![Azure DevOps Pipelines 사용 ](images/sonar-setup.png)
