@@ -63,7 +63,7 @@ Azure Key Vault에서는 키, 암호, 인증서 등의 중요한 데이터를 �
     - **컨테이너를 사용하여 개발하는 .devcontainer** 폴더 컨테이너 설정(VS Code 또는 GitHub Codespaces의 로컬).
     - **.azure** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
     - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
-    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 6 웹 사이트가 포함되어 있습니다.
+    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 7 웹 사이트가 포함되어 있습니다.
 
 ### 연습 1: CI 파이프라인을 설정하여 eShopOnWeb 컨테이너 빌드하기
 

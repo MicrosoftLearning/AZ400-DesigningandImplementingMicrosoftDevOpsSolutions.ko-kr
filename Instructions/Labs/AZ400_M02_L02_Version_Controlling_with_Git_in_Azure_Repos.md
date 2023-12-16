@@ -68,7 +68,7 @@ Azure DevOps에서는 두 가지 유형의 버전 제어가 지원됩니다. 그
     - 컨테이너를 사용(VS Code 또는 GitHub Codespaces에서 로컬로 사용)하여 개발하는 **.devcontainer** 폴더 컨테이너 설정
     - **.azure** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
     - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
-    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 6 웹 사이트가 포함되어 있습니다.
+    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 7 웹 사이트가 포함되어 있습니다.
 
 #### 작업 3: Git 및 Visual Studio Code 설치 및 구성
 

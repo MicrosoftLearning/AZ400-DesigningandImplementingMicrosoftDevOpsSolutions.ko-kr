@@ -42,7 +42,7 @@ lab:
     - **컨테이너를 사용하여 개발하는 .devcontainer** 폴더 컨테이너 설정(VS Code 또는 GitHub Codespaces의 로컬).
     - **.azure** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
     - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
-    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 6 웹 사이트가 포함되어 있습니다.
+    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 7 웹 사이트가 포함되어 있습니다.
 
 #### 작업 1: GitHub에서 퍼블릭 리포지토리 만들기 및 eShopOnWeb 가져오기
 
@@ -121,7 +121,7 @@ lab:
 이 작업에서는 지정된 GitHub 워크플로를 수정하고 실행하여 사용자의 고유한 구독에 솔루션을 배포합니다.
 
 1. 브라우저 창에서 **eShopOnWeb** GitHub 리포지토리로 돌아갑니다.
-2. 리포지토리 페이지에서 **코드**로 이동하고 **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml** 파일을 엽니다. 이 워크플로는 지정된 .NET 6 웹 사이트 코드에 대한 CI/CD 프로세스를 정의합니다.
+2. 리포지토리 페이지에서 **코드**로 이동하고 **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml** 파일을 엽니다. 이 워크플로는 지정된 .NET 7 웹 사이트 코드에 대한 CI/CD 프로세스를 정의합니다.
 3. **on** 섹션의 주석 처리를 제거합니다('#' 삭제). 워크플로는 기본 분기에 대한 모든 푸시와 함께 트리거되며 수동 트리거('workflow_dispatch')도 제공합니다.
 4. **env** 섹션에서 다음과 같이 변경합니다.
     - **RESOURCE-GROUP** 변수에서 **NAME**을 바꿉니다. 이전 단계에서 만든 것과 동일한 리소스 그룹이어야 합니다.
