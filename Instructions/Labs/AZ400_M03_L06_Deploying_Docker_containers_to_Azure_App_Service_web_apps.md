@@ -172,7 +172,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 5. 서비스 주체 ID와 역할 이름을 가져온 다음, 이 명령을 실행하여 역할 할당을 만들어 보겠습니다(**rg-az400-container-NAME**을 리소스 그룹 이름으로 바꿈).
 
     ```sh
-    az role assignment create --assignee $spId --role $roleName --resource-group "rg-az400-container-NAME"
+    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/**g-az400-container-NAME**
     ```
 
 이제 명령 실행이 성공했는지 확인하는 JSON 출력이 표시됩니다.
