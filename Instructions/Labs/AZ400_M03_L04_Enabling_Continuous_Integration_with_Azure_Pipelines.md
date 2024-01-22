@@ -64,7 +64,7 @@ lab:
 
 이 작업에서는 끌어오기 요청의 유효성을 검사하기 위해 분기 정책으로 사용할 YAML 빌드 정의를 가져옵니다.
 
-먼저 eshoponweb-ci-pr.yml[이라는 ](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci-pr.yml)빌드 파이프라인을 가져와 보겠습니다.
+먼저 eshoponweb-ci-pr.yml[ 빌드 ](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci-pr.yml)파이프라인을 가져와 보겠습니다.
 
 1. **파이프라인 > 파이프라인**으로 이동합니다.
 2. **파이프라인 또는 **새 파이프라인**** 만들기 단추를 클릭합니다.
