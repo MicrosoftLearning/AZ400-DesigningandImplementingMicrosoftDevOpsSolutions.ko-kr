@@ -154,7 +154,7 @@ Azure DevOps 맥락에서 **기술 부채**란 전술 목표 달성을 위해 �
 
 15. **코드 위치** 창에서 **Azure Repos Git(YAML)** 을 선택하고 **eShopOnWeb** 리포지토리를 선택합니다.
 
-16. **구성** 섹션에서 **기존 Azure Pipelines YAML 파일**을 선택합니다. 다음 경로 **/.ado/eshoponweb-sonar-ci.yml**을 제공하고 계속**을 클릭합니다**. 다음 단계에서 **세부 정보가 멘션 파이프라인을 검토합니다(일부 설정을 바꿔야 함).**
+16. **구성** 섹션에서 **기존 Azure Pipelines YAML 파일**을 선택합니다. 다음 경로 **/.ado/eshoponweb-sonar-ci.yml** 입력하고 계속**을 클릭합니다**. 다음 단계에서 **세부 정보가 멘션 파이프라인을 검토합니다(일부 설정을 바꿔야 함).**
 
 17. Sonarcloud 웹 사이트**로 돌아가서 Azure Pipelines를 사용하여 프로젝트 분석 페이지의 **Azure Pipelines**** 구성 섹션에서 .NET**을 클릭합니다**. 이렇게 하면 분석 구성** 준비, **코드 분석** 실행 및 **품질 게이트 결과** 게시에 **필요한 일련의 단계가 표시됩니다. 이전 단계에서** 제공된 YAML 파이프라인에서 "분석 구성 준비" 작업을 수정하려면 **이러한 지침이 필요합니다.
 
@@ -266,7 +266,7 @@ Azure DevOps 맥락에서 **기술 부채**란 전술 목표 달성을 위해 �
 
 1. Azure DevOps 포털의 왼쪽에 있는 세로 메뉴 모음에서 Repos**를 클릭합니다**. 그러면 파일** 창이 **표시됩니다.
 2. 중앙 창의 폴더 계층 구조에서 src/Web/Services/BasketViewModelService.cs** 폴더의 **Program.cs** 파일**로 이동하고 편집**을 클릭합니다**.
-3. **BasketViewModelService.cs** 창에서 마지막 "}" 바로 앞에 다음 빈 메서드를 코드에 추가합니다.
+3. BasketViewModelService.cs** 창에서 **마지막 "}" 바로 앞에 다음 빈 메서드를 코드에 추가합니다.
 
     ```csharp
     public void Unused(){
