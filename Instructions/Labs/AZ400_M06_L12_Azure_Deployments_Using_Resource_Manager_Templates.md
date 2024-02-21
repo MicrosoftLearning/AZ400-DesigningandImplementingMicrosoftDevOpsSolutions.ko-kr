@@ -51,16 +51,16 @@ lab:
 
 이 작업에서는 여러 랩에서 사용할 eShopOnWeb Git 리포지토리를 가져옵니다.
 
-1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > 파일**, **리포지토리 가져오기**를 클릭합니다. **가져오기**를 선택합니다. **Git 리포지토리 가져오기** 창에서 다음 URL https://github.com/MicrosoftLearning/eShopOnWeb.git 을 붙여넣고 **가져오기**를 클릭합니다.
+1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > 파일**, **리포지토리 가져오기**를 클릭합니다. **가져오기**를 선택합니다. **Git 리포지토리 가져오기** 창에서 다음 URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> 을 붙여넣고 **가져오기**를 클릭합니다.
 
     ![리포지토리 가져오기](images/import-repo.png)
 
 1. 리포지토리는 다음과 같은 방식으로 구성됩니다.
     - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
     - **컨테이너를 사용하여 개발하는 .devcontainer** 폴더 컨테이너 설정(VS Code 또는 GitHub Codespaces의 로컬).
-    - **.azure** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
+    - **인프라** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
     - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
-    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 7 웹 사이트가 포함되어 있습니다.
+    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 8 웹 사이트가 포함되어 있습니다.
 
 ### 연습 1: Azure Bicep 템플릿 이해 및 재사용 가능한 모듈을 사용하여 간소화
 
@@ -233,13 +233,14 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 1. **확인 및 저장**을 클릭합니다.
 
 #### 작업 2: YAML 파이프라인을 통해 Azure에 리소스 배포
+
 1. **Pipelines** 허브의 **파이프라인** 창으로 다시 이동합니다.
 1. **첫 번째 파이프라인 만들기** 창에서 **파이프라인 만들기**를 클릭합니다.
 
     > **참고**: 여기서는 마법사를 사용하여 프로젝트를 기준으로 YAML 파이프라인 정의를 만듭니다.
 
 1. **코드 위치** 창에서 **Azure Repos Git(YAML)** 옵션을 클릭합니다.
-1. **리포지**토리 선택 창에서 EShopOnWeb**을 클릭합니다**.
+1. **리포지**토리 선택 창에서 eShopOnWeb**을 클릭합니다**.
 1. **파이프라인 구성** 창에서 아래로 스크롤하여 **기존 Azure Pipelines YAML 파일**을 선택합니다.
 1. **기존 YAML 파일 선택** 블레이드에서 다음 매개 변수를 지정합니다.
    - 분기: **main**
@@ -250,7 +251,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 
    ![변경한 후 YAML 파이프라인 저장 및 실행](./images/m06/saveandrun.png)
 
-1. deploymemnt가 완료되고 결과를 검토할 때까지 기다립니다.
+1. 배포가 완료되고 결과를 검토할 때까지 기다립니다.
    ![YAML 파이프라인을 사용하여 Azure에 리소스 배포 성공](./images/m06/deploy.png)
 
 #### 작업 3: Azure 랩 리소스 제거
