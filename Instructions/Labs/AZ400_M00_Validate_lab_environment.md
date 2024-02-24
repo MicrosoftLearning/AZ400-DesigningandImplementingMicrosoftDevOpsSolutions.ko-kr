@@ -11,6 +11,7 @@ lab:
 ## Azure DevOps 조직을 만드는 지침(한 번만 수행하면 됨)
 
 ### Azure 구독이 없는 경우 여기에서 시작합니다.
+
 1. 강사 또는 다른 소스로부터 새로운 **Azure Pass 프로모션 코드**를 받습니다.
 1. 프라이빗 브라우저 세션을 사용하여 [https://account.microsoft.com](https://account.microsoft.com)에서 새로운 **개인 MSA(Microsoft 계정)** 을 받습니다.
 1. 같은 브라우저 세션을 사용하여 [https://www.microsoftazurepass.com](https://www.microsoftazurepass.com)으로 이동하고 MSA(Microsoft 계정)를 사용하여 Azure Pass를 상환합니다. 자세한 내용은 [Microsoft Azure Pass 교환](https://www.microsoftazurepass.com/Home/HowTo?Length=5)을 참조하세요. 상환 지침을 따릅니다.
@@ -57,7 +58,7 @@ lab:
     - 고급: 버전 제어: **Git**
     - 고급: 작업 항목 프로세스: **스크럼**
 
-2. **만들기**를 클릭합니다.
+1. **만들기**를 클릭합니다.
 
     ![프로젝트 만들기](images/create-project.png)
 
@@ -65,15 +66,15 @@ lab:
 
 이 작업에서는 여러 랩에서 사용할 eShopOnWeb Git 리포지토리를 가져옵니다.
 
-1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > 파일**, **리포지토리 가져오기**를 클릭합니다. **가져오기**를 선택합니다. **Git 리포지토리 가져오기** 창에서 다음 URL https://github.com/MicrosoftLearning/eShopOnWeb.git 을 붙여넣고 **가져오기**를 클릭합니다.
+1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > 파일**, **리포지토리 가져오기**를 클릭합니다. **가져오기**를 선택합니다. **Git 리포지토리 가져오기** 창에서 다음 URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> 을 붙여넣고 **가져오기**를 클릭합니다.
 
     ![리포지토리 가져오기](images/import-repo.png)
 
-2. 리포지토리는 다음과 같은 방식으로 구성됩니다.
+1. 리포지토리는 다음과 같은 방식으로 구성됩니다.
     - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
     - **컨테이너를 사용하여 개발하는 .devcontainer** 폴더 컨테이너 설정(VS Code 또는 GitHub Codespaces의 로컬).
-    - **.azure** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
+    - **인프라** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
     - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
-    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 7 웹 사이트가 포함되어 있습니다.
+    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 8 웹 사이트가 포함되어 있습니다.
 
 이제 이 AZ-400 과정에 대한 다양한 개별 랩을 계속 진행하는 데 필요한 필수 구성 요소 단계를 완료했습니다.
