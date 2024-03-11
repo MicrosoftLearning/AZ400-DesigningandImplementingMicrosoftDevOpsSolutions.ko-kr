@@ -63,7 +63,7 @@ lab:
 1. 리포지토리는 다음과 같은 방식으로 구성됩니다.
     - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
     - 컨테이너를 사용(VS Code 또는 GitHub Codespaces에서 로컬로 사용)하여 개발하는 **.devcontainer** 폴더 컨테이너 설정
-    - **infra** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
+    - **infra** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep 및 ARM 인프라가 포함되어 있습니다.
     - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
     - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 8 웹 사이트가 포함되어 있습니다.
 
@@ -192,6 +192,7 @@ lab:
     - Windows에서 웹앱에 대한 **App Service 유형** 지점의 유효성을 검사합니다.
     - **App Service 이름** 드롭다운 목록에서 랩 앞부분에서 배포한 웹앱의 이름(**az400eshoponweb...)을 선택합니다.
     - **패키지 또는 폴더** 텍스트 상자에서 기본값을 `$(Build.ArtifactStagingDirectory)/**/Web.zip`으로 **업데이트**합니다.
+    - **애플리케이션 및 구성 설정** 확장 및 `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` 값 추가
 1. **추가** 단추를 클릭하여 도우미 창에서 설정을 확인합니다.
 
     > **참고**: 그러면 YAML 파이프라인 정의에 배포 작업이 자동으로 추가됩니다.
@@ -206,6 +207,7 @@ lab:
             appType: 'webApp'
             WebAppName: 'az400eshoponWeb369825031'
             packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
+            AppSettings: '-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development'
     ```
 
     > **참고**: 이 랩에서는 **packageForLinux** 매개 변수를 사용하면 안 되지만 Windows나 Linux에서는 해당 매개 변수를 사용할 수 있습니다.
