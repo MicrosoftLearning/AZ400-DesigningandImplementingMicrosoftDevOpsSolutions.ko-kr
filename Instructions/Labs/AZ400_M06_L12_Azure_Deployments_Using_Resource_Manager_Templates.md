@@ -28,7 +28,7 @@ lab:
 
 - Azure Bicep 템플릿의 구조 이해
 - 재사용 가능한 Bicep 모듈 만들기
-- 모듈을 사용하도록 기본 템플릿 수정
+- 모듈을 사용하도록 기본 템플릿을 수정합니다.
 - Azure YAML 파이프라인을 사용하여 Azure에 모든 리소스 배포
 
 ## 예상 소요 시간: 45분
@@ -70,7 +70,7 @@ lab:
 
 이 작업에서는 Visual Studio Code를 사용하여 Azure Bicep 템플릿을 만듭니다.
 
-1. 브라우저 탭에서 Azure DevOps 프로젝트를 열고 **리포지토리** 및 **파일**로 이동합니다. `.azure\bicep` 폴더를 열고 `simple-windows-vm.bicep` 파일을 찾습니다.
+1. 브라우저 탭에서 Azure DevOps 프로젝트를 열고 **리포지토리** 및 **파일**로 이동합니다. `infra` 폴더를 열고 `simple-windows-vm.bicep` 파일을 찾습니다.
 
    ![Simple-windows-vm.bicep 파일](./images/m06/browsebicepfile.png)
 
@@ -224,8 +224,8 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 1. **서비스 주체(수동)** 를 선택하고 **다음**을 클릭합니다.
 
 1. 이전 단계에서 수집한 정보를 사용하여 비어 있는 필드를 채웁니다.
-    - 구독 ID 및 이름
-    - 서비스 주체 ID(appId), 서비스 주체 키(암호), 테넌트 ID(테넌트)
+    - 구독 ID 및 이름.
+    - 서비스 주체 ID(appId), 서비스 주체 키(암호), 테넌트 ID(테넌트).
     - **서비스 연결 이름**에 **azure subs**를 입력합니다. 이 이름은 Azure 구독과 통신하기 위해 Azure DevOps Service 연결이 필요한 경우 YAML 파이프라인에서 참조됩니다.
 
     ![Azure 서비스 연결](images/azure-service-connection.png)
