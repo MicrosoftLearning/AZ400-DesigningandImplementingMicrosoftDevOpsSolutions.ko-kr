@@ -59,8 +59,8 @@ lab:
 
 #### 작업 3: (완료된 경우 건너뛰기) 기본(main) 분기를 기본 분기로 설정
 
-1. **리포지토리 > 분기**로 이동합니다.
-1. **main** 분기를 마우스로 가리킨 다음 열 오른쪽에 있는 줄임표를 클릭합니다.
+1. **Repos > 분기**로 이동합니다.
+1. **기본** 분기를 마우스로 가리킨 다음 열 오른쪽에 있는 줄임표를 클릭합니다.
 1. **기본 분기로 설정**을 클릭합니다.
 
 ### 연습 1: 서비스 연결 관리
@@ -112,7 +112,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 1. **새 서비스 연결** 블레이드에서 **Azure Resource Manager** 및 **다음**을 선택합니다(아래로 스크롤해야 할 수 있음).
 1. **서비스 주체(수동)** 를 선택하고 **다음**을 클릭합니다.
 1. 이전 단계에서 수집한 정보를 사용하여 비어 있는 필드를 채웁니다.
-    - 구독 ID 및 이름
+    - 구독 ID 및 이름.
     - 서비스 주체 ID(appId), 서비스 주체 키(암호), 테넌트 ID(테넌트)
     - **서비스 연결 이름**에 **azure-connection**을 입력합니다. 이 이름은 Azure 구독과 통신하기 위해 Azure DevOps Service 연결이 필요한 경우 YAML 파이프라인에서 참조됩니다.
 
@@ -125,7 +125,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 #### 작업 1: CI 파이프라인 가져오기 및 실행
 
 1. **파이프라인 > 파이프라인**으로 이동합니다.
-1. **새 파이프라인** 단추를 클릭합니다.
+1. **새 파이프라인** 단추 클릭(또는 이전에 만들어진 다른 파이프라인이 없는 경우 **파이프라인 만들기** 클릭).
 1. **Azure Repos Git(YAML)** 을 선택합니다.
 1. **eShopOnWeb** 리포지토리를 선택합니다.
 1. **기존 Azure Pipelines YAML 파일**을 선택합니다.
@@ -171,10 +171,10 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
     echo $roleName
     ```
 
-1. 서비스 주체 ID와 역할 이름을 가져온 다음, 이 명령을 실행하여 역할 할당을 만들어 보겠습니다(**rg-az400-container-NAME**을 리소스 그룹 이름으로 바꿈).
+1. 서비스 주체 ID와 역할 이름을 가져온 다음, 이 명령을 실행하여 역할 할당을 만들어 보겠습니다(**&lt;rg-az400-container-NAME&gt;** 을 리소스 그룹 이름으로 바꿈).
 
     ```sh
-    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/**rg-az400-container-NAME**
+    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/<rg-az400-container-NAME>
     ```
 
 이제 명령 실행이 성공했는지 확인하는 JSON 출력이 표시됩니다.
