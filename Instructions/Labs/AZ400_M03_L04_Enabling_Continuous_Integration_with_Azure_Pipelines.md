@@ -51,7 +51,7 @@ lab:
 
 1. 리포지토리는 다음과 같은 방식으로 구성됩니다.
     - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
-    - 컨테이너를 사용(VS Code 또는 GitHub Codespaces에서 로컬로 사용)하여 개발하는 **.devcontainer** 폴더 컨테이너 설정
+    - **.devcontainer** 폴더 컨테이너 설정을 통해 컨테이너를 사용하여 개발합니다(VS Code 또는 GitHub Codespaces에서 로컬로).
     - **infra** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep & ARM 인프라가 포함되어 있습니다.
     - **.github** 폴더에는 YAML GitHub 워크플로 정의가 포함되어 있습니다.
     - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 웹 사이트가 포함되어 있습니다.
@@ -71,7 +71,7 @@ lab:
 1. **Azure Repos Git(YAML)** 을 선택합니다.
 1. **eShopOnWeb** 리포지토리를 선택합니다.
 1. **기존 Azure Pipelines YAML 파일**을 선택합니다.
-1. **/.ado/eshoponweb-ci-pr.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
+1. **기본** 분기와 **/.ado/eshoponweb-ci-pr.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
 
     빌드 정의는 다음과 같은 작업으로 구성되어 있습니다.
     - **DotNet Restore**: NuGet 패키지 복원을 사용하면 소스 제어에 저장하지 않고도 프로젝트의 모든 종속성을 설치할 수 있습니다.
@@ -131,7 +131,7 @@ lab:
 1. **Azure Repos Git(YAML)** 을 선택합니다.
 1. **eShopOnWeb** 리포지토리를 선택합니다.
 1. **기존 Azure Pipelines YAML 파일**을 선택합니다.
-1. **/.ado/eshoponweb-ci.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
+1. **기본** 분기와 **/.ado/eshoponweb-ci.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
 
     CI 정의는 다음과 같은 작업으로 구성되어 있습니다.
     - **DotNet Restore**: NuGet 패키지 복원을 사용하면 소스 제어에 저장하지 않고도 프로젝트의 모든 종속성을 설치할 수 있습니다.
