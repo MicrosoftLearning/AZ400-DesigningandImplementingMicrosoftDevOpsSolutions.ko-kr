@@ -129,7 +129,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 1. **Azure Repos Git(YAML)** 을 선택합니다.
 1. **eShopOnWeb** 리포지토리를 선택합니다.
 1. **기존 Azure Pipelines YAML 파일**을 선택합니다.
-1. **/.ado/eshoponweb-ci-docker.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
+1. **기본** 분기와 **/.ado/eshoponweb-ci-docker.yml** 파일을 선택한 다음, **계속**을 클릭합니다.
 1. YAML 파이프라인 정의에서 다음을 사용자 지정합니다.
    - **YOUR-SUBSCRIPTION-ID**를 Azure 구독 ID로 바꿉니다.
    - 파이프라인에서 만들 리소스 그룹 이름을 가진 **rg-az400-container-NAME**입니다(기존 리소스 그룹일 수도 있음).
@@ -188,7 +188,7 @@ Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필
 1. **Azure Repos Git(YAML)** 을 선택합니다.
 1. **eShopOnWeb** 리포지토리를 선택합니다.
 1. **기존 Azure Pipelines YAML 파일**을 선택합니다.
-1. **/.ado/eshoponweb-cd-webapp-docker.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
+1. **기본** 분기와 **/.ado/eshoponweb-cd-webapp-docker.yml** 파일을 선택한 다음, **계속**을 클릭합니다.
 1. YAML 파이프라인 정의에서 다음을 사용자 지정합니다.
    - **YOUR-SUBSCRIPTION-ID**를 Azure 구독 ID로 바꿉니다.
    - **rg-az400-container-NAME**, 랩에서 이전에 정의된 리소스 그룹 이름이 포함됨.
