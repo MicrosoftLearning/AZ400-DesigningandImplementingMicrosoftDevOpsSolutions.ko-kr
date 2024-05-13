@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Azure Pipelines를 통한 연속 통합 지원
-  module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
+  title: Azure Pipelines과의 연속 통합 지원
+  module: 'Module 02: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# Azure Pipelines를 통한 연속 통합 지원
+# Azure Pipelines과의 연속 통합 지원
 
 ## 학생용 랩 매뉴얼
 
@@ -131,7 +131,7 @@ lab:
 1. **Azure Repos Git(YAML)** 을 선택합니다.
 1. **eShopOnWeb** 리포지토리를 선택합니다.
 1. **기존 Azure Pipelines YAML 파일**을 선택합니다.
-1. **기본** 분기와 **/.ado/eshoponweb-ci.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
+1. **기본** 분기와 **/.ado/eshoponweb-ci.yml** 파일을 선택한 후 **계속**을 클릭합니다.
 
     CI 정의는 다음과 같은 작업으로 구성되어 있습니다.
     - **DotNet Restore**: NuGet 패키지 복원을 사용하면 소스 제어에 저장하지 않고도 프로젝트의 모든 종속성을 설치할 수 있습니다.

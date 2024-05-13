@@ -1,7 +1,7 @@
 ---
 lab:
   title: 에이전트 풀 구성 및 파이프라인 스타일 이해
-  module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
+  module: 'Module 02: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
 # 에이전트 풀 구성 및 파이프라인 스타일 이해

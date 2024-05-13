@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Azure Key Vault와 Azure DevOps 통합
-  module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
+  title: Azure DevOps와 Azure Key Vault 통합
+  module: 'Module 04: Implement a secure continuous deployment using Azure Pipelines'
 ---
 
-# Azure Key Vault와 Azure DevOps 통합
+# Azure DevOps와 Azure Key Vault 통합
 
 ## 학생용 랩 매뉴얼
 

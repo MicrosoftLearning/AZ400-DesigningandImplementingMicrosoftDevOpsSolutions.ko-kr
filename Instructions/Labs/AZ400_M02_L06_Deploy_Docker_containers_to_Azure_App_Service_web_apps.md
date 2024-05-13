@@ -1,7 +1,7 @@
 ---
 lab:
   title: Docker 컨테이너를 Azure App Service 웹앱에 배포
-  module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
+  module: 'Module 02: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
 # Docker 컨테이너를 Azure App Service 웹앱에 배포

@@ -1,7 +1,7 @@
 ---
 lab:
   title: Azure Artifacts로 패키지 관리
-  module: 'Module 08: Design and implement a dependency management strategy'
+  module: 'Module 07: Design and implement a dependency management strategy'
 ---
 
 # Azure Artifacts로 패키지 관리

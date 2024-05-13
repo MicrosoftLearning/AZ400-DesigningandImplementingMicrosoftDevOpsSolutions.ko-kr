@@ -1,7 +1,7 @@
 ---
 lab:
   title: 동적 구성 및 기능 플래그 사용
-  module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
+  module: 'Module 04: Implement a secure continuous deployment using Azure Pipelines'
 ---
 
 # 동적 구성 및 기능 플래그 사용

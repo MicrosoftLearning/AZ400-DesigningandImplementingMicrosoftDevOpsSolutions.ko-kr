@@ -1,10 +1,10 @@
 ---
 lab:
-  title: 테스트 설정 및 실행
-  module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
+  title: 기능 테스트 설정 및 실행
+  module: 'Module 03: Design and implement a release strategy'
 ---
 
-# 테스트 설정 및 실행
+# 기능 테스트 설정 및 실행
 
 ## 학생용 랩 매뉴얼
 

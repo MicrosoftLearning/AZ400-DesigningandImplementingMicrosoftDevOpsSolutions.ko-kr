@@ -1,7 +1,7 @@
 ---
 lab:
   title: YAML을 통해 파이프라인을 코드로 구성
-  module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
+  module: 'Module 03: Design and implement a release strategy'
 ---
 
 # YAML을 통해 파이프라인을 코드로 구성
