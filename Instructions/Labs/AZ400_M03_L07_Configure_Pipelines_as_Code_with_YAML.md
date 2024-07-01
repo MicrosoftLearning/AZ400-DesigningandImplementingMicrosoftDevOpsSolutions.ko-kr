@@ -59,6 +59,10 @@ lab:
    - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 8 웹 사이트가 포함되어 있습니다.
 
+1. **Repos > 분기**로 이동합니다.
+1. **기본** 분기를 마우스로 가리킨 다음 열 오른쪽에 있는 줄임표를 클릭합니다.
+1. **기본 분기로 설정**을 클릭합니다.
+
 #### 작업 2: Azure 리소스 생성
 
 이 작업에서는 Azure Portal을 사용하여 Azure 웹앱을 만듭니다.
@@ -197,7 +201,7 @@ lab:
 1. 추가된 코드 조각은 아래와 유사합니다.
 
    ```yaml
-   - task: DownloadBuildArtifacts@0
+   - task: DownloadBuildArtifacts@1
      inputs:
        buildType: "current"
        downloadType: "single"
@@ -386,7 +390,7 @@ lab:
            runOnce:
              deploy:
                steps:
-                 - task: DownloadBuildArtifacts@0
+                 - task: DownloadBuildArtifacts@1
                    inputs:
                      buildType: "current"
                      downloadType: "single"
