@@ -86,9 +86,10 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
 
    - 단일 스테이지: 빌드
    - 단일 작업: 빌드
-   - 빌드 작업 내의 3개 작업:
+   - 빌드 작업 내의 4개 작업:
    - Dotnet Restore
    - Dotnet Build
+   - Dotnet Test
    - Dotnet Publish
 
 1. **파이프라인 YAML 검토** 창에서 **실행** 단추 옆에 있는 아래쪽 방향 캐럿 기호를 클릭하고, **저장**을 클릭합니다.
@@ -196,7 +197,7 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
 1. PAT 토큰을 해지합니다.
 1. Repos/.ado/eshoponweb-ci-pr.yml에서 이동하여 **편집**을 선택하고 줄 13~15(에이전트 풀 코드 조각)를 제거한 후 원래대로 다시 `vmImage: ubuntu-latest`로 변경하여 **eshoponweb-ci-pr.yml** 파일의 변경 내용을 되돌립니다. (이는 향후 랩 연습에서 동일한 샘플 파이프라인 파일을 사용하기 때문입니다.)
 
-![파이프라인 풀을 vmImage 설정으로 되돌리기](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
+![파이프라인 풀을 vmImage 설정으로 되돌리기](images/m3/eshoponweb-ci-pr-vmimage_v2.png)
 
 ## 검토
 

@@ -38,11 +38,11 @@ lab:
 이 연습에서는 기존 [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) 리포지토리 코드를 사용자의 고유한 GitHub 프라이빗 리포지토리로 가져옵니다.
 
 리포지토리는 다음과 같은 방식으로 구성됩니다.
-    - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
-    - **.devcontainer** 폴더 컨테이너 설정을 통해 컨테이너를 사용하여 개발합니다(VS Code 또는 GitHub Codespaces에서 로컬로).
-    - **infra** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep 및 ARM 인프라가 포함되어 있습니다.
-    - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
-    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 8 웹 사이트가 포함되어 있습니다.
+- **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
+- **.devcontainer** 폴더 컨테이너 설정을 통해 컨테이너를 사용하여 개발합니다(VS Code 또는 GitHub Codespaces에서 로컬로).
+- **infra** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep 및 ARM 인프라가 포함되어 있습니다.
+- **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
+- **src** 폴더에는 랩 시나리오에서 사용되는 .NET 8 웹 사이트가 포함되어 있습니다.
 
 #### 작업 1: GitHub에서 퍼블릭 리포지토리 만들기 및 eShopOnWeb 가져오기
 
