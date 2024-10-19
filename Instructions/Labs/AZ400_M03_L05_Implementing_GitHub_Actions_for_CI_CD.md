@@ -39,8 +39,8 @@ lab:
 
 리포지토리는 다음과 같은 방식으로 구성됩니다.
     - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
-    - **컨테이너를 사용하여 개발하는 .devcontainer** 폴더 컨테이너 설정(VS Code 또는 GitHub Codespaces의 로컬).
-    - **인프라** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep&ARM 인프라가 포함되어 있습니다.
+    - **.devcontainer** 폴더 컨테이너 설정을 통해 컨테이너를 사용하여 개발합니다(VS Code 또는 GitHub Codespaces에서 로컬로).
+    - **infra** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep 및 ARM 인프라가 포함되어 있습니다.
     - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
     - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 8 웹 사이트가 포함되어 있습니다.
 
@@ -82,19 +82,19 @@ lab:
 1. 랩 컴퓨터의 브라우저 창에서 Azure Portal(https://portal.azure.com/) )을 엽니다.
 1. 포털에서 **리소스 그룹**을 찾아 클릭합니다.
 1. **+ 만들기**를 클릭하여 연습을 위한 새 리소스 그룹을 만듭니다.
-1. 리소스 그룹 만들기 탭에서 **리소스 그룹에** **다음 이름을 지정합니다. rg-eshoponweb-NAME** (일부 고유한 별칭에 대한 이름 바꾸기). **검토+만들기 > 만들기**를 클릭합니다.
+1. **리소스 그룹 만들기** 탭에서 리소스 그룹의 이름을 **rg-eshoponweb-NAME**으로 설정합니다(고유한 별칭으로 NAME 바꾸기). **검토+만들기 > 만들기**를 클릭합니다.
 1. Azure Portal에서 검색 창 옆에 있는 **Cloud Shell**을 엽니다.
 
     > 참고: Cloud Shell을 처음 열 경우, [영구 스토리지](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage)를 구성해야 합니다.
 
-1. 터미널이 Bash 모드에서 **실행 중인지 확인하고 다음 명령을 실행하여 SUBSCRIPTION-ID** 및 **RESOURCE-GROUP**을 사용자 고유의 식별자(둘 다 리소스 그룹의 개요** 페이지에서 찾을 **수 있음)로 바꿉 **** 니다.
+1. 터미널이 **Bash** 모드에서 실행 중인지 확인하고 다음 명령을 실행하여 **SUBSCRIPTION-ID** 및 **RESOURCE-GROUP**을 사용자의 고유한 식별자로 바꿉니다(둘 다 리소스 그룹의 **개요** 페이지에서 찾을 수 있음).
 
     `az ad sp create-for-rbac --name GH-Action-eshoponweb --role contributor --scopes /subscriptions/SUBSCRIPTION-ID/resourceGroups/RESOURCE-GROUP --sdk-auth`
 
     > 참고: 한 줄로 입력하거나 붙여넣는지 확인합니다.
     > 참고: 이 명령을 실행하면 이전에 만든 리소스 그룹에 대한 기여자 액세스 권한이 있는 서비스 주체가 생성됩니다. 이러한 방식을 사용하면 GitHub Actions가 이 리소스 그룹하고만 상호 작용하는 데 필요한 권한만 갖게 됩니다(구독의 나머지 부분은 포함 안 됨).
 
-1. 명령은 JSON 개체를 출력하고 나중에 워크플로에 대한 GitHub 비밀로 사용합니다. JSON을 복사합니다. JSON에는 Microsoft Entra ID(서비스 주체)의 이름으로 Azure에 대해 인증하는 데 사용되는 식별자가 포함됩니다.
+1. 이 명령은 JSON 개체를 출력합니다. 나중에 이를 워크플로에 대한 GitHub 비밀로 사용합니다. JSON을 복사합니다. JSON에는 Microsoft Entra ID(서비스 주체)의 이름으로 Azure에 대해 인증하는 데 사용되는 식별자가 포함되어 있습니다.
 
     ```JSON
         {
@@ -106,14 +106,14 @@ lab:
         }
     ```
 
-1. 또한 다음 명령을 실행하여 나중에 배포할 Azure 앱 Service**에 **대한 리소스 공급자를 등록해야 합니다.
+1. 또한 다음 명령을 실행하여 나중에 배포할 **Azure App Service**에 대한 리소스 공급자를 등록해야 합니다.
 
    ```bash
    az provider register --namespace Microsoft.Web
    ```
 
 1. 브라우저 창에서 **eShopOnWeb** GitHub 리포지토리로 돌아갑니다.
-1. 리포지토리 페이지에서 설정** 이동하여 **작업** > **비밀 및 변수를 클릭합니다. **새 리포지토리 비밀**을 클릭합니다.
+1. 리포지토리 페이지에서 **설정**으로 이동하여 **비밀 및 변수 > 작업**을 클릭합니다. **새 리포지토리 비밀**을 클릭합니다.
     - 이름: **AZURE_CREDENTIALS**
     - 비밀: **이전에 복사한 JSON 개체 붙여넣기**(GitHub는 [azure/login](https://github.com/Azure/login) 작업에서 사용된 동일한 이름으로 여러 개의 비밀을 보관할 수 있음)
 
@@ -157,12 +157,12 @@ lab:
 이 작업에서는 GitHub 환경을 사용하여 워크플로의 배포 작업에 정의된 작업을 실행하기 전에 수동 승인을 요청합니다.
 
 1. 리포지토리 페이지에서 **코드**로 이동하고 **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml** 파일을 엽니다.
-1. **배포** 작업 섹션에서 Development**라는 **환경에** 대한 참조를 **찾을 수 있습니다. GitHub에서 사용한 [환경](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment)은 대상에 대한 보호 규칙(및 비밀)을 추가합니다.
+1. **배포** 작업 섹션에서 **개발**이라는 **환경**에 대한 참조를 찾을 수 있습니다. GitHub에서 사용한 [환경](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment)은 대상에 대한 보호 규칙(및 비밀)을 추가합니다.
 
 1. 리포지토리 페이지에서 **설정**으로 이동하여 **환경**을 열고 **새 환경**을 클릭합니다.
 1. 이름을 **개발**로 지정하고 **환경 구성**을 클릭합니다.
 
-    > 참고: 개발**이라는 **환경이 환경 목록에 이미 있는 **경우 환경** 이름을 클릭하여 해당 구성을 엽니다.  
+    > 참고: 참고: **개발**이라는 환경이 **환경** 목록에 이미 있는 경우 환경 이름을 클릭하여 해당 구성을 엽니다.  
 
 1. **개발 구성** 탭에서 **필수 검토자** 옵션을 선택하고 GitHub 계정을 검토자로 선택합니다. **보호 규칙 저장**을 클릭합니다.
 1. 이제 보호 규칙을 테스트할 수 있습니다. 리포지토리 페이지에서 **작업**으로 이동하고 **eShopOnWeb 빌드 및 테스트** 워크플로를 클릭한 다음, **워크플로 실행 > 워크플로 실행**을 클릭하여 수동으로 실행합니다.
