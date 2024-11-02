@@ -6,8 +6,6 @@ lab:
 
 # 기능 테스트 설정 및 실행
 
-## 학생용 랩 매뉴얼
-
 ## 랩 요구 사항
 
 - 이 랩은 **Microsoft Edge** 또는 [Azure DevOps 지원 브라우저](https://docs.microsoft.com/azure/devops/server/compatibility)가 필요합니다.
@@ -30,11 +28,11 @@ lab:
 - 통합 테스트
 - 기능 테스트
 
-## 예상 소요 시간: 60분
+## 예상 소요 시간: 20분
 
-## Instructions
+## 지침
 
-### 연습 0: 랩 필수 구성 요소 구성
+### 연습 0: (완료되면 건너뛰기) 랩 필수 구성 요소 구성
 
 이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)을 기반으로 하여 새 Azure DevOps 프로젝트와 리포지토리를 설정합니다.
 
@@ -73,7 +71,7 @@ lab:
 
 먼저 [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml)이라는 CI 파이프라인을 가져오겠습니다.
 
-1. **Pipelines>Pipelines**로 이동합니다.
+1. **Pipelines > Pipelines**로 이동합니다.
 1. **새 파이프라인** 단추를 클릭합니다.
 1. **Azure Repos Git(YAML)** 을 선택합니다.
 1. **eShopOnWeb** 리포지토리를 선택합니다.
@@ -123,7 +121,7 @@ lab:
 
 1. **저장**을 클릭하고 **저장** 창에서 **저장**을 다시 클릭하여 변경 내용을 기본 분기에 직접 커밋합니다.
 
-#### 작업 4: 테스트 요약 확인
+#### 작업 3: 테스트 요약 확인
 
 1. **실행**을 클릭한 다음 **파이프라인 실행** 탭에서 **실행**을 다시 클릭합니다.
 
@@ -131,14 +129,14 @@ lab:
 
 1. 완료되면 실행의 일부로 **테스트** 탭이 파이프라인 표시됩니다. 요약을 확인하려면 클릭합니다. 아래와 같습니다.
 
-    ![테스트 요약](images/AZ400_M05_L09_Tests_Summary.png)
+    ![테스트 요약의 스크린샷.](images/AZ400_M05_L09_Tests_Summary.png)
 
 1. 자세한 내용은 페이지 아래쪽의 테이블에 다양한 실행 테스트 목록이 표시됩니다.
 
-    >**참고**: 테이블이 비어 있는 경우 테스트 실행에 대한 모든 세부 정보를 갖도록 필터를 다시 설정해야 합니다.
+    > **참고**: 테이블이 비어 있는 경우 테스트 실행에 대한 모든 세부 정보를 갖도록 필터를 다시 설정해야 합니다.
 
-    ![테스트 테이블](images/AZ400_M05_L09_Tests_Table.png)
+    ![테스트 테이블의 스크린샷.](images/AZ400_M05_L09_Tests_Table.png)
 
 ## 검토
 
-이 랩에서는 Azure Pipelines와 .Net을 사용하여 다양한 테스트 형식을 설정하고 실행하는 방법을 알아보았습니다.
+이 랩에서는 Azure Pipelines와 .NET을 사용하여 다양한 테스트 형식을 설정하고 실행하는 방법을 알아보았습니다.
