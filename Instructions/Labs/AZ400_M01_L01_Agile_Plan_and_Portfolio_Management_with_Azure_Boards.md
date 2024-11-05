@@ -31,7 +31,7 @@ lab:
 
 ## 지침
 
-### 연습 0: (완료되면 건너뛰기) 랩 필수 구성 요소 구성
+### 연습 0: (완료된 경우 건너뛰기)랩 필수 구성 요소 구성
 
 이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)을 기반으로 하여 새 Azure DevOps 프로젝트와 리포지토리를 설정합니다.
 

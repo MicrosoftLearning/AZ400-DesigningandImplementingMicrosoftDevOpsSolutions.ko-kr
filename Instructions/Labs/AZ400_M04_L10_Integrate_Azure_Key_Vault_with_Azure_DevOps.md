@@ -37,7 +37,7 @@ Azure Key Vault에서는 키, 암호, 인증서 등의 중요한 데이터를 �
 
 ## 지침
 
-### 연습 0: (완료되면 건너뛰기) 랩 필수 구성 요소 구성
+### 연습 0: (완료된 경우 건너뛰기)랩 필수 구성 요소 구성
 
 이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)을 기반으로 하여 새 Azure DevOps 프로젝트와 리포지토리를 설정합니다.
 
@@ -53,9 +53,9 @@ Azure Key Vault에서는 키, 암호, 인증서 등의 중요한 데이터를 �
 
 이 작업에서는 여러 랩에서 사용할 eShopOnWeb Git 리포지토리를 가져옵니다.
 
-1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > 파일** , **가져오기**를 클릭합니다. **Git 리포지토리 가져오기** 창에서 다음 URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>을 붙여넣고 **가져오기**를 클릭합니다.
+1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > Files**, **가져오기**를 클릭합니다. **Git 리포지토리 가져오기** 창에서 다음 URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>을 붙여넣고 **가져오기**를 클릭합니다.
 
-    ![리포지토리 가져오기 패널의 스크린샷.](images/import-repo.png)
+    ![리포지토리 패널 가져오기의 스크린샷.](images/import-repo.png)
 
 1. 리포지토리는 다음과 같은 방식으로 구성됩니다.
     - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
@@ -66,7 +66,7 @@ Azure Key Vault에서는 키, 암호, 인증서 등의 중요한 데이터를 �
 
 #### 작업 3: (완료된 경우 건너뛰기) 기본(main) 분기를 기본 분기로 설정
 
-1. **Repos > 분기**로 이동합니다.
+1. **Repos > Branches**로 이동합니다.
 1. **기본** 분기를 마우스로 가리킨 다음 열 오른쪽에 있는 줄임표를 클릭합니다.
 1. **기본 분기로 설정**을 클릭합니다.
 
