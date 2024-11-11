@@ -6,6 +6,8 @@ lab:
 
 # 동적 구성 및 기능 플래그 사용
 
+## 학생용 랩 매뉴얼
+
 ## 랩 요구 사항
 
 - 이 랩은 **Microsoft Edge** 또는 [Azure DevOps 지원 브라우저](https://learn.microsoft.com/azure/devops/server/compatibility)가 필요합니다.
@@ -27,11 +29,11 @@ lab:
 - 동적 구성을 활성화합니다.
 - 기능 플래그를 관리합니다.
 
-## 예상 소요 시간: 45분
+## 예상 소요 시간: 60분
 
-## 지침
+## Instructions
 
-### 연습 0: (완료된 경우 건너뛰기)랩 필수 구성 요소 구성
+### 연습 0: 랩 필수 구성 요소 구성
 
 이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)을 기반으로 하여 새 Azure DevOps 프로젝트와 리포지토리를 설정합니다.
 
@@ -45,7 +47,7 @@ lab:
 
 이 작업에서는 여러 랩에서 사용할 eShopOnWeb Git 리포지토리를 가져옵니다.
 
-1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > Files**, **가져오기**를 클릭합니다. **Git 리포지토리 가져오기** 창에서 다음 URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>을 붙여넣고 **가져오기**를 클릭합니다.
+1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > 파일**, **가져오기**를 클릭합니다. **Git 리포지토리 가져오기** 창에서 다음 URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>을 붙여넣고 **가져오기**를 클릭합니다.
 
 1. 리포지토리는 다음과 같은 방식으로 구성됩니다.
     - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
@@ -56,19 +58,19 @@ lab:
 
 #### 작업 3: (완료된 경우 건너뛰기) 기본(main) 분기를 기본 분기로 설정
 
-1. **Repos > Branches**로 이동합니다.
+1. **Repos > 분기**로 이동합니다.
 1. **기본** 분기를 마우스로 가리킨 다음 열 오른쪽에 있는 줄임표를 클릭합니다.
 1. **기본 분기로 설정**을 클릭합니다.
 
 ### 연습 1: (완료된 경우 건너뛰기) CI/CD 파이프라인 가져오기 및 실행
 
-이 연습에서는 CI/CD 파이프라인을 가져와 eShopOnWeb 애플리케이션을 빌드하고 배포합니다. CI 파이프라인은 애플리케이션을 빌드하고 테스트를 실행할 준비가 이미 되어 있습니다. CD 파이프라인은 애플리케이션을 Azure Web App에 배포합니다.
+이 연습에서는 CI 파이프라인을 가져온 후 실행하고, Azure 구독을 사용하여 서비스 연결을 구성한 다음, CD 파이프라인을 가져오고 실행합니다.
 
 #### 작업 1: CI 파이프라인 가져오기 및 실행
 
 먼저 [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml)이라는 CI 파이프라인을 가져오겠습니다.
 
-1. **Pipelines > Pipelines**로 이동합니다.
+1. **Pipelines>Pipelines**로 이동합니다.
 1. **파이프라인 만들기** 단추(파이프라인이 없는 경우) 또는 **새 파이프라인** 단추(이미 만든 파이프라인이 있는 경우)를 클릭합니다.
 1. **Azure Repos Git(Yaml)** 을 선택합니다.
 1. **eShopOnWeb** 리포지토리를 선택합니다.
@@ -76,13 +78,66 @@ lab:
 1. **기본** 분기와 **/.ado/eshoponweb-ci.yml** 파일을 선택한 다음 **계속**을 클릭합니다.
 1. 
           **실행** 단추를 클릭하여 파이프라인을 실행합니다.
-1. 파이프라인은 프로젝트 이름을 기준으로 이름을 사용합니다. 파이프라인을 더 잘 식별하기 위해 **이름을 바꿔**보겠습니다. **Pipelines > Pipelines**로 이동하여 최근에 만든 파이프라인을 클릭합니다. 줄임표 및 **이름 바꾸기/제거** 옵션을 클릭합니다. 이름을 **eshoponweb-ci**로 설정하고 **저장**을 클릭합니다.
+1. 파이프라인은 프로젝트 이름을 기준으로 이름을 사용합니다. 파이프라인을 더 잘 식별하기 위해 **이름을 바꿔**보겠습니다. **파이프라인 > 파이프라인으로** 이동하여 최근에 만든 파이프라인을 클릭합니다. 줄임표 및 **이름 바꾸기/제거** 옵션을 클릭합니다. 이름을 **eshoponweb-ci**로 설정하고 **저장**을 클릭합니다.
 
-#### 작업 2: CD 파이프라인 가져오기 및 실행
+#### 작업 2: 서비스 연결 관리
+
+작업에서 태스크를 실행하기 위해 Azure Pipelines에서 외부 및 원격 서비스로의 연결을 만들 수 있습니다.
+
+이 작업에서는 Azure CLI를 사용하여 서비스 주체를 만듭니다. 그러면 Azure DevOps에서 다음을 수행할 수 있습니다.
+
+- Azure 구독에서 리소스 배포
+- eShopOnWeb 애플리케이션 배포
+
+> **참고**: 서비스 주체가 이미 있으면 다음 작업을 바로 진행해도 됩니다.
+
+Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필요합니다.
+
+프로젝트 설정 페이지에서 새 서비스 연결을 만들거나 파이프라인 정의 내에서 Azure 구독에 연결하면 Azure Pipelines에서 서비스 주체가 자동으로 작성됩니다(자동 옵션). Azure Portal이나 Azure CLI를 통해 서비스 주체를 수동으로 만든 다음 여러 프로젝트에서 재사용할 수도 있습니다.
+
+1. 랩 컴퓨터에서 웹 브라우저를 시작하여 [**Azure Portal**](https://portal.azure.com)로 이동한 다음 이 랩에서 사용할 Azure 구독의 소유자 역할, 그리고 해당 구독과 연결된 Microsoft Entra 테넌트의 전역 관리자 역할이 지정된 사용자 계정으로 로그인합니다.
+1. Azure Portal의 페이지 위쪽 검색 텍스트 상자 바로 오른쪽에 있는 **Cloud Shell** 아이콘을 클릭합니다.
+1. **Bash**와 **PowerShell** 중 선택하라는 메시지가 표시되면 **Bash**를 선택합니다.
+
+   >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 선택합니다.
+
+1. **Bash** 프롬프트의 **Cloud Shell** 창에서 다음 명령을 실행하여 Azure 구독 ID 특성의 값을 검색합니다.
+
+    ```sh
+    subscriptionName=$(az account show --query name --output tsv)
+    subscriptionId=$(az account show --query id --output tsv)
+    echo $subscriptionName
+    echo $subscriptionId
+    ```
+
+    > **참고**: 두 값을 모두 텍스트 파일에 복사해 두세요. 이 랩의 뒷부분에서 계정 이름이 필요합니다.
+
+1. **Bash** 프롬프트의 **Cloud Shell** 창에서 다음 명령을 실행하여 리소스 주체를 만듭니다.
+
+    ```sh
+    az ad sp create-for-rbac --name sp-az400-azdo --role contributor --scopes /subscriptions/$subscriptionId
+    ```
+
+    > **참고**: 이 명령을 실행하면 JSON 출력이 생성됩니다. 텍스트 파일에 출력을 복사해 두세요. 이 랩의 후반부에서 필요합니다.
+
+1. 그 다음, 랩 컴퓨터에서 웹 브라우저를 시작하여 Azure DevOps **eShopOnWeb** 프로젝트로 이동합니다. **프로젝트 설정 > 서비스 연결(파이프라인 아래)** 및 **새 서비스 연결**을 클릭합니다.
+
+1. **새 서비스 연결** 블레이드에서 **Azure Resource Manager** 및 **다음**을 선택합니다(아래로 스크롤해야 할 수 있음).
+
+1. **서비스 주체(수동)** 를 선택하고 **다음**을 클릭합니다.
+
+1. 이전 단계에서 수집한 정보를 사용하여 비어 있는 필드를 채웁니다.
+    - 구독 ID 및 이름
+    - 서비스 주체 ID(또는 clientId), 키(또는 암호) 및 TenantId.
+    - **서비스 연결 이름**에 **azure subs**를 입력합니다. 이 이름은 Azure 구독과 통신하기 위해 Azure DevOps Service 연결이 필요한 경우 YAML 파이프라인에서 참조됩니다.
+
+1. **확인 및 저장**을 클릭합니다.
+
+#### 작업 3: CD 파이프라인 가져오기 및 실행
 
 이름이 [eshoponweb-cd-webapp-code.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-cd-webapp-code.yml)인 CD 파이프라인을 가져오겠습니다.
 
-1. **Pipelines > Pipelines**로 이동합니다.
+1. **Pipelines>Pipelines**로 이동합니다.
 1. **새 파이프라인** 단추를 클릭합니다.
 1. **Azure Repos Git(Yaml)** 을 선택합니다.
 1. **eShopOnWeb** 리포지토리를 선택합니다.
@@ -101,7 +156,7 @@ lab:
     - **리소스**: CI 파이프라인 완료 시 자동으로 트리거되도록 준비됩니다. 또한 bicep 파일에 대한 리포지토리를 다운로드합니다.
     - **AzureResourceManagerTemplateDeployment**: bicep 템플릿을 사용하여 Azure 웹앱을 배포합니다.
 
-1. 파이프라인은 프로젝트 이름을 기준으로 이름을 사용합니다. 파이프라인을 더 잘 식별하기 위해 **이름을 바꿔**보겠습니다. **Pipelines > Pipelines**로 이동하여 최근에 만든 파이프라인을 클릭합니다. 줄임표 및 **이름 바꾸기/제거** 옵션을 클릭합니다. 이름을 **eshoponweb-cd-webapp-code**로 설정하고 **저장**을 클릭합니다.
+1. 파이프라인은 프로젝트 이름을 기준으로 이름을 사용합니다. 파이프라인을 더 잘 식별하기 위해 **이름을 바꿔**보겠습니다. **파이프라인 > 파이프라인으로** 이동하여 최근에 만든 파이프라인을 클릭합니다. 줄임표 및 **이름 바꾸기/제거** 옵션을 클릭합니다. 이름을 **eshoponweb-cd-webapp-code**로 설정하고 **저장**을 클릭합니다.
 
 ### 연습 2: Azure App Configuration 관리
 
@@ -162,6 +217,8 @@ lab:
 1. **적용**을 클릭한 다음 웹 사이트로 돌아가 페이지를 새로 고칩니다.
 1. 이전 기본값 대신 새 메시지가 표시됩니다.
 
+축하합니다! 이 작업에서는 Azure App Configuration에서 **구성 탐색기**를 테스트했습니다.
+
 #### 작업 5: 기능 플래그 테스트
 
 기능 관리자를 계속 테스트해 보겠습니다.
@@ -175,8 +232,32 @@ lab:
 1. '이번 주말에 판매 중인 모든 티셔츠'라는 텍스트가 있는 이미지가 표시됩니다.
 1. App Configuration에서 이 기능을 사용하지 않도록 설정할 수 있습니다. 이렇게 하면 해당 이미지가 사라지는 것을 볼 수 있습니다.
 
-   > [!IMPORTANT]
-   > 불필요한 요금을 방지하려면 Azure Portal에서 만든 리소스를 삭제해야 합니다. **eshoponweb-cd-webapp-code** 파이프라인을 사용하지 않도록 설정하거나 **eshoponweb-ci**의 다음 실행 후에 삭제된 리소스 그룹 및 관련 리소스를 다시 만듭니다.
+축하합니다! 이 작업에서는 Azure App Configuration에서 **기능 관리자**를 테스트했습니다.
+
+### 연습 3: Azure 랩 리소스 제거
+
+이 연습에서는 예상치 못한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
+
+>**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
+
+#### 작업 1: Azure 랩 리소스 제거
+
+이 작업에서는 Azure Cloud Shell을 사용하여 불필요한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
+
+1. Azure Portal의 **Cloud Shell** 창에서 **Bash** 세션을 시작합니다.
+1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
+
+    ```sh
+    az group list --query "[?starts_with(name,'AZ400-EWebShop-')].name" --output tsv
+    ```
+
+1. 다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
+
+    ```sh
+    az group list --query "[?starts_with(name,'AZ400-EWebShop-')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
 
 ## 검토
 

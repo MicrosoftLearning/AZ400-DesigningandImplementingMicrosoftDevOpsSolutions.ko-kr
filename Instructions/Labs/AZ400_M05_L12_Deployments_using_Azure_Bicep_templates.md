@@ -6,6 +6,8 @@ lab:
 
 # Azure Bicep 템플릿을 사용한 배포
 
+## 학생용 랩 매뉴얼
+
 ## 랩 요구 사항
 
 - 이 랩은 **Microsoft Edge** 또는 [Azure DevOps 지원 브라우저](https://docs.microsoft.com/azure/devops/server/compatibility)가 필요합니다.
@@ -33,7 +35,7 @@ lab:
 
 ## 지침
 
-### 연습 0: (완료된 경우 건너뛰기)랩 필수 구성 요소 구성
+### 연습 0: 랩 필수 구성 요소 구성
 
 이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)을 기반으로 하여 새 Azure DevOps 프로젝트와 리포지토리를 설정합니다.
 
@@ -43,7 +45,7 @@ lab:
 
 1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직을 엽니다. **새 프로젝트**를 클릭합니다. 프로젝트 이름을 **eShopOnWeb**으로 설정하고 다른 필드는 기본값으로 유지합니다. **만들기**를 클릭합니다.
 
-    ![새 프로젝트 만들기 패널의 스크린샷.](images/create-project.png)
+    ![프로젝트 만들기](images/create-project.png)
 
 #### 작업 2: (완료된 경우 건너뛰기) eShopOnWeb Git 리포지토리 가져오기
 
@@ -51,7 +53,7 @@ lab:
 
 1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > 파일**, **리포지토리 가져오기**를 클릭합니다. **가져오기**를 선택합니다. **Git 리포지토리 가져오기** 창에서 다음 URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> 을 붙여넣고 **가져오기**를 클릭합니다.
 
-    ![리포지토리 가져오기 패널의 스크린샷.](images/import-repo.png)
+    ![리포지토리 가져오기](images/import-repo.png)
 
 1. 리포지토리는 다음과 같은 방식으로 구성됩니다.
     - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
@@ -62,7 +64,7 @@ lab:
 
 #### 작업 3: (완료된 경우 건너뛰기) 기본(main) 분기를 기본 분기로 설정
 
-1. **Repos > Branches**로 이동합니다.
+1. **Repos > 분기**로 이동합니다.
 1. **기본** 분기를 마우스로 가리킨 다음 열 오른쪽에 있는 줄임표를 클릭합니다.
 1. **기본 분기로 설정**을 클릭합니다.
 
@@ -76,7 +78,7 @@ lab:
 
 1. 브라우저 탭에서 Azure DevOps 프로젝트를 열고 **리포지토리** 및 **파일**로 이동합니다. `infra` 폴더를 열고 `simple-windows-vm.bicep` 파일을 찾습니다.
 
-   ![simple-windows-vm.bicep 파일 경로의 스크린샷.](./images/m06/browsebicepfile.png)
+   ![Simple-windows-vm.bicep 파일](./images/m06/browsebicepfile.png)
 
 1. 템플릿을 검토하여 구조를 자세히 파악합니다. 형식이 포함된 일부 매개 변수, 기본값 및 유효성 검사, 일부 변수, 그리고 다음 형식의 리소스가 상당수 있습니다.
 
@@ -94,7 +96,7 @@ lab:
 
 1. 먼저 기본 템플릿에서 스토리지 리소스를 제거해야 합니다. 브라우저 창의 오른쪽 위 모서리에서 **편집** 단추를 클릭합니다.
 
-   ![파이프라인 편집 버튼의 스크린샷.](./images/m06/edit.png)
+   ![편집 버튼](./images/m06/edit.png)
 
 1. 이제 스토리지 리소스를 삭제합니다.
 
@@ -111,11 +113,11 @@ lab:
 
 1. 파일을 커밋합니다. 아직 완료된 것은 아닙니다.
 
-   ![파일 커밋 버튼 스크린샷.](./images/m06/commit.png)
+   ![파일 커밋](./images/m06/commit.png)
 
-1. 그런 다음 `Infra` 폴더 위에 마우스를 놓고 줄임표 아이콘을 클릭한 후 **새로 만들기** 및 **파일**을 선택합니다. 이름에 **`storage.bicep`** 입력 후 **만들기**를 클릭합니다.
+1. 그런 다음 `Infra` 폴더 위에 마우스를 놓고 줄임표 아이콘을 클릭한 후 **새로 만들기** 및 **파일**을 선택합니다. 이름에 **storage.bicep**을 입력하고 **만들기**를 클릭합니다.
 
-   ![새 파일 메뉴의 스크린샷.](./images/m06/newfile.png)
+   ![새 파일 메뉴](./images/m06/newfile.png)
 
 1. 이제 다음 코드 조각을 파일에 복사하고 변경 사항을 커밋합니다.
 
@@ -179,9 +181,64 @@ lab:
 
 ### 연습 2: YAML 파이프라인을 사용하여 Azure에 템플릿 배포하기
 
-이 에서는 Azure DevOps YAML 파이프라인을 사용하여 템플릿을 Azure 환경에 배포합니다.
+이 랩에서는 서비스 연결을 만들고 Azure DevOps YAML 파이프라인에서 사용하여 템플릿을 Azure 환경에 배포합니다.
 
-#### 작업 1: YAML 파이프라인으로 Azure에 리소스 배포
+#### 작업 1: (완료된 경우 건너뛰기) 배포를 위한 서비스 연결 만들기
+
+이 작업에서는 Azure CLI를 사용하여 서비스 주체를 만듭니다. 그러면 Azure DevOps에서 다음을 수행할 수 있습니다.
+
+- Azure 구독에서 리소스를 배포합니다.
+- 나중에 만든 Key Vault 비밀에 대한 읽기 권한 갖기
+
+> **참고**: 서비스 주체가 이미 있으면 다음 작업을 바로 진행해도 됩니다.
+
+Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필요합니다. 여기서는 파이프라인의 비밀을 검색할 것이므로 Azure Key Vault를 만들 때 서비스에 대한 권한을 부여해야 합니다.
+
+프로젝트 설정 페이지에서 새 서비스 연결을 만들거나 파이프라인 정의 내에서 Azure 구독에 연결하면 Azure Pipelines에서 서비스 주체가 자동으로 작성됩니다(자동 옵션). Azure Portal이나 Azure CLI를 통해 서비스 주체를 수동으로 만든 다음 여러 프로젝트에서 재사용할 수도 있습니다.
+
+1. 랩 컴퓨터에서 웹 브라우저를 시작하여 [**Azure Portal**](https://portal.azure.com)로 이동한 다음 이 랩에서 사용할 Azure 구독의 소유자 역할, 그리고 해당 구독과 연결된 Microsoft Entra 테넌트의 전역 관리자 역할이 지정된 사용자 계정으로 로그인합니다.
+1. Azure Portal의 페이지 위쪽 검색 텍스트 상자 바로 오른쪽에 있는 **Cloud Shell** 아이콘을 클릭합니다.
+1. **Bash**와 **PowerShell** 중 선택하라는 메시지가 표시되면 **Bash**를 선택합니다.
+
+   >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 선택합니다.
+
+1. **Cloud Shell** 창의 **Bash** 프롬프트에서 다음 명령을 실행하여 Azure 구독 ID 및 구독 이름 특성의 값을 검색합니다.
+
+    ```bash
+    az account show --query id --output tsv
+    az account show --query name --output tsv
+    ```
+
+    > **참고**: 두 값을 모두 텍스트 파일에 복사해 두세요. 이 랩의 뒷부분에서 계정 이름이 필요합니다.
+
+1. **Bash** 프롬프트의 **Cloud Shell** 창에서 다음 명령을 실행하여 리소스 주체를 만듭니다. 여기서 **myServicePrincipalName**은 문자와 숫자로 구성된 고유한 문자열로 바꾸고, **mySubscriptionID**는 Azure subscriptionId로 바꿉니다.
+
+    ```bash
+    az ad sp create-for-rbac --name myServicePrincipalName \
+                         --role contributor \
+                         --scopes /subscriptions/mySubscriptionID
+    ```
+
+    > **참고**: 이 명령을 실행하면 JSON 출력이 생성됩니다. 텍스트 파일에 출력을 복사해 두세요. 이 랩의 후반부에서 필요합니다.
+
+1. 그 다음, 랩 컴퓨터에서 웹 브라우저를 시작하여 Azure DevOps **eShopOnWeb** 프로젝트로 이동합니다. **프로젝트 설정 > 서비스 연결(파이프라인 아래)** 및 **새 서비스 연결**을 클릭합니다.
+
+    ![새 서비스 연결](images/new-service-connection.png)
+
+1. **새 서비스 연결** 블레이드에서 **Azure Resource Manager** 및 **다음**을 선택합니다(아래로 스크롤해야 할 수 있음).
+
+1. **서비스 주체(수동)** 를 선택하고 **다음**을 클릭합니다.
+
+1. 이전 단계에서 수집한 정보를 사용하여 비어 있는 필드를 채웁니다.
+    - 구독 ID 및 이름.
+    - 서비스 주체 ID(appId), 서비스 주체 키(암호), 테넌트 ID(테넌트).
+    - **서비스 연결 이름**에 **azure subs**를 입력합니다. 이 이름은 Azure 구독과 통신하기 위해 Azure DevOps Service 연결이 필요한 경우 YAML 파이프라인에서 참조됩니다.
+
+    ![Azure 서비스 연결](images/azure-service-connection.png)
+
+1. **확인 및 저장**을 클릭합니다.
+
+#### 작업 2: YAML 파이프라인을 통해 Azure에 리소스 배포하기
 
 1. **Pipelines** 허브의 **파이프라인** 창으로 다시 이동합니다.
 1. **첫 번째 파이프라인 만들기** 창에서 **파이프라인 만들기**를 클릭합니다.
@@ -198,13 +255,23 @@ lab:
 1. 변수 섹션에서 리소스 그룹의 이름을 선택하고 원하는 위치를 설정한 다음 서비스 연결 값을 이전에 만든 기존 서비스 연결 중 하나로 바꿉니다.
 1. 오른쪽 상단의 **저장 및 실행** 단추를 클릭하고 커밋 대화 상자가 나타나면 **저장 및 실행**을 다시 클릭합니다.
 
-   ![저장 후 실행 버튼의 스크린샷.](./images/m06/saveandrun.png)
+   ![변경한 후 YAML 파이프라인 저장 및 실행](./images/m06/saveandrun.png)
 
 1. 배포가 완료될 때까지 기다린 후 결과를 검토합니다.
-   ![YAML 파이프라인을 사용하여 Azure에 리소스를 성공적으로 배포한 스크린샷.](./images/m06/deploy.png)
+   ![YAML 파이프라인을 사용하여 Azure에 리소스 배포 성공](./images/m06/deploy.png)
 
-   > [!IMPORTANT]
-   > 불필요한 요금이 부과되지 않도록 Azure Portal에서 만든 리소스를 삭제하는 것을 잊지 마세요.
+#### 작업 3: Azure 랩 리소스 제거
+
+이 작업에서는 Azure Cloud Shell을 사용하여 불필요한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
+
+1. Azure Portal의 **Cloud Shell** 창에서 **Bash** 세션을 시작합니다.
+1. 다음 명령을 실행하여 이 모듈의 랩 전반에서 만든 모든 리소스 그룹을 삭제합니다(리소스 그룹 이름을 선택한 이름으로 바꿀 것).
+
+   ```bash
+   az group list --query "[?starts_with(name,'AZ400-EWebShop-NAME')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+   ```
+
+   > **참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
 
 ## 검토
 
