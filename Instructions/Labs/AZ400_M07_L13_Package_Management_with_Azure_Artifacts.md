@@ -6,8 +6,6 @@ lab:
 
 # Azure Artifacts로 패키지 관리
 
-## 학생용 랩 매뉴얼
-
 ## 랩 요구 사항
 
 - 이 랩은 **Microsoft Edge** 또는 [Azure DevOps 지원 브라우저](https://docs.microsoft.com/azure/devops/server/compatibility)가 필요합니다.
@@ -41,9 +39,38 @@ Azure Artifacts를 활용하면 Azure DevOps에서 NuGet, npm 및 Maven 패키�
 
 ### 연습 0: 랩 필수 구성 요소 구성
 
-이 연습에서는 랩 필수 구성 요소의 유효성을 검사하고, Azure DevOps 조직을 모두 준비하고, eShopOnWeb 프로젝트를 만든 것에 대해 알려 드리고자 합니다. 자세한 내용은 위의 지침을 참조하세요.
+이 연습에서는 랩 필수 구성 요소를 설정합니다.
 
-#### 작업 1: Visual Studio에서 eShopOnWeb 솔루션 구성
+#### 작업 1: (완료된 경우 건너뛰기) 팀 프로젝트 만들기 및 구성
+
+이 작업에서는 여러 랩에서 사용할 **eShopOnWeb** Azure DevOps 프로젝트를 만듭니다.
+
+1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직을 엽니다. **새 프로젝트**를 클릭합니다. 프로젝트 이름을 **eShopOnWeb**으로 설정하고 다른 필드는 기본값으로 유지합니다. **만들기**를 클릭합니다.
+
+    ![새 프로젝트 만들기 패널의 스크린샷.](images/create-project.png)
+
+#### 작업 2: (완료된 경우 건너뛰기) eShopOnWeb Git 리포지토리 가져오기
+
+이 작업에서는 여러 랩에서 사용할 eShopOnWeb Git 리포지토리를 가져옵니다.
+
+1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > 파일**, **리포지토리 가져오기**를 클릭합니다. **가져오기**를 선택합니다. **Git 리포지토리 가져오기** 창에서 다음 URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> 을 붙여넣고 **가져오기**를 클릭합니다.
+
+    ![리포지토리 가져오기 패널의 스크린샷.](images/import-repo.png)
+
+1. 리포지토리는 다음과 같은 방식으로 구성됩니다.
+    - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
+    - **.devcontainer** 폴더 컨테이너 설정을 통해 컨테이너를 사용하여 개발합니다(VS Code 또는 GitHub Codespaces에서 로컬로).
+    - **infra** 폴더에는 일부 랩 시나리오에서 사용되는 코드 템플릿으로 Bicep 및 ARM 인프라가 포함되어 있습니다.
+    - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
+    - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 8 웹 사이트가 포함되어 있습니다.
+
+#### 작업 3: (완료된 경우 건너뛰기) 기본(main) 분기를 기본 분기로 설정
+
+1. **Repos > Branches**로 이동합니다.
+1. **기본** 분기를 마우스로 가리킨 다음 열 오른쪽에 있는 줄임표를 클릭합니다.
+1. **기본 분기로 설정**을 클릭합니다.
+
+#### 작업 4: Visual Studio에서 eShopOnWeb 솔루션 구성
 
 이 작업에서는 랩에서 사용할 수 있도록 Visual Studio를 구성합니다.
 
@@ -76,7 +103,7 @@ Azure Artifacts를 활용하면 Azure DevOps에서 NuGet, npm 및 Maven 패키�
 
     > **참고**: 조직 내의 사용자에게 제공되는 NuGet 패키지 컬렉션인 이 피드는 공용 NuGet 피드와 함께 피어로 저장됩니다. 이 랩에서는 Azure Artifacts 사용을 위한 워크플로를 중점적으로 진행하므로 아키텍처 및 개발과 관련된 실제 결정 사항은 설명을 위해서만 제시되는 것입니다.  이 피드에는 조직의 여러 프로젝트에서 공유할 수 있는 공통 기능이 포함됩니다.
 
-1. **새 피드 만들기** 창의 **이름** 텍스트 상자에 **eShopOnWebShared**를 입력하고 **범위** 섹션에서 **조직** 옵션을 선택합니다. 다른 설정은 기본값으로 유지하고 **만들기**를 클릭합니다.
+1. **새 피드 만들기** 창의 **이름** 텍스트 상자에 **`eShopOnWebShared`** 입력 후, **범위** 섹션에서 **조직** 옵션을 선택한 다음 다른 설정은 기본값으로 두고 **만들기**를 클릭합니다.
 
     > **참고**: 이 NuGet 피드에 연결하려는 모든 사용자는 환경을 구성해야 합니다.
 
@@ -130,7 +157,7 @@ Azure Artifacts를 활용하면 Azure DevOps에서 NuGet, npm 및 Maven 패키�
     dotnet pack .\eShopOnWeb.Shared.csproj
     ```
 
-    > **참고**: **dotnet pack** 명령은 프로젝트를 빌드하고 **bin\Release** 폴더에 NuGet 패키지를 만듭니다.
+    > **참고**: **dotnet pack** 명령은 프로젝트를 빌드하고 **bin\Release** 폴더에 NuGet 패키지를 만듭니다. **릴리스** 폴더가 없는 경우 **디버그** 폴더를 대신 사용할 수 있습니다.
 
     > **참고**: **관리자: Windows PowerShell** 창에 표시되는 경고는 무시하세요.
 
@@ -229,7 +256,7 @@ Azure DevOps Artifacts 패키지 피드를 만들 때 dotnet 예제의 nuget.org
 
 1. Azure DevOps 포털로 이동하여 **Artifacts**를 찾아 **eShopOnWebShared** 피드를 선택합니다.
 1. **업스트림 소스 검색** 클릭
-1. **업스트림 패키지로 이동** 창에서 **NuGet**을 패키지 유형으로 선택하고 검색 필드에 **Newtonsoft.Json**을 입력합니다.
+1. **업스트림 패키지로 이동** 창에서 패키지 유형으로 **NuGet**을 선택하고 검색 필드에 **`Newtonsoft.Json`** 을 입력합니다.
 1. **검색** 단추를 눌러 확인합니다.
 1. 이렇게 하면 사용 가능한 다양한 버전이 있는 모든 Newtonsoft.Json 패키지 목록이 생성됩니다.
 1. **왼쪽 화살표 키**를 클릭하여 **eShopOnWebShared** 피드로 돌아갑니다.
