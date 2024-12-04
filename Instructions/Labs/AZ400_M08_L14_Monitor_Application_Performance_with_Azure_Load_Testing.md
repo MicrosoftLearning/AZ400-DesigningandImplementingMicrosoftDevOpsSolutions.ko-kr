@@ -6,6 +6,8 @@ lab:
 
 # Azure Load Testing으로 애플리케이션 성능 모니터링
 
+## 학생용 랩 매뉴얼
+
 ## 랩 요구 사항
 
 - 이 랩은 **Microsoft Edge** 또는 [Azure DevOps 지원 브라우저](https://docs.microsoft.com/azure/devops/server/compatibility)가 필요합니다.
@@ -40,7 +42,7 @@ lab:
 
 ### 연습 0: 랩 필수 구성 요소 구성
 
-이 연습에서는 랩 필수 구성 요소를 설정합니다.
+이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)을 기반으로 하여 새 Azure DevOps 프로젝트와 리포지토리를 설정합니다.
 
 #### 작업 1: (완료된 경우 건너뛰기) 팀 프로젝트 만들기 및 구성
 
@@ -48,15 +50,15 @@ lab:
 
 1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직을 엽니다. **새 프로젝트**를 클릭합니다. 프로젝트 이름을 **eShopOnWeb**으로 설정하고 **작업 항목 프로세스** 드롭다운에서 **스크럼**을 선택합니다. **만들기**를 클릭합니다.
 
-    ![새 프로젝트 만들기 패널의 스크린샷.](images/create-project.png)
+    ![프로젝트 만들기](images/create-project.png)
 
 #### 작업 2: (완료된 경우 건너뛰기) eShopOnWeb Git 리포지토리 가져오기
 
 이 작업에서는 여러 랩에서 사용할 eShopOnWeb Git 리포지토리를 가져옵니다.
 
-1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > Files**, **가져오기**를 클릭합니다. **Git 리포지토리 가져오기** 창에서 다음 URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>을 붙여넣고 **가져오기**를 클릭합니다.
+1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb** 프로젝트를 엽니다. **Repos > 파일**, **가져오기**를 클릭합니다. **Git 리포지토리 가져오기** 창에서 다음 URL https://github.com/MicrosoftLearning/eShopOnWeb.git을 붙여넣고 **가져오기**를 클릭합니다.
 
-    ![리포지토리 패널 가져오기의 스크린샷.](images/import-repo.png)
+    ![리포지토리 가져오기](images/import-repo.png)
 
 1. 리포지토리는 다음과 같은 방식으로 구성됩니다.
     - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
@@ -65,25 +67,23 @@ lab:
     - **.github** 폴더 컨테이너 YAML GitHub 워크플로 정의.
     - **src** 폴더에는 랩 시나리오에서 사용되는 .NET 8 웹 사이트가 포함되어 있습니다.
 
-#### 작업 3: (완료된 경우 건너뛰기) 기본(main) 분기를 기본 분기로 설정
-
-1. **Repos > Branches**로 이동합니다.
+1. **Repos > 분기**로 이동합니다.
 1. **기본** 분기를 마우스로 가리킨 다음 열 오른쪽에 있는 줄임표를 클릭합니다.
 1. **기본 분기로 설정**을 클릭합니다.
 
-#### 작업 4: Azure 리소스 만들기
+#### 작업 3: Azure 리소스 만들기
 
 이 작업에서는 Azure Portal의 클라우드 셸을 사용하여 Azure 웹앱을 만듭니다.
 
-1. 랩 컴퓨터에서 웹 브라우저를 시작하고 [**Azure Portal**](https://portal.azure.com)로 이동하여 로그인합니다.
+1. 랩 컴퓨터에서 웹 브라우저를 시작하여 [**Azure Portal**](https://portal.azure.com)로 이동한 다음 이 랩에서 사용할 Azure 구독의 Owner 역할, 그리고 해당 구독과 연결된 Microsoft Entra 테넌트의 전역 관리자 역할이 지정된 사용자 계정으로 로그인합니다.
 1. Azure Portal의 도구 모음에서 검색 텍스트 상자 바로 오른쪽에 있는 **Cloud Shell** 아이콘을 클릭합니다.
 1. **Bash**와 **PowerShell** 중 선택하라는 메시지가 표시되면 **Bash**를 선택합니다.
-    > **참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 선택합니다.
+    >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 선택합니다.
 
 1. **Cloud Shell** 창의 **Bash** 프롬프트에서 다음 명령을 실행하여 리소스 그룹을 만듭니다. 여기서 `<region>` 자리 표시자는 ‘eastus’ 등의 가장 가까운 Azure 지역 이름으로 바꿉니다.
 
     ```bash
-    RESOURCEGROUPNAME='az400m08l14-RG'
+    RESOURCEGROUPNAME='az400m09l16-RG'
     LOCATION='<region>'
     az group create --name $RESOURCEGROUPNAME --location $LOCATION
     ```
@@ -91,7 +91,7 @@ lab:
 1. 다음 명령을 실행하여 Windows App Service 요금제를 만들려면:
 
     ```bash
-    SERVICEPLANNAME='az400l14-sp'
+    SERVICEPLANNAME='az400l16-sp'
     az appservice plan create --resource-group $RESOURCEGROUPNAME \
         --name $SERVICEPLANNAME --sku B3
     ```
@@ -109,7 +109,62 @@ lab:
 
 이 연습에서는 Azure DevOps에서 YAML을 사용하여 CI/CD 파이프라인을 코드로 구성합니다.
 
-#### 작업 1: YAML 빌드 추가 및 정의 배포
+#### 작업 1: (완료된 경우 건너뛰기) 배포를 위한 서비스 연결 만들기
+
+이 작업에서는 Azure CLI를 사용하여 서비스 주체를 만듭니다. 그러면 Azure DevOps에서 다음을 수행할 수 있습니다.
+
+- Azure 구독에서 리소스를 배포합니다.
+- 나중에 만든 Key Vault 비밀에 대한 읽기 권한 갖기
+
+> **참고**: 서비스 주체가 이미 있으면 다음 작업을 바로 진행해도 됩니다.
+
+Azure Pipelines에서 Azure 리소스를 배포하려면 서비스 주체가 필요합니다. 여기서는 파이프라인의 비밀을 검색할 것이므로 Azure Key Vault를 만들 때 서비스에 대한 권한을 부여해야 합니다.
+
+프로젝트 설정 페이지에서 새 서비스 연결을 만들거나 파이프라인 정의 내에서 Azure 구독에 연결하면 Azure Pipelines에서 서비스 주체가 자동으로 작성됩니다(자동 옵션). Azure Portal이나 Azure CLI를 통해 서비스 주체를 수동으로 만든 다음 여러 프로젝트에서 재사용할 수도 있습니다.
+
+1. 랩 컴퓨터에서 웹 브라우저를 시작하여 [**Azure Portal**](https://portal.azure.com)로 이동한 다음 이 랩에서 사용할 Azure 구독의 소유자 역할, 그리고 해당 구독과 연결된 Microsoft Entra 테넌트의 전역 관리자 역할이 지정된 사용자 계정으로 로그인합니다.
+1. Azure Portal의 페이지 위쪽 검색 텍스트 상자 바로 오른쪽에 있는 **Cloud Shell** 아이콘을 클릭합니다.
+1. **Bash**와 **PowerShell** 중 선택하라는 메시지가 표시되면 **Bash**를 선택합니다.
+
+   >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 선택합니다.
+
+1. **Cloud Shell** 창의 **Bash** 프롬프트에서 다음 명령을 실행하여 Azure 구독 ID 및 구독 이름 특성의 값을 검색합니다.
+
+    ```bash
+    az account show --query id --output tsv
+    az account show --query name --output tsv
+    ```
+
+    > **참고**: 두 값을 모두 텍스트 파일에 복사해 두세요. 이 랩의 뒷부분에서 계정 이름이 필요합니다.
+
+1. **Bash** 프롬프트의 **Cloud Shell** 창에서 다음 명령을 실행하여 리소스 주체를 만듭니다. 여기서 **myServicePrincipalName**은 문자와 숫자로 구성된 고유한 문자열로 바꾸고, **mySubscriptionID**는 Azure subscriptionId로 바꿉니다.
+
+    ```bash
+    az ad sp create-for-rbac --name myServicePrincipalName \
+                         --role contributor \
+                         --scopes /subscriptions/mySubscriptionID
+    ```
+
+    > **참고**: 이 명령을 실행하면 JSON 출력이 생성됩니다. 텍스트 파일에 출력을 복사해 두세요. 이 랩의 후반부에서 필요합니다.
+
+1. 그 다음, 랩 컴퓨터에서 웹 브라우저를 시작하여 Azure DevOps **eShopOnWeb** 프로젝트로 이동합니다. **프로젝트 설정 > 서비스 연결(파이프라인 아래)** 및 **새 서비스 연결**을 클릭합니다.
+
+    ![새 서비스 연결](images/new-service-connection.png)
+
+1. **새 서비스 연결** 블레이드에서 **Azure Resource Manager** 및 **다음**을 선택합니다(아래로 스크롤해야 할 수 있음).
+
+1. **서비스 주체(수동)** 를 선택하고 **다음**을 클릭합니다.
+
+1. 이전 단계에서 수집한 정보를 사용하여 비어 있는 필드를 채웁니다.
+    - 구독 ID 및 이름.
+    - 서비스 주체 ID(appId), 서비스 주체 키(암호), 테넌트 ID(테넌트).
+    - **서비스 연결 이름**에 **azure subs**를 입력합니다. 이 이름은 Azure 구독과 통신하기 위해 Azure DevOps Service 연결이 필요한 경우 YAML 파이프라인에서 참조됩니다.
+
+    ![Azure 서비스 연결](images/azure-service-connection.png)
+
+1. **확인 및 저장**을 클릭합니다.
+
+#### 작업 2: YAML 빌드 추가 및 정의 배포
 
 이 작업에서는 기존 프로젝트에 YAML 빌드 정의를 추가합니다.
 
@@ -196,7 +251,7 @@ lab:
     - Windows에서 웹앱에 대한 **App Service 유형** 지점의 유효성을 검사합니다.
     - **App Service 이름** 드롭다운 목록에서 랩 앞부분에서 배포한 웹앱의 이름(**az400eshoponweb...)을 선택합니다.
     - **패키지 또는 폴더** 텍스트 상자에서 기본값을 `$(Build.ArtifactStagingDirectory)/**/Web.zip`으로 **업데이트**합니다.
-    - **애플리케이션 및 구성 설정**을 확장하고 앱 설정 텍스트 상자에 다음 키-값 쌍을 추가합니다. `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` 
+    - **애플리케이션 및 구성 설정** 확장 및 `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` 값 추가
 1. **추가** 단추를 클릭하여 도우미 창에서 설정을 확인합니다.
 
     > **참고**: 그러면 YAML 파이프라인 정의에 배포 작업이 자동으로 추가됩니다.
@@ -216,17 +271,17 @@ lab:
 
     > **참고**: 이 랩에서는 **packageForLinux** 매개 변수를 사용하면 안 되지만 Windows나 Linux에서는 해당 매개 변수를 사용할 수 있습니다.
 
-1. yml-file에 업데이트를 저장하기 전에 좀 더 명확한 이름을 지정합니다. yaml-editor 창 위에 **EShopOnweb/azure-pipelines-#.yml**이 표시됩니다. (여기서 #은 숫자이며 일반적으로 1이지만 설정에 따라 다를 수 있습니다.) **해당 파일 이름**을 선택하고 이름을 **m08l14-pipeline.yml**로 바꿉니다.
+1. yml-file에 업데이트를 저장하기 전에 좀 더 명확한 이름을 지정합니다. yaml-editor 창 위에 **EShopOnweb/azure-pipelines-#.yml**이 표시됩니다. (여기서 #은 숫자이며 일반적으로 1이지만 실제 설정에서는 다를 수 있습니다.) **해당 파일 이름**을 선택하고 이름을 **m09l16-pipeline.yml**로 바꿉니다.
 
-1. **저장**을 클릭하고 **저장** 창에서 **저장**을 다시 클릭하여 변경 내용을 기본 분기에 직접 커밋합니다.
+1. **저장**을 클릭하고 **저장** 창에서 **저장**을 다시 클릭하여 변경 내용을 마스터 분기에 직접 커밋합니다.
 
     > **참고**: 원래 CI-YAML이 새 빌드를 자동으로 트리거하도록 구성되지 않았기 때문에 이 빌드를 수동으로 시작해야 합니다.
 
 1. Azure DevOps 왼쪽 메뉴에서 **파이프라인**으로 이동한 후 **파이프라인을** 다시 선택합니다. 다음으로, **모두**를 선택하여 최근 파이프라인 정의뿐만 아니라 모든 파이프라인 정의를 엽니다.
 
-    > **참고**: 이전 랩 연습에서 이전 파이프라인을 모두 유지한 경우 이 새 파이프라인은 아래 스크린샷과 같이 파이프라인에 대한 기본 **eShopOnWeb(#)** 시퀀스 이름을 재사용했을 수 있습니다. 파이프라인을 선택합니다(대부분 시퀀스 번호가 가장 높은 파이프라인, 편집을 선택하고 m08l14-pipeline.yml 코드 파일을 가리키는지 확인).
+    > **참고**: 이전 랩 연습에서 이전 파이프라인을 모두 유지한 경우 이 새 파이프라인은 아래 스크린샷과 같이 파이프라인에 대한 기본 **eShopOnWeb(#)** 시퀀스 이름을 재사용했을 수 있습니다. 파이프라인을 선택합니다(대부분 시퀀스 번호가 가장 높은 파이프라인, 편집을 선택하고 m09l16-pipeline.yml 코드 파일을 가리키는지 확인).
 
-    ![eShopOnWeb 실행을 보여 주는 Azure Pipelines의 스크린샷.](images/m3/eshoponweb-m9l16-pipeline.png)
+    ![eShopOnWeb 실행을 보여 주는 Azure Pipelines의 스크린샷](images/m3/eshoponweb-m9l16-pipeline.png)
 
 1. 표시되는 창에서 **실행**을 클릭하여 이 파이프라인을 실행하도록 확인하고 **실행**을 한 번 더 클릭하여 확인합니다.
 1. 서로 다른 2가지 스테이지인 **.NET Core 솔루션 빌드** 및 **Azure 웹앱에 배포**가 표시됩니다.
@@ -260,13 +315,13 @@ lab:
 이 작업에서는 Azure 구독에 Azure Load Testing 리소스를 배포합니다.
 
 1. Azure Portal(<https://portal.azure.com>)에서 **Azure 리소스 만들기**로 이동합니다.
-1. '서비스 및 마켓플레이스 검색' 검색 필드에 **`Azure Load Testing`** 을 입력합니다.
+1. '서비스 및 마켓플레이스 검색' 검색 필드에 **Azure Load Testing**을 입력합니다.
 1. 검색 결과에서 **Azure Load Testing**(Microsoft에서 게시)을 선택합니다.
 1. Azure Load Testing 페이지에서 **만들기**를 클릭하여 배포 프로세스를 시작합니다.
 1. '부하 테스트 리소스 만들기' 페이지에서 리소스 배포에 필요한 세부 정보를 제공합니다.
    - **구독**: 현재 이용 중 Azure 구독 선택
    - **리소스 그룹**: 이전 연습에서 웹앱 서비스를 배포하는 데 사용한 리소스 그룹 선택
-   - **이름**: `eShopOnWebLoadTesting`
+   - **이름**: eShopOnWebLoadTesting
    - **지역**: 현재 지역에서 가까운 지역을 선택합니다.
 
     > **참고**: Azure Load Testing 서비스를 모든 Azure 지역에서 사용할 수 있는 것은 아닙니다.
@@ -282,8 +337,7 @@ lab:
 
 이 작업에서는 다른 부하 구성 설정을 사용하여 다른 Azure Load Testing 테스트를 만듭니다.
 
-1. **eShopOnWebLoadTesting** Azure Load Testing 리소스 블레이드 내에서 **테스트** 아래의 **테스트**로 이동합니다. **+ 만들기** 메뉴 옵션을 클릭하고 **URL 기반 테스트 만들기**를 선택합니다.
-1. 고급 설정을 표시하려면 **고급 설정 사용** 체크박스의 선택을 취소합니다.
+1. **eShopOnWebLoadTesting** Azure Load Testing 리소스 블레이드 내에서 **테스트**로 이동합니다. **+만들기** 메뉴 옵션을 클릭하고 **URL 기반 테스트 만들기**를 선택합니다.
 1. 다음 매개 변수 및 설정을 완료하여 부하 테스트를 만듭니다.
    - **테스트 URL**: 이전 연습에서 배포한 Azure 앱 서비스의 URL을 입력합니다(az400eshoponweb... azurewebsites.net)**https:// 포함**
    - **부하 지정** 가상 사용자
@@ -328,24 +382,27 @@ CI/CD 파이프라인에 추가하여 Azure Load Testing에서 부하 테스트 
 
 이 연습을 완료하면 Azure Load Testing을 사용하여 부하 테스트를 실행하도록 CI/CD 워크플로를 구성하게 됩니다.
 
-#### 작업 1: Azure DevOps 서비스 연결 세부 정보 확인
+#### 작업 1: ADO 서비스 연결 세부 정보 식별
 
-이 작업에서는 Azure DevOps 서비스 연결에 필요한 권한을 부여합니다.
+이 작업에서는 Azure DevOps Service 연결의 서비스 주체에 필요한 권한을 부여합니다.
 
-1. **Azure DevOps Portal**(<https://aex.dev.azure.com>)에서 **eShopOnWeb** 프로젝트로 이동합니다.
+1. **Azure DevOps Portal**(<https://dev.azure.com>)에서 **eShopOnWeb** 프로젝트로 이동합니다.
 1. 왼쪽 아래 모서리에서 **프로젝트 설정**을 선택합니다.
 1. **Pipelines** 섹션에서 **서비스 연결**을 선택합니다.
 1. 랩 연습을 시작할 때 Azure 리소스를 배포하는 데 사용한 Azure 구독의 이름이 있는 서비스 연결을 확인합니다.
-1. **서비스 연결을 선택합니다**. **개요** 탭에서 **세부정보**로 이동하여 **서비스 연결 역할 관리**를 선택합니다.
-1. 그러면 IAM(액세스 제어) 블레이드에서 리소스 그룹 세부 정보가 열리는 Azure Portal로 리디렉션됩니다.
+1. **서비스 연결을 선택합니다**. **개요** 탭에서 **세부 정보**로 이동하고 **서비스 주체 관리**를 선택합니다.
+1. 그러면 ID 개체에 대한 **서비스 주체** 세부 정보가 열리는 Azure Portal로 리디렉션됩니다.
+1. 다음 단계에서 필요하므로 **표시 이름** 값(Name_of_ADO_Organization_eShopOnWeb_-b86d9ae1-7552-4b75-a1e0-27fb2ea7f9f4와 같은 형식)을 복사합니다.
 
-#### 작업 2: Azure Load Testing 리소스에 대한 권한 부여
+#### 작업 2: 서비스 주체 사용 권한 부여
 
-Azure Load Testing은 Azure RBAC를 사용하여 부하 테스트 리소스에 특정 작업을 수행하기 위한 권한을 부여합니다. CI/CD 파이프라인에서 부하 테스트를 실행하려면 Azure DevOps 서비스 연결에 **부하 테스트 기여자** 역할을 부여합니다.
+Azure Load Testing은 Azure RBAC를 사용하여 부하 테스트 리소스에 특정 작업을 수행하기 위한 권한을 부여합니다. CI/CD 파이프라인에서 부하 테스트를 실행하려면 **부하 테스트 기여자** 역할을 서비스 주체에 부여합니다.
 
-1. **+ 추가**를 선택한 다음, **역할 할당 추가**를 선택합니다.
+1. **Azure portal**에서 **Azure Load Testing** 리소스로 이동합니다.
+1. **액세스 제어(IAM)** > 추가 > 역할 할당 추가를 선택합니다.
 1. **역할** 탭의 작업 함수 역할 목록에서 **부하 테스트 기여자**를 선택합니다.
-1. **멤버 탭**에서 **멤버 선택**을 선택한 다음 사용자 계정을 찾아서 선택한 후 **선택**을 클릭합니다.
+1. **구성원 탭**에서 **구성원 선택**을 선택한 다음 이전에 복사한 **표시 이름**을 사용하여 서비스 주체를 검색합니다.
+1. **서비스 주체**, **선택**을 차례로 선택합니다.
 1. **검토 + 할당** 탭에서 **검토 + 할당**을 선택하여 역할 할당을 추가합니다.
 
 이제 Azure Pipelines 워크플로 정의에서 서비스 연결을 사용하여 Azure 부하 테스트 리소스에 액세스할 수 있습니다.
@@ -365,7 +422,7 @@ Azure Portal에서 기존 부하 테스트에 대한 입력 파일을 다운로�
    - *config.yaml*: 부하 테스트 YAML 구성 파일입니다. CI/CD 워크플로 정의에서 이 파일을 참조합니다.
    - *quick_test.jmx*: JMeter 테스트 스크립트
 
-1. 추출된 모든 입력 파일을 소스 제어 리포지토리에 커밋합니다. 이렇게 하려면 **Azure DevOps Portal**(<https://aex.dev.azure.com/>)로 이동하고 **eShopOnWeb** DevOps 프로젝트로 이동합니다.
+1. 추출된 모든 입력 파일을 소스 제어 리포지토리에 커밋합니다. 이렇게 하려면 **Azure DevOps Portal**(<https://dev.azure.com>)로 이동하고 **eShopOnWeb** DevOps 프로젝트로 이동합니다.
 1. **리포지토리**를 선택합니다. 소스 코드 폴더 구조에서 **테스트** 하위 폴더를 확인합니다. 줄임표(...)를 확인하고 **새로 만들기 > 폴더**를 선택합니다.
 1. **jmeter**를 폴더 이름으로 지정하고 파일 이름으로 **placeholder.txt**를 지정합니다(참고: 폴더를 빈 폴더로 만들 수는 없음).
 1. **커밋**을 클릭하여 자리 표시자 파일 및 jmeter 폴더 만들기를 확인합니다.
@@ -374,6 +431,8 @@ Azure Portal에서 기존 부하 테스트에 대한 입력 파일을 다운로�
 1. **커밋**을 클릭하여 소스 제어에 파일 업로드를 확인합니다.
 
 #### 작업 4: CI/CD 워크플로 YAML 정의 파일 업데이트
+
+이 작업에서는 Azure Load Testing - Azure DevOps Marketplace 확장을 가져오고 AzureLoadTest 작업을 사용하여 기존 CI/CD 파이프라인을 업데이트합니다.
 
 1. 부하 테스트를 만들고 실행하기 위해 Azure Pipelines 워크플로 정의는 Azure DevOps Marketplace의 **Azure Load Testing 작업** 확장을 사용합니다. Azure DevOps Marketplace의 [Azure Load Testing 작업 확장](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting)을 열고 **무료 다운로드**를 선택합니다.
 1. Azure DevOps 조직을 선택한 다음, **설치**를 선택하여 확장을 설치합니다.
@@ -384,7 +443,7 @@ Azure Portal에서 기존 부하 테스트에 대한 입력 파일을 다운로�
    - Azure 구독: Azure 리소스를 실행하는 구독을 선택합니다.
    - 부하 테스트 파일: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
    - 부하 테스트 리소스 그룹: Azure Load Testing 리소스를 보유하는 리소스 그룹
-   - 부하 테스트 리소스 이름: `eShopOnWebLoadTesting`
+   - 부하 테스트 리소스 이름: ESHopOnWebLoadTesting
    - 부하 테스트 실행 이름: ado_run
    - 부하 테스트 실행 설명: ADO에서 부하 테스트
 
@@ -395,7 +454,7 @@ Azure Portal에서 기존 부하 테스트에 대한 입력 파일을 다운로�
     ```yml
          - task: AzureLoadTest@1
           inputs:
-            azureSubscription: 'AZURE DEMO SUBSCRIPTION'
+            azureSubscription: 'AZURE DEMO SUBSCRIPTION(b86d9ae1-1234-4b75-a8e7-27fb2ea7f9f4)'
             loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
             resourceGroup: 'az400m05l11-RG'
             loadTestResource: 'eShopOnWebLoadTesting'
@@ -506,12 +565,34 @@ Azure Portal에서 기존 부하 테스트에 대한 입력 파일을 다운로�
 
 1. 부하 테스트 출력의 마지막 줄에 **##[error]TestResult: FAILED**가 어떻게 표시되는지 확인합니다. 평균 응답 시간이 300을 초과하거나 오류 백분율이 20보다 큰 **FailCriteria**를 정의했으므로 이제 평균 응답 시간이 300을 초과하면 작업이 실패로 플래그가 지정됩니다.
 
-    > **참고:** 실제 시나리오에서는 App Service의 성능에 대한 유효성을 검사하고 성능이 특정 임계값 미만인 경우 일반적으로 웹앱에 더 많은 부하가 있음을 의미하므로 추가 Azure App Service에 대한 새 배포를 트리거할 수 있습니다. Azure 랩 환경의 응답 시간을 제어할 수 없으므로 오류를 보장하기 위해 논리를 되돌리기로 결정했습니다.
+    > 참고: 실제 시나리오에서는 App Service의 성능에 대한 유효성을 검사하고 성능이 특정 임계값 미만인 경우 일반적으로 웹앱에 더 많은 부하가 있음을 의미하므로 추가 Azure 앱 서비스에 대한 새 배포를 트리거할 수 있습니다. Azure 랩 환경의 응답 시간을 제어할 수 없으므로 오류를 보장하기 위해 논리를 되돌리기로 결정했습니다.
 
 1. 파이프라인 작업의 FAILED(실패) 상태는 실제로는 Azure Load Testing 요구 사항 조건 유효성 검사의 SUCCESS(성공)를 나타냅니다.
 
-   > [!IMPORTANT]
-   > 불필요한 요금이 부과되지 않도록 Azure Portal에서 만든 리소스를 삭제하는 것을 잊지 마세요.
+### 연습 3: Azure 랩 리소스 제거
+
+이 연습에서는 예상치 못한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
+
+> **참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
+
+#### 작업 1: Azure 랩 리소스 제거
+
+이 작업에서는 Azure Cloud Shell을 사용하여 불필요한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
+
+1. Azure Portal의 **Cloud Shell** 창에서 **Bash** 세션을 시작합니다.
+1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m09l16')].name" --output tsv
+    ```
+
+1. 다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m09l16')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
 
 ## 검토
 
