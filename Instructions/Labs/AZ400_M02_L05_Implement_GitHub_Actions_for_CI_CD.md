@@ -113,7 +113,7 @@ lab:
 
 1. 브라우저 창에서 **eShopOnWeb** GitHub 리포지토리로 돌아갑니다.
 1. 리포지토리 페이지에서 **설정**으로 이동하여 **비밀 및 변수 > 작업**을 클릭합니다. **새 리포지토리 비밀**을 클릭합니다.
-    - 이름: **AZURE_CREDENTIALS**
+    - 이름: **`AZURE_CREDENTIALS`**
     - 비밀: **이전에 복사한 JSON 개체 붙여넣기**(GitHub는 [azure/login](https://github.com/Azure/login) 작업에서 사용된 동일한 이름으로 여러 개의 비밀을 보관할 수 있음)
 
 1. **비밀 추가**를 클릭합니다. 이제 GitHub Actions 리포지토리 비밀을 사용하여 서비스 주체를 참조할 수 있습니다.
@@ -159,7 +159,7 @@ lab:
 1. **배포** 작업 섹션에서 **개발**이라는 **환경**에 대한 참조를 찾을 수 있습니다. GitHub에서 사용한 [환경](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment)은 대상에 대한 보호 규칙(및 비밀)을 추가합니다.
 
 1. 리포지토리 페이지에서 **설정**으로 이동하여 **환경**을 열고 **새 환경**을 클릭합니다.
-1. 이름을 **개발**로 지정하고 **환경 구성**을 클릭합니다.
+1. **`Development`**(이)라는 이름을 지정하고 **환경 구성**을 클릭합니다.
 
     > **참고**: **환경** 목록에 **개발**이라는 환경이 이미 있는 경우, 환경 이름을 클릭하여 해당 구성을 엽니다.  
 

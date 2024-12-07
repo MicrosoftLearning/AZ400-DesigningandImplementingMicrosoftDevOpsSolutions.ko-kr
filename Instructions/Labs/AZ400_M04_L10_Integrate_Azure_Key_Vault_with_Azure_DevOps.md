@@ -97,7 +97,7 @@ Azure Key Vault에서는 키, 암호, 인증서 등의 중요한 데이터를 �
     - **PowerShell** 작업은 bicep 출력(acr 로그인 서버)을 가져오고 파이프라인 변수를 만듭니다.
     - **DockerCompose** 작업은 eShopOnWeb에 대한 컨테이너 이미지를 빌드하고 Azure Container Registry를 푸시합니다.
 
-1. 파이프라인은 프로젝트 이름을 기준으로 이름을 사용합니다. 파이프라인을 더 잘 식별하기 위해 **이름을 바꿔**보겠습니다. **Pipelines > Pipelines**으로 이동하여 최근에 만든 파이프라인을 클릭합니다. 줄임표 및 **이름 바꾸기/제거** 옵션을 클릭합니다. 이름을 **eshoponweb-ci-dockercompose**로 설정정하고 **저장**을 클릭합니다.
+1. 파이프라인은 프로젝트 이름을 기준으로 이름을 사용합니다. 파이프라인을 더 잘 식별하기 위해 **이름을 바꿔**보겠습니다. **Pipelines > Pipelines**으로 이동하여 최근에 만든 파이프라인을 클릭합니다. 줄임표 및 **이름 바꾸기/제거** 옵션을 클릭합니다. **`eshoponweb-ci-dockercompose`** 로 이름을 지정하고 **저장**을 클릭합니다.
 
 1. 실행이 완료되면 Azure Portal에서 이전에 정의된 리소스 그룹을 열고, 생성된 컨테이너 이미지 **eshoppublicapi** 및 **eshopwebmvc**가 있는 ACR(Azure Container Registry)을 찾아야 합니다. 배포 단계에서만 **eshopwebmvc**를 사용합니다.
 

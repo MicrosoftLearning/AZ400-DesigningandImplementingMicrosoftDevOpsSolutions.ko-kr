@@ -322,7 +322,7 @@ lab:
 1. 아래에서는 이러한 값 중 몇 가지가 대시보드 그래프 선 및 차트 보기를 사용하여 표시됩니다.
 1. 잠시 동안 시뮬레이션된 두 테스트의 **결과를 서로 비교**하고 더 많은 사용자가 App Service 성능에 미치는 **영향을 파악**합니다.
 
-### 연습 2: Azure Pipelines에서 CI/CD를 사용하여 부하 테스트 자동화
+### 연습 3: Azure Pipelines에서 CI/CD를 사용하여 부하 테스트 자동화
 
 CI/CD 파이프라인에 추가하여 Azure Load Testing에서 부하 테스트 자동화를 시작합니다. Azure Portal에서 부하 테스트를 실행한 후 구성 파일을 내보내고 Azure Pipelines에서 CI/CD 파이프라인을 구성합니다(GitHub Actions에 대해 유사한 기능이 있음).
 
@@ -397,7 +397,7 @@ Azure Portal에서 기존 부하 테스트에 대한 입력 파일을 다운로�
           inputs:
             azureSubscription: 'AZURE DEMO SUBSCRIPTION'
             loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
-            resourceGroup: 'az400m05l11-RG'
+            resourceGroup: 'az400m08l14-RG'
             loadTestResource: 'eShopOnWebLoadTesting'
             loadTestRunName: 'ado_run'
             loadTestRunDescription: 'load testing from ADO'
@@ -430,7 +430,7 @@ Azure Portal에서 기존 부하 테스트에 대한 입력 파일을 다운로�
     Test '0d295119-12d0-482d-94be-a7b84787c004' already exists
     Uploaded test plan for the test
     Creating and running a testRun for the test
-    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%4b75-a1e0-27fb2ea7f9f4%2fresourcegroups%2faz400m05l11-rg%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-787c004/testRunId/161046f1-d2d3-46f7-9d2b-c8a09478ce4c
+    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%4b75-a1e0-27fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-787c004/testRunId/161046f1-d2d3-46f7-9d2b-c8a09478ce4c
     TestRun completed
     
     -------------------Summary ---------------
@@ -474,7 +474,7 @@ Azure Portal에서 기존 부하 테스트에 대한 입력 파일을 다운로�
 
     ```text
     Creating and running a testRun for the test
-    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%2fb86d9ae1-7552-47fb2ea7f9f4%2fresourcegroups%2faz400m05l11-rg%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-a7b84787c004/testRunId/f4bec76a-8b49-44ee-a388-12af34f0d4ec
+    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%2fb86d9ae1-7552-47fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-a7b84787c004/testRunId/f4bec76a-8b49-44ee-a388-12af34f0d4ec
     TestRun completed
     
     -------------------Summary ---------------
