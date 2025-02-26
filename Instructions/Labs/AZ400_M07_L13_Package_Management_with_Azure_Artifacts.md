@@ -145,23 +145,23 @@ Azure Artifacts를 활용하면 Azure DevOps에서 NuGet, npm 및 Maven 패키�
 1. 
           **관리자: Windows PowerShell** 창에서 다음 명령을 실행하여 eShopOnWeb.Shared 폴더로 이동합니다.
 
-   ```text
+   ```powershell
    cd c:\eShopOnWeb\eShopOnWeb.Shared
    ```
 
    > **참고**: **eShopOnWeb.Shared** 폴더는 **eShopOnWeb.Shared.csproj** 파일의 위치입니다. 다른 위치 또는 프로젝트 이름을 선택한 경우 대신 해당 위치로 이동합니다.
 
-1. 다음을 실행하여 프로젝트에서 **.nupkg** 파일을 만듭니다.
+1. 다음을 실행하여 프로젝트에서 **.nupkg** 파일을 만듭니다(`XXXXXX` 자리 표시자 값을 고유한 문자열로 변경).
 
    ```powershell
-   dotnet pack .\eShopOnWeb.Shared.csproj
+   dotnet pack .\eShopOnWeb.Shared.csproj -p:PackageId=eShopOnWeb-XXXXX.Shared
    ```
 
    > **참고**: **dotnet pack** 명령은 프로젝트를 빌드하고 **bin\Release** 폴더에 NuGet 패키지를 만듭니다. **릴리스** 폴더가 없는 경우 **디버그** 폴더를 대신 사용할 수 있습니다.
 
    > **참고**: **관리자: Windows PowerShell** 창에 표시되는 경고는 무시하세요.
 
-   > **참고**: dotnet pack은 프로젝트에서 확인 가능한 정보를 토대로 최소 패키지를 빌드합니다. 예를 들어 이름은 **eShopOnWeb.Shared.1.0.0.nupkg**입니다. 이 버전 번호는 어셈블리에서 검색한 것입니다.
+   > **참고**: dotnet pack은 프로젝트에서 확인 가능한 정보를 토대로 최소 패키지를 빌드합니다. 인수 `-p:PackageId=eShopOnWeb-XXXXXX.Shared` 를 사용하면 프로젝트에 포함된 이름을 사용하는 대신 특정 이름으로 패키지를 만들 수 있습니다. 예를 들어 `12345` 문자열을 `XXXXXX` 자리 표시자로 대체하는 경우 패키지 이름은 **eShopOnWeb-12345.Shared.1.0.0.nupkg**가 됩니다. 버전 번호가 어셈블리에서 검색되었습니다.
 
 1. PowerShell 창에서 다음 명령을 실행하여 **bin\Release** 폴더를 엽니다.
 
