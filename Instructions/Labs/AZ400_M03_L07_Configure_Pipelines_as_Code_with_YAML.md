@@ -6,8 +6,6 @@ lab:
 
 # YAML을 통해 파이프라인을 코드로 구성
 
-## 학생용 랩 매뉴얼
-
 ## 랩 요구 사항
 
 - 이 랩은 **Microsoft Edge** 또는 [Azure DevOps 지원 브라우저](https://docs.microsoft.com/azure/devops/server/compatibility)가 필요합니다.
@@ -28,13 +26,13 @@ lab:
 
 - Azure DevOps에서 YAML을 사용하여 CI/CD 파이프라인을 코드로 구성합니다.
 
-## 예상 소요 시간: 60분
+## 예상 소요 시간: 45분
 
-## Instructions
+## 지침
 
 ### 연습 0: 랩 필수 구성 요소 구성
 
-이 연습에서는 랩의 필수 구성 요소를 설정합니다. 구체적으로는 [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)을 기반으로 하여 새 Azure DevOps 프로젝트와 리포지토리를 설정합니다.
+이 연습에서는 랩 필수 구성 요소를 설정합니다.
 
 #### 작업 1: (완료된 경우 건너뛰기) 팀 프로젝트 만들기 및 구성
 
@@ -42,7 +40,7 @@ lab:
 
 1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직을 엽니다. **새 프로젝트**를 클릭합니다. 프로젝트 이름을 **eShopOnWeb_MultiStageYAML**로 설정하고 다른 필드는 기본값으로 유지합니다. **만들기**를 클릭합니다.
 
-   ![프로젝트 만들기](images/create-project.png)
+   ![새 프로젝트 만들기 패널의 스크린샷.](images/create-project.png)
 
 #### 작업 2: (완료된 경우 건너뛰기) eShopOnWeb Git 리포지토리 가져오기
 
@@ -50,7 +48,7 @@ lab:
 
 1. 랩 컴퓨터의 브라우저 창에서 Azure DevOps 조직 및 이전에 만든 **eShopOnWeb_MultiStageYAML** 프로젝트를 엽니다. **Repos > 파일**, **리포지토리 가져오기**를 클릭합니다. **가져오기**를 선택합니다. **Git 리포지토리 가져오기** 창에서 다음 URL https://github.com/MicrosoftLearning/eShopOnWeb.git을 붙여넣고 **가져오기**를 클릭합니다.
 
-   ![리포지토리 가져오기](images/import-repo.png)
+   ![리포지토리 가져오기 패널의 스크린샷.](images/import-repo.png)
 
 1. 리포지토리는 다음과 같은 방식으로 구성됩니다.
    - **.ado** 폴더에는 Azure DevOps YAML 파이프라인이 포함되어 있습니다.
@@ -63,7 +61,7 @@ lab:
 1. **기본** 분기를 마우스로 가리킨 다음 열 오른쪽에 있는 줄임표를 클릭합니다.
 1. **기본 분기로 설정**을 클릭합니다.
 
-#### 작업 2: Azure 리소스 생성
+#### 작업 3: Azure 리소스 만들기
 
 이 작업에서는 Azure Portal을 사용하여 Azure 웹앱을 만듭니다.
 
@@ -73,7 +71,7 @@ lab:
 
    > **참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 선택합니다.
 
-   > **참고:** 지역 목록 및 해당 별칭을 보려면 Azure Cloud Shell - Bash에서 다음 명령을 실행합니다.
+   > **참고**: 지역 목록 및 해당 별칭을 보려면 Azure Cloud Shell - Bash에서 다음 명령을 실행합니다.
 
    ```bash
    az account list-locations -o table
@@ -86,14 +84,14 @@ lab:
    ```
 
    ```bash
-   RESOURCEGROUPNAME='az400m05l11-RG'
+   RESOURCEGROUPNAME='az400m03l07-RG'
    az group create --name $RESOURCEGROUPNAME --location $LOCATION
    ```
 
 1. 다음 명령을 실행하여 Windows App Service 요금제를 만들려면:
 
    ```bash
-   SERVICEPLANNAME='az400m05l11-sp1'
+   SERVICEPLANNAME='az400m03l07-sp1'
    az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
    ```
 
@@ -151,7 +149,7 @@ lab:
      jobs:
        - job: Deploy
          pool:
-           vmImage: "windows-2019"
+           vmImage: "windows-latest"
          steps:
    ```
 
@@ -195,7 +193,7 @@ lab:
 1. 이 작업에 대해 다음 매개 변수를 지정합니다.
    - 다음에 의해 생성된 아티팩트 다운로드: **현재 빌드**
    - 다운로드 유형: **특정 아티팩트**
-   - 아티팩트 이름: **목록에서 "웹 사이트"를 선택**하거나 목록에 자동으로 표시되지 않는 경우 **"웹 사이트"를 직접 입력**합니다.
+   - 아티팩트 이름: **목록에서 "웹사이트"를 선택**하거나 (또는 목록에 자동으로 표시되지 않는 경우 **"`Website`"** 를 직접 입력합니다).
    - 대상 디렉터리: **$(Build.ArtifactStagingDirectory)**
 1. **추가**를 클릭합니다.
 1. 추가된 코드 조각은 아래와 유사합니다.
@@ -245,8 +243,8 @@ lab:
       - repository: self
         trigger: none
 
-   stages:
-   - stage: Build
+  stages:
+  - stage: Build
     displayName: Build .Net Core Solution
     jobs:
     - job: Build
@@ -297,7 +295,7 @@ lab:
     jobs:
     - job: Deploy
       pool:
-        vmImage: 'windows-2019'
+        vmImage: 'windows-latest'
       steps:
       - task: DownloadBuildArtifacts@0
         inputs:
@@ -316,7 +314,7 @@ lab:
 
    ```
 
-#### 작업 4: 배포된 사이트 검토
+#### 작업 3: 배포된 사이트 검토
 
 1. Azure Portal이 표시된 웹 브라우저 창으로 다시 전환한 다음 Azure 웹앱 속성이 표시된 블레이드로 이동합니다.
 1. Azure 웹앱 블레이드에서 **개요**를 클릭하고 개요 블레이드에서 **찾아보기**를 클릭하여 새 웹 브라우저 탭에서 사이트를 엽니다.
@@ -333,11 +331,10 @@ lab:
 1. Azure DevOps 프로젝트 **eShopOnWeb_MultiStageYAML**에서 **파이프라인**으로 이동합니다.
 1. 왼쪽의 파이프라인 메뉴에서 **환경**을 선택합니다.
 1. **환경 만들기**를 클릭합니다.
-1. **새 환경** 창에서 **승인**이라는 환경의 이름을 추가합니다.
+1. **새 환경** 창에서 **`approvals`**(이)라는 환경 이름을 추가합니다.
 1. **리소스**에서 **없음**을 선택합니다.
 1. **만들기** 단추를 눌러 설정을 확인합니다.
-1. 환경이 만들어지면 '리소스 추가' 단추 옆에 있는 '줄임표'(...)를 클릭합니다.
-1. **승인 및 확인**을 선택합니다.
+1. 환경이 생성되면 새 **승인** 환경에서 **승인 및 확인** 탭을 선택합니다.
 1. **첫 번째 검사 추가**에서 **승인**을 선택합니다.
 1. Azure DevOps 사용자 계정 이름을 **승인자** 필드에 추가합니다.
 
@@ -360,12 +357,12 @@ lab:
      - job: Deploy
        environment: approvals
        pool:
-         vmImage: "windows-2019"
+         vmImage: "windows-latest"
    ```
 
 1. 환경은 배포 스테이지의 특정 설정이므로 '작업'에서 사용할 수 없습니다. 따라서 현재의 작업 정의를 추가로 변경해야 합니다.
 1. **60**번 줄에서 '- job: Deploy'의 이름을 **- deployment: Deploy**로 바꿉니다.
-1. 그 다음, **63**번 줄(vmImage: Windows-2019)에서 빈 줄을 새로 추가합니다.
+1. 다음으로 **63**번 줄(vmImage: windows-latest) 아래에 새 빈 줄을 추가합니다.
 1. 다음 Yaml 코드 조각을 붙여넣습니다.
 
    ```yaml
@@ -385,7 +382,7 @@ lab:
        - deployment: Deploy
          environment: approvals
          pool:
-           vmImage: "windows-2019"
+           vmImage: "windows-latest"
          strategy:
            runOnce:
              deploy:
@@ -420,30 +417,8 @@ lab:
 
    > **참고:** 이 예제에서는 승인만 사용했지만 Azure Monitor, REST API 등과 같은 다른 검사를 비슷한 방식으로 사용할 수 있다는 점을 알아두십시오.
 
-### 연습 3: Azure 랩 리소스 제거
-
-이 연습에서는 예상치 못한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
-
-> **참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
-
-#### 작업 1: Azure 랩 리소스 제거
-
-이 작업에서는 Azure Cloud Shell을 사용하여 불필요한 비용이 발생하지 않도록 이 랩에서 프로비전한 Azure 리소스를 제거합니다.
-
-1. Azure Portal의 **Cloud Shell** 창에서 **Bash** 세션을 시작합니다.
-1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m05l11-RG')].name" --output tsv
-   ```
-
-1. 다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m05l11-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-   ```
-
-   > **참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
+   > [!IMPORTANT]
+   > 불필요한 요금이 부과되지 않도록 Azure Portal에서 만든 리소스를 삭제하는 것을 잊지 마세요.
 
 ## 검토
 
