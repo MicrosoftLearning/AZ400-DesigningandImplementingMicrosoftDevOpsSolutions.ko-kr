@@ -240,7 +240,7 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
    > [!IMPORTANT]
    > 에이전트가 Azure DevOps 파이프라인에서 Azure 리소스를 빌드하고 배포할 수 있게 하려면(향후 랩에서 단계별 실행) 에이전트를 호스팅하는 Azure VM의 운영 체제 내에 Azure CLI를 설치해야 합니다.
 
-1. 웹 브라우저를 시작하고 [Windows에 Azure CLI 설치](https://learn.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli#install-or-update) 페이지로 이동합니다.
+1. 웹 브라우저를 시작하고 [Windows에 Azure CLI 설치](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli&pivots=msi#install-or-update) 페이지로 이동합니다.
 
 1. Azure CLI 다운로드 및 설치.
 
