@@ -74,9 +74,9 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
 
 1. **검색 리소스, 서비스 및 문서(G+/)** 상자에서 **`Virtual Machines`** 을(를) 입력하고 드롭다운 목록에서 선택합니다.
 
-1. **생성** 단추를 선택합니다.
+1. **만들기** 단추를 선택합니다.
 
-1. **사전 설정 구성을 사용하는 Azure 가상 머신**을 선택합니다.
+1. **사전 설정**을 선택합니다.
 
     ![사전 설정 구성을 사용하는 가상 머신 만들기의 스크린샷.](images/create-virtual-machine-preset.png)
 
@@ -90,7 +90,7 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
    | **리소스 그룹** 섹션 | **rg-eshoponweb-agentpool**이라는 새 리소스 그룹을 만듭니다. |
    | **가상 머신 이름** 입력란 | 기본 설정 이름(예: **`eshoponweb-vm`**)을 입력합니다. |
    | **지역** 드롭다운 목록 | 가장 가까운 [Azure](https://azure.microsoft.com/explore/global-infrastructure/geographies) 지역을 선택할 수 있습니다. 예를 들어 'eastus', 'eastasia', 'westus' 등이 있습니다. |
-   | **가용성 옵션** 드롭다운 목록 | **인프라 중복이 필요하지 않습니다.** 를 선택합니다. |
+   | **가용성 옵션** 드롭다운 목록 | **인프라 중복이 필요하지 않습니다**를 선택합니다. |
    | **보안 유형** 드롭다운 목록 | **신뢰할 수 있는 시작 가상 머신** 옵션을 사용하여 선택합니다. |
    | **이미지** 드롭다운 목록 | **Windows Server 2022 Datacenter: Azure Edition - x64 Gen2** 이미지를 선택합니다. |
    | **크기** 드롭다운 목록 | 테스트 목적으로 가장 저렴한 **표준** 크기를 선택합니다. |
@@ -143,6 +143,8 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
 
    > **참고**: 설치 지침에 따라 에이전트를 설치합니다.
 
+   > **참고**: **다운로드** 단추를 사용하여 다운로드한 zip 파일의 이름은 `vsts-agent-win-x64-X.YYY.Z.zip`과 유사합니다(이 랩을 작성할 때 파일 이름: `vsts-agent-win-x64-4.255.0.zip`). 이 파일 이름은 나중에 에이전트 설치 명령 중 하나에서 사용됩니다.
+
 1. PowerShell 세션을 시작하고 다음 명령을 실행하여 **에이전트**라는 폴더를 만듭니다.
 
    ```powershell
@@ -154,10 +156,12 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
 1. 다음 명령을 실행하여 다운로드한 에이전트 설치 프로그램 파일의 콘텐츠를 추출합니다.
 
    ```powershell
-   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-3.245.0.zip", "$PWD")
+   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-4.255.0.zip", "$PWD")
    ```
 
    > **참고**: 에이전트를 다른 위치에 다운로드했거나 다운로드한 버전이 다른 경우 그에 따라 위의 명령을 조정합니다.
+
+   > **참고**: `ExtractToDirectory` 명령 내에 지정된 zip 파일 이름이 이전에 다운로드한 zip 파일 이름과 동일한지 확인합니다.
 
 #### 작업 4: PAT 토큰 만들기
 
@@ -208,7 +212,7 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
 
 1. 에이전트를 구성하려면 메시지가 표시된 후 다음 작업을 수행합니다.
 
-   - Azure DevOps 조직의 URL(**서버 URL**)을 `https://aex.dev.azure.com`{조직 이름} 형식으로 입력합니다.
+   - Azure DevOps 조직의 URL(**서버 URL**)을 `https://dev.azure.com/{your organization name}` 형식으로 입력합니다.
    - 기본 인증 유형(**`PAT`**)을 적용합니다.
    - 이전 단계에서 만든 PAT 토큰 값을 입력합니다.
    - 이 연습의 앞부분에서 만든 에이전트 풀 이름(**`eShopOnWebSelfPool`**)을 입력합니다.
@@ -240,7 +244,7 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
    > [!IMPORTANT]
    > 에이전트가 Azure DevOps 파이프라인에서 Azure 리소스를 빌드하고 배포할 수 있게 하려면(향후 랩에서 단계별 실행) 에이전트를 호스팅하는 Azure VM의 운영 체제 내에 Azure CLI를 설치해야 합니다.
 
-1. 웹 브라우저를 시작하고 [Windows에 Azure CLI 설치](https://learn.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli#install-or-update) 페이지로 이동합니다.
+1. 웹 브라우저를 시작하고 `https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli&pivots=msi#install-or-update` 페이지로 이동합니다.
 
 1. Azure CLI 다운로드 및 설치.
 
@@ -306,7 +310,7 @@ YAML 기반 파이프라인을 사용하면 CD/CI를 코드로 완벽하게 구�
     ![YAML 풀 구문을 보여 주는 스크린샷.](images/eshoponweb-ci-pr-agent-pool.png)
 
 1. **eShopOnWeb** 편집 창의 오른쪽 위 모서리에서 **확인 및 저장**을 클릭합니다. 그런 다음 **Save**를 클릭합니다.
-1. **eShopOnWeb** 편집 창의 오른쪽 위 모서리에서 **파이프라인 실행**을 클릭합니다.
+1. **eShopOnWeb** 편집 창의 오른쪽 위 모서리에서 **실행**을 클릭합니다.
 
     > **참고**: 파이프라인은 이전 연습에서 만든 자체 호스팅 에이전트 풀에서 실행됩니다.
 1. 파이프라인 실행을 열고 작업이 성공적으로 완료될 때까지 작업을 모니터링합니다.

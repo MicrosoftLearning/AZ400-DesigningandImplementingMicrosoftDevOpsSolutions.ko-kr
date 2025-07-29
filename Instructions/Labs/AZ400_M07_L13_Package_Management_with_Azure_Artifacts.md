@@ -125,7 +125,7 @@ Azure Artifacts를 활용하면 Azure DevOps에서 NuGet, npm 및 Maven 패키�
 
    > **참고**: 여기서는 NuGet 패키지로 게시되는 공유 어셈블리를 만듭니다. 이렇게 하면 다른 팀이 프로젝트 소스를 직접 사용하지 않고도 해당 패키지를 통합하여 최신 정보를 파악할 수 있습니다.
 
-1. **새 프로젝트 만들기** 창의 **최근 프로젝트 템플릿** 페이지에서 검색 텍스트 상자를 사용하여 **클래스 라이브러리** 템플릿을 찾고, C#용 템플릿을 선택하고, **다음**을 클릭합니다.
+1. **새 프로젝트 만들기** 창에서 검색 텍스트 상자를 사용하여 **클래스 라이브러리** 템플릿을 찾고 .NET 또는 .NET Standard를 대상으로 하는 C#에 대한 템플릿을 선택하고, **다음**을 클릭합니다.
 1. **새 프로젝트 만들기** 창의 **클래스 라이브러리** 페이지에서 다음 설정을 지정하고 **만들기**를 클릭합니다.
 
    | 설정       | 값                    |
@@ -154,7 +154,7 @@ Azure Artifacts를 활용하면 Azure DevOps에서 NuGet, npm 및 Maven 패키�
 1. 다음을 실행하여 프로젝트에서 **.nupkg** 파일을 만듭니다(`XXXXXX` 자리 표시자 값을 고유한 문자열로 변경).
 
    ```powershell
-   dotnet pack .\eShopOnWeb.Shared.csproj -p:PackageId=eShopOnWeb-XXXXX.Shared
+   dotnet pack .\eShopOnWeb.Shared.csproj -p:PackageId=eShopOnWeb-XXXXXX.Shared
    ```
 
    > **참고**: **dotnet pack** 명령은 프로젝트를 빌드하고 **bin\Release** 폴더에 NuGet 패키지를 만듭니다. **릴리스** 폴더가 없는 경우 **디버그** 폴더를 대신 사용할 수 있습니다.
@@ -172,10 +172,10 @@ Azure Artifacts를 활용하면 Azure DevOps에서 NuGet, npm 및 Maven 패키�
 1. 다음을 실행하여 **eShopOnWebShared** 피드에 패키지를 게시합니다. 원본을 Visual Studio **원본** URL에서 이전에 복사한 URL로 바꿉니다`https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json`
 
    ```powershell
-   dotnet nuget push --source "https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json" --api-key az "eShopOnWeb.Shared.1.0.0.nupkg"
+   dotnet nuget push --source "https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json" --api-key az "eShopOnWeb-XXXXXX.Shared.1.0.0.nupkg"
    ```
 
-   > **중요**: Azure DevOps를 사용하여 인증할 수 있도록 운영 체제에 대한 자격 증명 공급자를 설치해야 합니다. [Azure Artifacts 자격 증명 공급자](https://go.microsoft.com/fwlink/?linkid=2099625)에서 설치 지침을 찾을 수 있습니다. Powershell 창에서 다음 명령을 실행하여 새 리소스 그룹을 확인합니다. `iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"` 
+   > **중요**: 권한 부여 오류(401 권한 없음)가 수신되면 Azure DevOps로 인증할 수 있도록 운영 체제에 대한 자격 증명 공급자를 설치해야 합니다. [Azure Artifacts 자격 증명 공급자](https://go.microsoft.com/fwlink/?linkid=2099625)에서 설치 지침을 찾을 수 있습니다. Powershell 창에서 다음 명령을 실행하여 새 리소스 그룹을 확인합니다. `iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"` 
 
    > **참고**: 여기서 **API 키**를 입력해야 합니다. 비어 있지 않은 아무 문자열이나 입력하면 됩니다. 여기서는 **az**를 사용합니다. 메시지가 표시되면 Azure DevOps 조직에 로그인합니다.
 
@@ -195,7 +195,7 @@ Azure Artifacts를 활용하면 Azure DevOps에서 NuGet, npm 및 Maven 패키�
 
 이 작업에서는 제네릭 "Newtonsoft.Json" 샘플 패키지를 사용하지만 라이브러리의 다른 패키지에 동일한 방법을 사용할 수 있습니다.
 
-1. 이전 작업에서 새 패키지 푸시에 사용한 동일한 PowerShell 창에서 **eShopOnWeb.Shared** 폴더(`cd..`)로 이동하고 다음 **dotnet** 명령을 실행하여 샘플 패키지를 설치합니다.
+1. 이전 작업에서 새 패키지 푸시에 사용한 동일한 PowerShell 창에서 **eShopOnWeb.Shared** 폴더(`cd ../..`)로 이동하고 다음 **dotnet** 명령을 실행하여 샘플 패키지를 설치합니다.
 
    ```powershell
    dotnet add package Newtonsoft.Json
