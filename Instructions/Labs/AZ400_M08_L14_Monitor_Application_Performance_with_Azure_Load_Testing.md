@@ -204,7 +204,7 @@ lab:
 1. 편집기에 추가된 코드 조각은 azureSubscription 및 WebappName 매개 변수의 이름을 반영하여 아래와 유사해야 합니다.
 
    ```yml
-   - task: AzureRmWebAppDeployment@4
+   - task: AzureRmWebAppDeployment@5
      inputs:
        ConnectionType: "AzureRM"
        azureSubscription: "SERVICE CONNECTION NAME"
@@ -228,7 +228,7 @@ lab:
 
    ![eShopOnWeb 실행을 보여 주는 Azure Pipelines의 스크린샷.](images/m3/eshoponweb-m9l16-pipeline.png)
 
-1. 표시되는 창에서 **실행**을 클릭하여 이 파이프라인을 실행하도록 확인하고 **실행**을 한 번 더 클릭하여 확인합니다.
+1. 표시되는 창에서 **파이프라인 실행**을 클릭하여 이 파이프라인을 실행하도록 확인하고 **실행**을 한 번 더 클릭하여 확인합니다.
 1. 서로 다른 2가지 스테이지인 **.NET Core 솔루션 빌드** 및 **Azure 웹앱에 배포**가 표시됩니다.
 1. 파이프라인이 시작될 때까지 기다립니다.
 
@@ -389,8 +389,8 @@ Azure Portal에서 기존 부하 테스트에 대한 입력 파일을 다운로�
 1. 부하 테스트를 만들고 실행하기 위해 Azure Pipelines 워크플로 정의는 Azure DevOps Marketplace의 **Azure Load Testing 작업** 확장을 사용합니다. Azure DevOps Marketplace의 [Azure Load Testing 작업 확장](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting)을 열고 **무료 다운로드**를 선택합니다.
 1. Azure DevOps 조직을 선택한 다음, **설치**를 선택하여 확장을 설치합니다.
 1. Azure DevOps Portal 및 프로젝트 내에서 **Pipelines**로 이동하여 이 연습의 시작 부분에서 만든 파이프라인을 선택합니다. **편집**을 클릭합니다.
-1. YAML 스크립트에서 **줄 56**으로 이동하고 Enter/RETURN 키를 눌러 빈 줄을 새로 추가합니다. (YAML 파일의 배포 스테이지 바로 앞에 있습니다).
-1. 줄 57에서 오른쪽에 있는 작업 도우미를 선택하고 **Azure Load Testing**을 검색합니다.
+1. YAML 스크립트에서 **64번째 줄**로 이동하고 ENTER/RETURN 키를 눌러 빈 줄을 새로 추가합니다. (YAML 파일의 배포 스테이지 바로 앞에 있습니다).
+1. 65번째 줄에서 오른쪽에 있는 작업 도우미를 선택하고 **Azure Load Testing**을 검색합니다(이전 작업 수준의 들여쓰기에 커서를 놓았는지 확인하세요).
 1. 시나리오의 올바른 설정으로 그래픽 창을 완료합니다.
 
    - Azure 구독: Azure 리소스를 실행하는 구독을 선택합니다.
@@ -424,12 +424,12 @@ Azure Portal에서 기존 부하 테스트에 대한 입력 파일을 다운로�
    ```
 
 1. YAML 코드 조각의 들여쓰기에서 오류(빨간색 물결선)가 발생하는 경우 2개의 공백 또는 탭을 추가하여 코드 조각을 올바르게 배치하여 수정합니다.
-1. CI/CD 파이프라인에 두 코드 조각이 모두 추가되면 변경 내용을 **저장**합니다.
+1. 두 코드 조각을 CI/CD 파이프라인에 추가한 후, **유효성 검사 및 저장**을 클릭한 다음, 변경 내용을 **저장**합니다.
 1. 저장되면 **실행**을 클릭하여 파이프라인을 트리거합니다.
 1. 분기(기본)를 확인하고 **실행** 단추를 클릭하여 파이프라인 실행을 시작합니다.
-1. 파이프라인 상태 페이지에서**빌드** 스테이지를 클릭하여 파이프라인의 여러 작업에 대한 자세한 로깅 세부 정보를 엽니다.
-1. 파이프라인이 빌드 스테이지를 시작하고 파이프라인 흐름의 **AzureLoadTest** 작업에 도달할 때까지 기다립니다.
-1. 작업이 실행되는 동안 Azure Portal에서 **Azure Load Testing**으로 이동하여 파이프라인이 **adoloadtest1**이라는 새 RunTest를 만드는 방법을 확인합니다. TestRun 작업의 결과 값을 표시하도록 선택할 수 있습니다.
+1. 파이프라인 상태 페이지에서 **배포** 스테이지를 클릭하여 파이프라인의 여러 작업에 대한 자세한 로깅 세부 정보를 엽니다.
+1. 파이프라인이 배포 스테이지를 시작하고 파이프라인 흐름의 **AzureLoadTest** 작업에 도달할 때까지 기다립니다.
+1. 작업이 실행되는 동안 Azure Portal에서 **Azure Load Testing**으로 이동하여 파이프라인이 **ado_load_test**라는 새 RunTest를 만드는 방법을 확인합니다. TestRun 작업의 결과 값을 표시하도록 선택할 수 있습니다.
 1. **AzureLoadTest 작업**이 성공적으로 완료된 Azure DevOps CI/CD 파이프라인 실행 보기로 다시 이동합니다. 자세한 로깅 출력에 부하 테스트의 결과 값도 표시됩니다.
 
    ```text
